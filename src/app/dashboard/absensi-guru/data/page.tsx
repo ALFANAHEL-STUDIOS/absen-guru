@@ -310,7 +310,7 @@ export default function TeacherDataPage() {
           <Link href="/dashboard/absensi-guru" className="p-2 mr-2 hover:bg-gray-100 rounded-full" data-unique-id="f3e53a66-5b09-44fd-9630-a0431a6b94d8" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
             <ArrowLeft size={20} />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-800" data-unique-id="8628873d-8d56-4dba-862d-e261dfec3e03" data-file-name="app/dashboard/absensi-guru/data/page.tsx"><span className="editable-text" data-unique-id="16029354-3920-40f7-af5a-e22e7c81f499" data-file-name="app/dashboard/absensi-guru/data/page.tsx">Data Guru & Tenaga Kependidikan</span></h1>
+          <h1 className="text-2xl font-bold text-gray-800" data-unique-id="8628873d-8d56-4dba-862d-e261dfec3e03" data-file-name="app/dashboard/absensi-guru/data/page.tsx"><span className="editable-text" data-unique-id="16029354-3920-40f7-af5a-e22e7c81f499" data-file-name="app/dashboard/absensi-guru/data/page.tsx">Data Akun Absensi GTK</span></h1>
         </div>
         
         {/*<button onClick={() => setShowAddModal(true)} className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors w-full md:w-auto justify-center" data-unique-id="900b3954-1450-44c7-a5d2-a30ca2d7c6fa" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
