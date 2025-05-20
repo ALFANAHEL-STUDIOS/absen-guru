@@ -313,10 +313,10 @@ export default function TeacherDataPage() {
           <h1 className="text-2xl font-bold text-gray-800" data-unique-id="8628873d-8d56-4dba-862d-e261dfec3e03" data-file-name="app/dashboard/absensi-guru/data/page.tsx"><span className="editable-text" data-unique-id="16029354-3920-40f7-af5a-e22e7c81f499" data-file-name="app/dashboard/absensi-guru/data/page.tsx">Data Guru & Tenaga Kependidikan</span></h1>
         </div>
         
-        <button onClick={() => setShowAddModal(true)} className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors w-full md:w-auto justify-center" data-unique-id="900b3954-1450-44c7-a5d2-a30ca2d7c6fa" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
+        {/*<button onClick={() => setShowAddModal(true)} className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors w-full md:w-auto justify-center" data-unique-id="900b3954-1450-44c7-a5d2-a30ca2d7c6fa" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
           <Plus size={18} />
           <span data-unique-id="079db0f1-ac7e-4720-9cd4-043448e0a0c2" data-file-name="app/dashboard/absensi-guru/data/page.tsx"><span className="editable-text" data-unique-id="50062e7a-20f0-4eaa-926a-333923fbd305" data-file-name="app/dashboard/absensi-guru/data/page.tsx">Tambah Data</span></span>
-        </button>
+        </button>*/}
       </div>
       
       {/* Search and Filter */}
@@ -400,10 +400,10 @@ export default function TeacherDataPage() {
             <p className="text-gray-500 mb-4" data-unique-id="4d3f2eaf-291e-4e7a-a47d-ff143e28a41a" data-file-name="app/dashboard/absensi-guru/data/page.tsx" data-dynamic-text="true">
               {searchQuery || roleFilter !== "all" ? "Tidak ada guru yang sesuai dengan pencarian atau filter" : "Belum ada data guru. Tambahkan data guru baru."}
             </p>
-            {/*<button onClick={() => setShowAddModal(true)} className="bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors" data-unique-id="48f9a46d-409d-4dd3-87cd-59eea73890f5" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
+            <button onClick={() => setShowAddModal(true)} className="bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors" data-unique-id="48f9a46d-409d-4dd3-87cd-59eea73890f5" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
               <Plus className="h-5 w-5 inline-block mr-2" /><span className="editable-text" data-unique-id="02480ce4-0ba4-490c-a6b6-2ff9b6dbb386" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
               Tambah Data Guru
-            </span></button>*/}
+            </span></button>
           </div>
         </div>}
       
