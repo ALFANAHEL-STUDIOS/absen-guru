@@ -107,31 +107,31 @@ export default function AbsensiGuruPage() {
     };
     return new Date(dateStr).toLocaleDateString('id-ID', options);
   };
-  return <div className="pb-20 md:pb-6" data-unique-id="0f0a8f66-f5ac-43e2-8df1-f40b9d708b30" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6" data-unique-id="7899a4dd-ab6a-46df-88d9-67fb7c5fc49b" data-file-name="app/dashboard/absensi-guru/page.tsx">
-        <div className="flex items-center mb-4 md:mb-0" data-unique-id="31b38120-154f-488f-917a-d9b6c0c3598a" data-file-name="app/dashboard/absensi-guru/page.tsx">
+  return <div className="pb-20 md:pb-6" data-unique-id="be987b12-e273-4df7-8641-28a59725a3fd" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6" data-unique-id="4b8fd539-7881-4e1c-b578-6121e1a060e0" data-file-name="app/dashboard/absensi-guru/page.tsx">
+        <div className="flex items-center mb-4 md:mb-0" data-unique-id="feefae41-e1e6-465f-ad71-50de1b4e7508" data-file-name="app/dashboard/absensi-guru/page.tsx">
           <Users className="h-7 w-7 text-primary mr-3" />
-          <h1 className="text-2xl font-bold text-gray-800" data-unique-id="afd146dc-4ebb-4469-b555-e815a689d562" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="6880dc7e-079b-4de9-895e-bc28efb89b66" data-file-name="app/dashboard/absensi-guru/page.tsx">Absensi Guru & Tenaga Kependidikan</span></h1>
+          <h1 className="text-2xl font-bold text-gray-800" data-unique-id="f39a2e74-1776-4e21-b164-7b276ed03fd4" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="86fb183d-7d02-4fc6-b380-768f70967487" data-file-name="app/dashboard/absensi-guru/page.tsx">Absensi Guru & Tenaga Kependidikan</span></h1>
         </div>
         
-        <div className="flex gap-3" data-unique-id="66b1a729-1340-4c1e-acff-a8ffaddb5e8c" data-file-name="app/dashboard/absensi-guru/page.tsx">
-          <Link href="/dashboard/absensi-guru/scan" className="flex items-center gap-2 bg-primary text-white px-4 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors" data-unique-id="291d89f5-5e27-4584-b179-2ab92772ac7d" data-file-name="app/dashboard/absensi-guru/page.tsx">
+        <div className="flex gap-3" data-unique-id="95030a51-1203-4ad1-9a87-9de21d078483" data-file-name="app/dashboard/absensi-guru/page.tsx">
+          <Link href="/dashboard/absensi-guru/scan" className="flex items-center gap-2 bg-primary text-white px-4 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors" data-unique-id="a64b1d90-bdb7-4e8c-b3ab-62a59be34946" data-file-name="app/dashboard/absensi-guru/page.tsx">
             <Camera size={18} />
-            <span data-unique-id="8038b32b-5024-4b34-89aa-1698d2f04b18" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="f17785e1-e210-4955-9834-e83dd30c1eb5" data-file-name="app/dashboard/absensi-guru/page.tsx">Scan Absensi</span></span>
+            <span data-unique-id="4cd9ce58-458f-4e86-ad63-ddb815e4cea8" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="2d9d7a41-0237-4720-9cd1-d15a882ca761" data-file-name="app/dashboard/absensi-guru/page.tsx">Scan Absensi</span></span>
           </Link>
-          <Link href="/dashboard/absensi-guru/data" className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="edc4705e-d8cc-4c42-af68-e1e7e60fdbee" data-file-name="app/dashboard/absensi-guru/page.tsx">
+          <Link href="/dashboard/absensi-guru/data" className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="4310ce17-80d6-4e01-b443-bdf23bcf72dc" data-file-name="app/dashboard/absensi-guru/page.tsx">
             <PlusCircle size={18} />
-            <span data-unique-id="70381329-9c82-4181-9cbf-a5ad7593ca03" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="a2eb504e-04b6-4ced-9ea3-f23ce5aa76e8" data-file-name="app/dashboard/absensi-guru/page.tsx">Kelola Data</span></span>
+            <span data-unique-id="c168398a-2942-45d1-9fb4-cb9983b5740d" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="7f235a35-c4e4-482c-908c-f11a33ef3d6e" data-file-name="app/dashboard/absensi-guru/page.tsx">Kelola Data</span></span>
           </Link>
         </div>
       </div>
       
-      {loading ? <div className="flex justify-center items-center h-64" data-unique-id="51186197-b2c0-4cf7-b5c3-b384095edad2" data-file-name="app/dashboard/absensi-guru/page.tsx">
+      {loading ? <div className="flex justify-center items-center h-64" data-unique-id="7570c11b-afa7-4cdd-a510-bcfc304cb6a5" data-file-name="app/dashboard/absensi-guru/page.tsx">
           <Loader2 className="h-12 w-12 text-primary animate-spin" />
         </div> : <>
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" data-unique-id="9d7547bc-2de5-4229-9db9-fa37917ca602" data-file-name="app/dashboard/absensi-guru/page.tsx">
-            <motion.div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-md" initial={{
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" data-unique-id="d34093c3-565a-4ef0-9fd8-2b46bcfcfbc3" data-file-name="app/dashboard/absensi-guru/page.tsx">
+            <motion.div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-4 text-white shadow-md" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -139,16 +139,16 @@ export default function AbsensiGuruPage() {
           y: 0
         }} transition={{
           duration: 0.3
-        }} data-unique-id="255cdeee-ac74-482e-bb31-f4d8f467fce0" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <div className="flex items-center mb-2" data-unique-id="9220fd50-f6fe-443b-898a-2b295a997305" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <Users className="h-8 w-8 text-white mr-3" />
-                <h3 className="font-semibold text-lg" data-unique-id="be5af641-a072-462b-9430-8698aa276758" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="696c1988-64a1-4498-894d-c4953b4b8dcd" data-file-name="app/dashboard/absensi-guru/page.tsx">Total Guru & Tendik</span></h3>
+        }} data-unique-id="ef4ad21f-01a9-46f8-a5d9-7a94a02cdedb" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <div className="flex items-center mb-1" data-unique-id="ee06ab95-f887-4ec3-bfdf-c8a124d9d61f" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <Users className="h-7 w-7 text-white mr-3" />
+                <h3 className="font-semibold text-base" data-unique-id="3b5a78be-63cd-49f9-a29a-00a920b77b02" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="90f7430a-5a13-405b-81fc-393e51b369a6" data-file-name="app/dashboard/absensi-guru/page.tsx">Total Guru & Tendik</span></h3>
               </div>
-              <p className="text-4xl font-bold" data-unique-id="24d15b25-30fb-4556-ac7f-ba9755c5d766" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.totalTeachers}</p>
-              <p className="text-sm text-blue-100 mt-2" data-unique-id="f315c86a-d9ef-4502-ba93-b082dfb5a30d" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="ce78cd77-d911-48f9-86a2-a96526b876fc" data-file-name="app/dashboard/absensi-guru/page.tsx">Terdaftar di sistem</span></p>
+              <p className="text-3xl font-bold" data-unique-id="ca0600ae-dce7-4e2b-be2a-80e8234042f9" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.totalTeachers}</p>
+              <p className="text-xs text-blue-100 mt-1" data-unique-id="9869bb41-6ef7-4370-824c-8890a198c700" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="8af1cf12-84b5-4f37-8792-5da4c8314b3f" data-file-name="app/dashboard/absensi-guru/page.tsx">Terdaftar di sistem</span></p>
             </motion.div>
             
-            <motion.div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white shadow-md" initial={{
+            <motion.div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-4 text-white shadow-md" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -157,16 +157,16 @@ export default function AbsensiGuruPage() {
         }} transition={{
           duration: 0.3,
           delay: 0.1
-        }} data-unique-id="7af85f6c-34ff-4a96-bd80-8d69323c5845" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <div className="flex items-center mb-2" data-unique-id="03f316f4-3bd2-450d-b258-e76fb3c640f7" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <Zap className="h-8 w-8 text-white mr-3" />
-                <h3 className="font-semibold text-lg" data-unique-id="a84bf05b-3ce1-4dd7-9f78-b1c2b77e76a6" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="7481f032-b0a9-4c36-b062-4f677a74e088" data-file-name="app/dashboard/absensi-guru/page.tsx">Hadir</span></h3>
+        }} data-unique-id="44f9e727-f87e-469f-b30d-39819b57023d" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <div className="flex items-center mb-1" data-unique-id="cec3c1e5-d9eb-4d0f-82b9-09d72af2d7ab" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <Zap className="h-7 w-7 text-white mr-3" />
+                <h3 className="font-semibold text-base" data-unique-id="039f763b-df20-4016-8ea9-4bab80a3026b" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="6cecfba3-81dc-4146-b1f7-0ff70f199154" data-file-name="app/dashboard/absensi-guru/page.tsx">Hadir</span></h3>
               </div>
-              <p className="text-4xl font-bold" data-unique-id="f0667b08-b45d-4091-a2ac-a3f801e6a800" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.presentToday}</p>
-              <p className="text-sm text-green-100 mt-2" data-unique-id="8fb9c8ae-8210-4543-a8c7-9ee6a101878e" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="749916d7-9533-4ea2-a56a-d83ff0ca4297" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru hadir hari ini</span></p>
+              <p className="text-3xl font-bold" data-unique-id="d369fa40-5811-4c06-a356-7d73498b7ddf" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.presentToday}</p>
+              <p className="text-xs text-green-100 mt-1" data-unique-id="751087da-af55-4488-92c5-031cb923c119" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="8a7e8aa4-7d17-466d-a61d-699fec374086" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru hadir hari ini</span></p>
             </motion.div>
             
-            <motion.div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-6 text-white shadow-md" initial={{
+            <motion.div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-4 text-white shadow-md" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -175,16 +175,16 @@ export default function AbsensiGuruPage() {
         }} transition={{
           duration: 0.3,
           delay: 0.2
-        }} data-unique-id="66c7c4f3-6c86-4bc2-b0e7-53298a9b219f" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <div className="flex items-center mb-2" data-unique-id="6e8ad2c7-f06e-4a67-964a-6b30e8c522fa" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <Clock className="h-8 w-8 text-white mr-3" />
-                <h3 className="font-semibold text-lg" data-unique-id="8305e220-70e5-4739-ae71-c7a0ec00b318" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="83d9998c-c7f9-430a-a7c9-b19f04c32d33" data-file-name="app/dashboard/absensi-guru/page.tsx">Terlambat</span></h3>
+        }} data-unique-id="78924ad9-a22e-47ac-b027-d5e54495a005" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <div className="flex items-center mb-1" data-unique-id="0d50a9a1-ea35-4751-8bc3-ff8f61935696" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <Clock className="h-7 w-7 text-white mr-3" />
+                <h3 className="font-semibold text-base" data-unique-id="8a23a9b8-7a34-4a36-a894-44bd2c63df2f" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="6b8832ab-2aa8-4c91-a128-2a2b19c6e261" data-file-name="app/dashboard/absensi-guru/page.tsx">Terlambat</span></h3>
               </div>
-              <p className="text-4xl font-bold" data-unique-id="60f8fc85-c837-4dae-bbbd-9276c17188fe" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.lateToday}</p>
-              <p className="text-sm text-orange-100 mt-2" data-unique-id="4adffa96-924e-436f-bacd-8f421baf580d" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="2bbac0be-43a1-4bff-bcd5-3a8aa67c89ea" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru terlambat hari ini</span></p>
+              <p className="text-3xl font-bold" data-unique-id="ac0cf6e8-bec7-40a9-a51e-86b68e9277c2" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.lateToday}</p>
+              <p className="text-xs text-orange-100 mt-1" data-unique-id="f7225982-3a6c-4a7e-9b06-47ae1b1b1b7f" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="7f2b261f-24b3-46f5-92fd-884fe70cfeb1" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru terlambat hari ini</span></p>
             </motion.div>
             
-            <motion.div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-6 text-white shadow-md" initial={{
+            <motion.div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-4 text-white shadow-md" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -193,85 +193,85 @@ export default function AbsensiGuruPage() {
         }} transition={{
           duration: 0.3,
           delay: 0.3
-        }} data-unique-id="537f3617-d613-456d-82d7-90018f96379b" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <div className="flex items-center mb-2" data-unique-id="d28b14ee-e5ee-4ed3-bde1-fdaa5a6c7cd7" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <Calendar className="h-8 w-8 text-white mr-3" data-unique-id="9d00a8fa-89c1-491c-abda-8e0df6fddc54" data-file-name="app/dashboard/absensi-guru/page.tsx" />
-                <h3 className="font-semibold text-lg" data-unique-id="25f34d80-2af9-4b6e-a95f-4f67ae0ae543" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="eea577bc-5412-4c05-99c6-c942347ac910" data-file-name="app/dashboard/absensi-guru/page.tsx">Belum Absen</span></h3>
+        }} data-unique-id="0ea4e2b9-59f9-4db4-bbd3-ad0ee31a2598" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <div className="flex items-center mb-1" data-unique-id="3211999d-d391-4600-9ab8-cf948312c526" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <Calendar className="h-7 w-7 text-white mr-3" data-unique-id="546ba23e-74ec-4e3a-8773-e8a1d3bc52af" data-file-name="app/dashboard/absensi-guru/page.tsx" />
+                <h3 className="font-semibold text-base" data-unique-id="a6a2e5e4-4294-4699-af2a-8a6a5d499034" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="f41f4445-6188-4d7c-8480-3c100d734e0b" data-file-name="app/dashboard/absensi-guru/page.tsx">Belum Absen</span></h3>
               </div>
-              <p className="text-4xl font-bold" data-unique-id="b1a46395-2261-43ad-99bd-0d5eff5be1b7" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.absentToday}</p>
-              <p className="text-sm text-red-100 mt-2" data-unique-id="9158b3eb-0f04-4c06-a852-8e1a1a8e7ffe" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="3170389f-0926-48c1-af4c-72be4eefe9bc" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru belum absen hari ini</span></p>
+              <p className="text-3xl font-bold" data-unique-id="50fde729-4b3d-493a-887d-9a445f0de3df" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.absentToday}</p>
+              <p className="text-xs text-red-100 mt-1" data-unique-id="7a40da2f-4343-4670-b8bd-6e464a6fe41a" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="4a768b87-4b1f-46fd-9ae1-4da2cb9bcd0e" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru belum absen hari ini</span></p>
             </motion.div>
           </div>
           
           {/* Quick Access */}
-          <div className="bg-white rounded-xl shadow-sm p-6 mb-6" data-unique-id="7d941607-5649-42a1-aa1d-efd49345c465" data-file-name="app/dashboard/absensi-guru/page.tsx">
-            <h2 className="text-lg font-semibold mb-4" data-unique-id="ac77945d-a962-4265-81b8-095a9738d653" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="9a24374a-a5de-4202-939d-a8ba396c8630" data-file-name="app/dashboard/absensi-guru/page.tsx">Akses Cepat</span></h2>
+          <div className="bg-white rounded-xl shadow-sm p-6 mb-6" data-unique-id="d8ed1595-71c6-40b8-9c73-d97e954ec38e" data-file-name="app/dashboard/absensi-guru/page.tsx">
+            <h2 className="text-lg font-semibold mb-4" data-unique-id="c9168274-eae5-4078-9121-bb7c2d47749a" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="30cfbc72-86e7-4599-ba40-09c1f771ac96" data-file-name="app/dashboard/absensi-guru/page.tsx">Akses Cepat</span></h2>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-unique-id="5703856a-c9f1-4a0b-b58a-eed544890507" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <Link href="/dashboard/absensi-guru/scan" className="flex flex-col items-center p-4 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors" data-unique-id="275a38c5-5c35-4085-8c26-8327715092d3" data-file-name="app/dashboard/absensi-guru/page.tsx">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-unique-id="8e064cf0-b7f4-400c-8610-cc86edbbf46e" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <Link href="/dashboard/absensi-guru/scan" className="flex flex-col items-center p-4 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors" data-unique-id="77289fd9-ef3e-4a32-a7a9-2969f6bd163e" data-file-name="app/dashboard/absensi-guru/page.tsx">
                 <Camera className="h-10 w-10 text-blue-600 mb-2" />
-                <span className="font-medium text-blue-800" data-unique-id="2641bcd7-fe22-4ff1-8bd1-38a9559f5a8f" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="42e5aea2-117a-4d5f-8f7a-4fe4fc53bd27" data-file-name="app/dashboard/absensi-guru/page.tsx">Scan Absensi</span></span>
+                <span className="font-medium text-blue-800" data-unique-id="92042028-da93-4aa8-ba4b-53dc2a5756e7" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="30ff822d-68dc-4830-a66d-61ea25fb2d27" data-file-name="app/dashboard/absensi-guru/page.tsx">Scan Absensi</span></span>
               </Link>
               
-              <Link href="/dashboard/absensi-guru/data" className="flex flex-col items-center p-4 bg-green-50 rounded-xl border border-green-100 hover:bg-green-100 transition-colors" data-unique-id="b324f29e-1212-40d8-981e-afbdf86b3e02" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <Link href="/dashboard/absensi-guru/data" className="flex flex-col items-center p-4 bg-green-50 rounded-xl border border-green-100 hover:bg-green-100 transition-colors" data-unique-id="e23b5e6b-488c-40c0-951b-18155594ce09" data-file-name="app/dashboard/absensi-guru/page.tsx">
                 <Users className="h-10 w-10 text-green-600 mb-2" />
-                <span className="font-medium text-green-800" data-unique-id="519d6c19-419f-4342-b9eb-cd077e68ef84" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="37ae5bf4-abc1-48a4-a8ae-548643b3df00" data-file-name="app/dashboard/absensi-guru/page.tsx">Data Guru</span></span>
+                <span className="font-medium text-green-800" data-unique-id="524f1a05-df67-412f-adca-0f688c16d734" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="bfdf6807-7522-4f7f-ae2f-eea062a77231" data-file-name="app/dashboard/absensi-guru/page.tsx">Data Guru</span></span>
               </Link>
               
-              <Link href="/dashboard/absensi-guru/reports" className="flex flex-col items-center p-4 bg-purple-50 rounded-xl border border-purple-100 hover:bg-purple-100 transition-colors" data-unique-id="8fc46adf-15e8-47bb-b42e-b389efab7aaa" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <Link href="/dashboard/absensi-guru/reports" className="flex flex-col items-center p-4 bg-purple-50 rounded-xl border border-purple-100 hover:bg-purple-100 transition-colors" data-unique-id="4ad2dce4-87ad-46f2-8d87-a9a759311c8f" data-file-name="app/dashboard/absensi-guru/page.tsx">
                 <FileText className="h-10 w-10 text-purple-600 mb-2" />
-                <span className="font-medium text-purple-800" data-unique-id="de0b232a-4464-4bfd-87cb-a5e18a4a49cb" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="1ff52f14-55c7-4365-abaa-5af37240a8e1" data-file-name="app/dashboard/absensi-guru/page.tsx">Laporan</span></span>
+                <span className="font-medium text-purple-800" data-unique-id="56b4e3d0-3879-489d-affe-f4ca34e137b2" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="52d1a1d7-68d6-4697-a831-0a33b658297f" data-file-name="app/dashboard/absensi-guru/page.tsx">Laporan</span></span>
               </Link>
               
-              <Link href="/dashboard/absensi-guru/settings" className="flex flex-col items-center p-4 bg-amber-50 rounded-xl border border-amber-100 hover:bg-amber-100 transition-colors" data-unique-id="1bc63621-59f0-4b93-86fe-6da4850cae00" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <Link href="/dashboard/absensi-guru/settings" className="flex flex-col items-center p-4 bg-amber-50 rounded-xl border border-amber-100 hover:bg-amber-100 transition-colors" data-unique-id="620397a9-59d4-4945-8358-fa56397f5c62" data-file-name="app/dashboard/absensi-guru/page.tsx">
                 <Settings className="h-10 w-10 text-amber-600 mb-2" />
-                <span className="font-medium text-amber-800" data-unique-id="19652465-68f8-4b65-aa4f-d07bcf403eb0" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="41f75803-aa22-4bd1-9ef2-d47b9a1b0dfd" data-file-name="app/dashboard/absensi-guru/page.tsx">Pengaturan</span></span>
+                <span className="font-medium text-amber-800" data-unique-id="4fecc510-b58a-4f63-8d42-b74a1dd16746" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="fcbcc88d-0838-4523-97cd-ad1c16d2d004" data-file-name="app/dashboard/absensi-guru/page.tsx">Pengaturan</span></span>
               </Link>
             </div>
           </div>
           
           {/* Recent Attendance */}
-          <div className="bg-white rounded-xl shadow-sm overflow-hidden" data-unique-id="63438b40-0b47-402b-98b1-8db00c50add8" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
-            <div className="p-6 border-b border-gray-100" data-unique-id="36dd791f-a3e0-4abd-83dd-63ededf3dbff" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <h2 className="text-lg font-semibold" data-unique-id="dd1a96aa-25de-4e71-bb8f-a0a28de3858c" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="74de4f89-323f-4116-b538-2f380b6bce29" data-file-name="app/dashboard/absensi-guru/page.tsx">Riwayat Absensi Terbaru</span></h2>
+          <div className="bg-white rounded-xl shadow-sm overflow-hidden" data-unique-id="235fbb04-6698-46e8-bc05-3ba2bc521d24" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
+            <div className="p-6 border-b border-gray-100" data-unique-id="76e5c98a-93f9-4f65-97fa-67c45a23e9e9" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <h2 className="text-lg font-semibold" data-unique-id="f3941cd3-0a89-45c1-b6dc-a63dd3f41778" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="6b19a077-9ce8-4ce7-8003-22315c6e521b" data-file-name="app/dashboard/absensi-guru/page.tsx">Riwayat Absensi Terbaru</span></h2>
             </div>
             
-            {recentAttendance.length > 0 ? <div className="overflow-x-auto" data-unique-id="bb4d9172-86f6-420c-993f-690c474f2fb6" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <table className="w-full" data-unique-id="38bbbfef-ace9-455a-ae98-e18e84f77401" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                  <thead data-unique-id="14ab61a2-26bf-4041-a4ec-cb6c523b50d8" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                    <tr className="bg-gray-50 text-left" data-unique-id="a54929ee-c05c-4ed0-8bd8-b53d155ec0df" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="38c165c4-9d03-4006-880c-b001a2798571" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="b9f3bb4d-c2f2-40a8-b316-5cd3f5b27ac8" data-file-name="app/dashboard/absensi-guru/page.tsx">Nama</span></th>
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="399b506f-bc8a-4424-858a-7fdaec8727e6" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="585e4f29-9a0f-4100-9494-c07a118b63e3" data-file-name="app/dashboard/absensi-guru/page.tsx">Tanggal</span></th>
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="394aa4e3-47ab-4d9e-bdd3-0e2e037dedc6" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="57a8df74-7bd6-4c61-94af-ce0c0372fc54" data-file-name="app/dashboard/absensi-guru/page.tsx">Waktu</span></th>
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="92c3973f-55d7-4081-9520-d9716307b372" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="a8bb14b5-08bc-4a86-8f10-bdad809e1564" data-file-name="app/dashboard/absensi-guru/page.tsx">Status</span></th>
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="9c902ddf-6c32-4c5e-970b-bd083b5c4f5d" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="f7a97be0-3445-4683-a305-e6952ea83591" data-file-name="app/dashboard/absensi-guru/page.tsx">Jenis</span></th>
+            {recentAttendance.length > 0 ? <div className="overflow-x-auto" data-unique-id="dbc6683b-e5c8-434b-9e06-d7d9cc2f2be7" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <table className="w-full" data-unique-id="d2f8bf77-13b6-4f2d-afbd-1a6854b1ec4e" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                  <thead data-unique-id="720b04ea-dc82-4f65-a237-dc80d703fb04" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                    <tr className="bg-gray-50 text-left" data-unique-id="b75cc620-dc0f-452a-b081-2248b0112f41" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="37609f2e-034d-482d-b5f2-9a91e4b3d123" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="42f4e90d-f96e-416e-85c9-3ea68b445681" data-file-name="app/dashboard/absensi-guru/page.tsx">Nama</span></th>
+                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="ffc8df6d-e255-4f3e-b199-8b2d0b2b1c40" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="99a1ad19-56c0-44bf-bec9-93bdf5d2627a" data-file-name="app/dashboard/absensi-guru/page.tsx">Tanggal</span></th>
+                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="98a95e16-52e8-4b63-b888-8475f5610be3" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="e4ebdd67-559e-4d81-ab2d-3ad84f852c7a" data-file-name="app/dashboard/absensi-guru/page.tsx">Waktu</span></th>
+                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="26703985-c48d-4d4a-b6ac-13803f79deff" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="7b997630-0290-4a65-97c4-944b0a15a452" data-file-name="app/dashboard/absensi-guru/page.tsx">Status</span></th>
+                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="b2c64a0b-d67b-4bb9-84d3-3237abc744ba" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="80538d99-41b6-4bc4-b21f-2913b4419704" data-file-name="app/dashboard/absensi-guru/page.tsx">Jenis</span></th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200" data-unique-id="a606ee79-f5b3-4821-89ad-f03ec1c57016" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
-                    {recentAttendance.map(entry => <tr key={entry.id} className="hover:bg-gray-50" data-unique-id="5988314b-a623-4856-9a6d-e1011433fc60" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" data-unique-id="55599bd7-2b20-4c9c-a2bc-b9b0f224e6c7" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{entry.teacherName}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-unique-id="c9f1077d-5d3e-4762-92c5-f7d3eee38308" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{formatDate(entry.date)}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-unique-id="9c9769fc-6f09-464d-8e21-0d2918de422a" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{entry.time}</td>
-                        <td className="px-6 py-4 whitespace-nowrap" data-unique-id="ef3db7b9-4654-48f1-80a1-fd78fe6931ac" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                  <tbody className="divide-y divide-gray-200" data-unique-id="204ebd30-ada7-4055-b40a-e92ab5d7276a" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
+                    {recentAttendance.map(entry => <tr key={entry.id} className="hover:bg-gray-50" data-is-mapped="true" data-unique-id="3465a31b-9525-4056-923c-2308e9ca6c24" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" data-is-mapped="true" data-unique-id="6fb7f69b-a089-47af-b47e-2a8cf9b9d87d" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{entry.teacherName}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-is-mapped="true" data-unique-id="e7d09233-baa7-4e0d-96d6-362f611cbeaa" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{formatDate(entry.date)}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-is-mapped="true" data-unique-id="672a7803-b7d2-46fe-ada6-cd8a43c3a57b" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{entry.time}</td>
+                        <td className="px-6 py-4 whitespace-nowrap" data-is-mapped="true" data-unique-id="55084422-2346-43c8-8adb-42d4a0cb36d6" data-file-name="app/dashboard/absensi-guru/page.tsx">
                           <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
-                            ${entry.status === "present" ? "bg-green-100 text-green-800" : entry.status === "late" ? "bg-orange-100 text-orange-800" : "bg-red-100 text-red-800"}`} data-unique-id="c89fc93f-98ab-4722-b38b-a375043a3be8" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
+                            ${entry.status === "present" ? "bg-green-100 text-green-800" : entry.status === "late" ? "bg-orange-100 text-orange-800" : "bg-red-100 text-red-800"}`} data-is-mapped="true" data-unique-id="4d7fe745-a6a7-4fc4-bfb5-e1b563093d5f" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
                             {entry.status === "present" ? "Hadir" : entry.status === "late" ? "Terlambat" : "Tidak Hadir"}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-unique-id="eb1dc225-0464-47be-8ac2-6e11bf76fd88" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-is-mapped="true" data-unique-id="cecdfe15-6a02-47b1-a107-0026fa2c5bb6" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
                           {entry.type === "in" ? "Masuk" : "Pulang"}
                         </td>
                       </tr>)}
                   </tbody>
                 </table>
-              </div> : <div className="text-center py-12 text-gray-500" data-unique-id="82348f90-99ac-4cfc-b900-226cf3127442" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="55c66f98-9b0e-488e-8ed8-93b28347548d" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              </div> : <div className="text-center py-12 text-gray-500" data-unique-id="6a9f7a49-a01f-4c77-8edc-9f70f6035474" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="79c0df1f-93be-4608-9fa5-e7ab8bde6a74" data-file-name="app/dashboard/absensi-guru/page.tsx">
                 Belum ada data absensi guru
               </span></div>}
             
-            <div className="p-4 border-t border-gray-100 flex justify-end" data-unique-id="31445701-b9e6-4ac5-a734-1b159f5c6bfe" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <Link href="/dashboard/absensi-guru/reports" className="text-primary font-medium hover:underline text-sm flex items-center" data-unique-id="8358a818-8898-4a99-bc37-0d765fe2f5d2" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="7cb14006-73e7-440c-8c17-63f7b05596f5" data-file-name="app/dashboard/absensi-guru/page.tsx">
+            <div className="p-4 border-t border-gray-100 flex justify-end" data-unique-id="6011ce01-220e-4ed2-957b-a036cf19a4db" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <Link href="/dashboard/absensi-guru/reports" className="text-primary font-medium hover:underline text-sm flex items-center" data-unique-id="c21f07cb-38f9-4067-bc07-854c53d58a8d" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="7f974ce4-a3f7-453e-9883-f1395e5d2aa7" data-file-name="app/dashboard/absensi-guru/page.tsx">
                 Lihat semua riwayat
-                </span><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor" data-unique-id="33e56c6a-4ca4-412e-a0bb-9e6abf50e586" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                </span><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor" data-unique-id="40227377-fd7c-43b0-82ba-db1ffde1d533" data-file-name="app/dashboard/absensi-guru/page.tsx">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
               </Link>
