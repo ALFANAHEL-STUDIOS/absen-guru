@@ -4,38 +4,10 @@ import React, { useState, useEffect } from "react";
 import { collection, query, orderBy, limit, getDocs, where } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useAuth } from "@/context/AuthContext";
-import { 
-  Users, 
-  BookOpen, 
-  FileText, 
-  Scan,
-  QrCode,
-  Calendar,
-  Clock,
-  CheckCircle,
-  XCircle,
-  BarChart2,
-  PieChart,
-  AlertCircle,
-  Settings,
-  Loader2,
-  School
-} from "lucide-react";
+import { Users, BookOpen, FileText, Scan, QrCode, Calendar, Clock, CheckCircle, XCircle, BarChart2, PieChart, AlertCircle, Settings, Loader2, School, UserCheck } from "lucide-react";
 import DynamicDashboard from "@/components/DynamicDashboard";
 import Link from "next/link";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  LineChart,
-  Line
-} from "recharts";
-
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from "recharts";
 interface TeacherDashboardProps {
   schoolName: string;
   userName: string;
@@ -48,15 +20,17 @@ interface TeacherDashboardProps {
   recentAttendance: any[];
   loading: boolean;
 }
-
-export default function TeacherDashboard({ 
-  schoolName, 
+export default function TeacherDashboard({
+  schoolName,
   userName,
   stats,
   recentAttendance,
   loading
 }: TeacherDashboardProps) {
-  const { schoolId, userRole } = useAuth();
+  const {
+    schoolId,
+    userRole
+  } = useAuth();
   const [attendanceStats, setAttendanceStats] = useState({
     present: 0,
     sick: 0,
@@ -64,27 +38,26 @@ export default function TeacherDashboard({
     absent: 0,
     total: 0
   });
-  
+
   // Static dashboard only
   const showDynamicDashboard = false;
-  
+
   // Get current date and time
   const currentDate = new Date();
-  const formattedDate = new Intl.DateTimeFormat('id-ID', { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  const formattedDate = new Intl.DateTimeFormat('id-ID', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   }).format(currentDate);
-  
+
   // Calculate attendance statistics from recent attendance data
   useEffect(() => {
     if (recentAttendance && recentAttendance.length > 0) {
       const today = new Date().toISOString().split('T')[0];
-      
+
       // Filter today's attendance
       const todayAttendance = recentAttendance.filter(record => record.date === today);
-      
       const stats = {
         present: 0,
         sick: 0,
@@ -92,7 +65,6 @@ export default function TeacherDashboard({
         absent: 0,
         total: todayAttendance.length
       };
-      
       todayAttendance.forEach(record => {
         if (record.status === "present" || record.status === "hadir") {
           stats.present++;
@@ -104,223 +76,99 @@ export default function TeacherDashboard({
           stats.absent++;
         }
       });
-      
       setAttendanceStats(stats);
     }
   }, [recentAttendance]);
-  
-  return (
-    <div>
+  return <div data-unique-id="ba335e44-5c21-4bef-b879-7f4a83713523" data-file-name="app/dashboard/components/TeacherDashboard.tsx" data-dynamic-text="true">
       {/* Dashboard content */}
 
-      {showDynamicDashboard ? (
-        // Dynamic Dashboard
-        <div className="mb-6">
+      {showDynamicDashboard ?
+    // Dynamic Dashboard
+    <div className="mb-6" data-unique-id="a67c82d7-594d-4ead-a5b9-6f20e744df9d" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
           <DynamicDashboard userRole={userRole} schoolId={schoolId} />
-        </div>
-      ) : (
-        <>
+        </div> : <>
           {/* School Information */}
-          <div className="bg-blue-600 text-white p-5 mb-6 rounded-xl">
-            <div className="flex items-center mb-1">
+          <div className="bg-blue-600 text-white p-5 mb-6 rounded-xl" data-unique-id="d0b87a04-d58e-482c-b4aa-a46b9f73fe2d" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+            <div className="flex items-center mb-1" data-unique-id="81cc1aff-9113-40dc-a1bc-bfc5483d1979" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
               <School className="h-4 w-4 text-white mr-1.5" />
-              <h3 className="text-sm font-medium text-white">DATA INSTANSI</h3>
+              <h3 className="text-sm font-medium text-white" data-unique-id="eec848b7-1c81-4f5e-b48c-4bf1be6ac50b" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="3dc7fc11-6a2d-4766-b159-485a24ccf23b" data-file-name="app/dashboard/components/TeacherDashboard.tsx">DATA SEKOLAH</span></h3>
             </div>
-            <p className="text-lg font-bold text-white">{schoolName}</p>
-            <div className="flex items-center mt-2 text-xs text-white">
-              <span>Tahun Anggaran 2025</span>
-              <span className="mx-2">•</span>
-              <span className="flex items-center">
-                <span className="mr-1 h-2 w-2 bg-green-300 rounded-full inline-block animate-pulse"></span>
+            <p className="text-lg font-bold text-white" data-unique-id="a3626e8f-a13c-46e1-a450-1d1bc6a2e90f" data-file-name="app/dashboard/components/TeacherDashboard.tsx" data-dynamic-text="true">{schoolName}</p>
+            <div className="flex items-center mt-2 text-xs text-white" data-unique-id="fe0c0fbe-a92f-4d13-bc62-c2e2d217aac2" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+              <span data-unique-id="32176c72-0751-423e-9a88-2deeed473c33" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="7bf988e0-08da-4b4a-b0aa-28461b83095e" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Tahun Pelajaran 2024/2025</span></span>
+              <span className="mx-2" data-unique-id="08ec77f9-6af5-4e6d-b924-1c86cfd37a60" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="3c050f28-39e4-49e4-9fcb-7bc0f919e425" data-file-name="app/dashboard/components/TeacherDashboard.tsx">•</span></span>
+              <span className="flex items-center" data-unique-id="79e4df3f-fb50-4f2c-8e13-1f62e4e6113e" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                <span className="mr-1 h-2 w-2 bg-green-300 rounded-full inline-block animate-pulse" data-unique-id="00f8235a-2f7a-4e34-ab0c-d94b6b0300b6" data-file-name="app/dashboard/components/TeacherDashboard.tsx"></span><span className="editable-text" data-unique-id="939a3632-c1dd-4881-878e-1f92a2549d78" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
                 Aktif
-              </span>
+              </span></span>
             </div>
-          </div>
-
-          {/* Admin-specific stats overview */}
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3 mb-3 sm:mb-5">
-            <div className="bg-green-100 rounded-xl shadow-sm p-3 sm:p-4 border-l-4 border-green-500">
-              <div className="flex flex-wrap items-center mb-1">
-                <CheckCircle size={16} className="text-green-600 mr-1 sm:mr-2" />
-                <h3 className="text-xs sm:text-sm font-medium text-gray-700">Kehadiran Hari Ini</h3>
-              </div>
-              <p className="text-lg font-bold text-gray-800">{attendanceStats.present}/{attendanceStats.total}</p>
-              <div className="flex items-center mt-1 text-xs text-green-600">
-                <CheckCircle size={12} className="mr-1" />
-                <span>{attendanceStats.total > 0 ? Math.round((attendanceStats.present / attendanceStats.total) * 100) : 0}% hadir</span>
-              </div>
-            </div>
-            
-            <div className="bg-amber-100 rounded-xl shadow-sm p-3 sm:p-4 border-l-4 border-amber-500">
-              <div className="flex flex-wrap items-center mb-1">
-                <Calendar size={16} className="text-amber-600 mr-1 sm:mr-2" />
-                <h3 className="text-xs sm:text-sm font-medium text-gray-700">Izin</h3>
-              </div>
-              <p className="text-lg font-bold text-gray-800">{attendanceStats.permitted}</p>
-              <div className="flex items-center mt-1 text-xs text-amber-600">
-                <Clock size={12} className="mr-1" />
-                <span>{attendanceStats.total > 0 ? Math.round((attendanceStats.permitted / attendanceStats.total) * 100) : 0}% izin</span>
-              </div>
-            </div>
-            
-            <div className="bg-blue-100 rounded-xl shadow-sm p-3 sm:p-4 border-l-4 border-blue-500">
-              <div className="flex flex-wrap items-center mb-1">
-                <AlertCircle size={16} className="text-blue-600 mr-1 sm:mr-2" />
-                <h3 className="text-xs sm:text-sm font-medium text-gray-700">Sakit</h3>
-              </div>
-              <p className="text-lg font-bold text-gray-800">{attendanceStats.sick}</p>
-              <div className="flex items-center mt-1 text-xs text-blue-600">
-                <Clock size={12} className="mr-1" />
-                <span>{attendanceStats.total > 0 ? Math.round((attendanceStats.sick / attendanceStats.total) * 100) : 0}% sakit</span>
-              </div>
-            </div>
-            
-            <div className="bg-red-100 rounded-xl shadow-sm p-3 sm:p-4 border-l-4 border-red-500">
-              <div className="flex flex-wrap items-center mb-1">
-                <XCircle size={16} className="text-red-600 mr-1 sm:mr-2" />
-                <h3 className="text-xs sm:text-sm font-medium text-gray-700">Alpha</h3>
-              </div>
-              <p className="text-lg font-bold text-gray-800">{attendanceStats.absent}</p>
-              <div className="flex items-center mt-1 text-xs text-green-600">
-                <CheckCircle size={12} className="mr-1" />
-                <span>{attendanceStats.total > 0 ? Math.round((attendanceStats.absent / attendanceStats.total) * 100) : 0}% alpha</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Recent attendance records */}
-          <div className="bg-yellow-100 rounded-xl shadow-sm p-4 sm:p-6 mb-6">
-            <div className="flex items-center mb-4">
-              <div className="bg-green-100 p-2 rounded-lg mr-3">
-                <Users className="h-6 w-6 text-green-600" />
-              </div>
-              <h2 className="text-lg font-semibold">Riwayat Kehadiran</h2>
-            </div>
-            
-            {loading ? (
-              <div className="flex justify-center items-center py-10">
-                <Loader2 className="h-8 w-8 text-primary animate-spin" />
-              </div>
-            ) : (
-              <div className="overflow-x-auto -mx-4 sm:mx-0">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Nama Pegawai
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Jabatan
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Status
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Tanggal
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Waktu
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Catatan
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {recentAttendance.length > 0 ? (
-                      recentAttendance.map((record) => (
-                        <tr key={record.id}>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="font-medium text-gray-900">{record.studentName}</div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-gray-500">{record.class}</div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
-                              ${record.status === 'hadir' || record.status === 'present' ? 'bg-green-100 text-green-800' : ''}
-                              ${record.status === 'sakit' || record.status === 'sick' ? 'bg-orange-100 text-orange-800' : ''}
-                              ${record.status === 'izin' || record.status === 'permitted' ? 'bg-blue-100 text-blue-800' : ''}
-                              ${record.status === 'alpha' || record.status === 'absent' ? 'bg-red-100 text-red-800' : ''}
-                            `}>
-                              {record.status === 'hadir' || record.status === 'present' ? 'Hadir' : 
-                               record.status === 'sakit' || record.status === 'sick' ? 'Sakit' : 
-                               record.status === 'izin' || record.status === 'permitted' ? 'Izin' : 'Alpha'}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-gray-500">
-                            {record.date}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-gray-500">
-                            {record.time}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-gray-500">
-                            {record.notes || record.note || record.catatan || '-'}
-                          </td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
-                          Belum ada data kehadiran
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            )}
           </div>
 
           {/* Teacher Quick Access */}
-          <div className="mb-6">
-            <div className="flex items-center mb-4">
-              <div className="bg-blue-100 p-2 rounded-lg mr-3">
+          <div className="mb-6" data-unique-id="58212414-57a7-4cde-8179-9d99948af69e" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+            <div className="flex items-center mb-4" data-unique-id="2f59aec0-fc9b-4d5c-afd4-62b6bf0b9d9e" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+              <div className="bg-blue-100 p-2 rounded-lg mr-3" data-unique-id="1bc694b7-65d2-4463-afd9-5c794d1eafc5" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
                 <Settings className="h-5 w-5 text-blue-600" />
               </div>
-              <h2 className="text-lg font-semibold text-gray-800">Akses Cepat Operator</h2>
+              <h2 className="text-lg font-semibold text-gray-800" data-unique-id="68f0eaeb-16bd-4360-8884-99f40d5af566" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="7ae60194-8425-4d35-91cf-931698086f55" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Akses Cepat Guru</span></h2>
             </div>
             
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
-              <Link href="/dashboard/scan" className="bg-blue-100 rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all border-t-4 border-blue-500">
-                <div className="flex flex-col items-center justify-center">
-                  <div className="bg-blue-100 p-2 sm:p-3 rounded-full mb-2 sm:mb-3">
-                    <QrCode className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 md:gap-4" data-unique-id="17450c2f-56a9-454f-a58f-9eecda050cb5" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+              <Link href="/dashboard/scan" className="bg-[#4361EE] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="e41a49c7-6a89-42bb-acbf-0cdb00ee9716" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                <div className="flex flex-col items-center justify-center" data-unique-id="19d33a33-a166-4961-b422-a0ca932ce176" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                  <div className="bg-[#4361EE] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="0be5bf8e-0a1d-44fd-8e98-62bd60495927" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                    <QrCode className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
-                  <h3 className="font-medium text-gray-800 text-center text-xs sm:text-sm">Scan QR Code</h3>
+                  <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="83811814-f37e-427e-9edd-abb8ed47ac59" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="7b4d3f8b-8556-4bd1-a465-0b4f247bcfb1" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Scan QR Code</span></h3>
                 </div>
               </Link>
               
-              <Link href="/dashboard/students/qr" className="bg-amber-100 rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all border-t-4 border-amber-500">
-                <div className="flex flex-col items-center justify-center">
-                  <div className="bg-amber-100 p-2 sm:p-3 rounded-full mb-2 sm:mb-3">
-                    <QrCode className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
+              <Link href="/dashboard/students/qr" className="bg-[#F72585] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="6a56326d-327c-4b98-9fd8-eba3af7cee78" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                <div className="flex flex-col items-center justify-center" data-unique-id="ca6f4372-6f2a-4332-8a55-864d6cd4f07f" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                  <div className="bg-[#F72585] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="8c868783-8ba5-459f-af58-f4fec0b872dc" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                    <QrCode className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
-                  <h3 className="font-medium text-gray-800 text-center text-xs sm:text-sm">QR Code Pegawai</h3>
+                  <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="c9480d4b-4e7f-40ef-9d8e-02e11a4128ac" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="5b8cbd59-3917-47de-b6f2-1583044272d9" data-file-name="app/dashboard/components/TeacherDashboard.tsx">QR Code Siswa</span></h3>
                 </div>
               </Link>
               
-              <Link href="/dashboard/reports" className="bg-green-100 rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all border-t-4 border-green-500">
-                <div className="flex flex-col items-center justify-center">
-                  <div className="bg-green-100 p-2 sm:p-3 rounded-full mb-2 sm:mb-3">
-                    <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />
+              <Link href="/dashboard/reports" className="bg-[#21A366] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="1c1f61fe-c2df-4c6f-8fd8-ba31998edcf7" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                <div className="flex flex-col items-center justify-center" data-unique-id="1dedc1df-b04c-4135-aff7-4c563859b009" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                  <div className="bg-[#21A366] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="1d15c399-56d0-4d6c-a8b6-ed6e01cb5716" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                    <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
-                  <h3 className="font-medium text-gray-800 text-center text-xs sm:text-sm">Laporan Absensi</h3>
+                  <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="ad5a99e8-eedd-4271-87de-ea98a2fbf0ad" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="3b63597c-9f7b-48fb-a903-e1ffe2a5b161" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Laporan</span></h3>
                 </div>
               </Link>
               
-              <Link href="/dashboard/students" className="bg-purple-100 rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all border-t-4 border-purple-500">
-                <div className="flex flex-col items-center justify-center">
-                  <div className="bg-purple-100 p-2 sm:p-3 rounded-full mb-2 sm:mb-3">
-                    <Users className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
+              <Link href="/dashboard/students" className="bg-[#F77F00] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="fc2ef463-2f28-4a3a-a191-0f16c7f899d3" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                <div className="flex flex-col items-center justify-center" data-unique-id="70ac6c60-11cf-4574-8f92-80f249655687" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                  <div className="bg-[#F77F00] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="6121add3-f5a6-40ad-8490-70c4b0d8966b" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                    <Users className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
-                  <h3 className="font-medium text-gray-800 text-center text-xs sm:text-sm">Daftar Pegawai</h3>
+                  <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="894a506b-70dd-4f67-9bc4-f84829b96311" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="9e57acb2-de9d-4d61-aaf3-bb711badcff8" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Daftar Siswa</span></h3>
+                </div>
+              </Link>
+
+              <Link href="/dashboard/absensi-guru/scan" className="bg-[#7B2CBF] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="dfccf1a7-01a5-45ad-a537-fab66c24a794" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                <div className="flex flex-col items-center justify-center" data-unique-id="e8ebba56-3ef0-401d-bd31-293c8da80855" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                  <div className="bg-[#7B2CBF] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="ec186dd1-4d43-46f4-b71c-552d14aad252" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                    <QrCode className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  </div>
+                  <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="e36245d5-5c12-4735-b3e6-1f6b46eba5c5" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="a534fb32-54ff-4738-929e-ecb7afc55cb5" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Scan Absensi Guru</span></h3>
+                </div>
+              </Link>
+              
+              <Link href="/dashboard/absensi-guru/reports" className="bg-[#4361EE] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="9d56790f-5ed5-419b-8809-f415e7fb832f" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                <div className="flex flex-col items-center justify-center" data-unique-id="d67e1a99-fb89-4289-b835-96eebddd4a47" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                  <div className="bg-[#4361EE] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="5359fecb-882f-44c5-8873-a5452e2dcf29" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
+                    <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  </div>
+                  <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="16805e52-91c4-4a67-b018-3b1961e0b23c" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="44a1374d-6b4d-4b27-babc-0a54ecde4535" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Laporan Absensi Guru</span></h3>
                 </div>
               </Link>
             </div>
           </div>
-        </>
-      )}
-    </div>
-  );
+        </>}
+    </div>;
 }
