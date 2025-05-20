@@ -131,7 +131,7 @@ export default function AbsensiGuruPage() {
         </div> : <>
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" data-unique-id="b6b88fa7-337e-4f78-800b-643f2235ddbb" data-file-name="app/dashboard/absensi-guru/page.tsx">
-            <motion.div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-4 text-white shadow-md" initial={{
+            <motion.div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-4 text-white shadow-md" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -145,7 +145,7 @@ export default function AbsensiGuruPage() {
                 <h3 className="font-semibold text-base" data-unique-id="93b364dc-3f23-4f03-b511-602c1d86363f" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="450072da-01ca-4352-81db-43f9a961159e" data-file-name="app/dashboard/absensi-guru/page.tsx">Jumlah Guru</span></h3>
               </div>
               <p className="text-2xl font-bold" data-unique-id="2dcf4d3d-10f4-4a99-b1ca-829914626d61" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.totalTeachers}</p>
-              <p className="text-xs text-purple-100 mt-1" data-unique-id="98142754-0911-4986-90dc-0aad07d95e29" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="1bcaddd2-de77-4143-875b-44f51911947f" data-file-name="app/dashboard/absensi-guru/page.tsx">Terdaftar di sistem</span></p>
+              <p className="text-xs text-blue-100 mt-1" data-unique-id="98142754-0911-4986-90dc-0aad07d95e29" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="1bcaddd2-de77-4143-875b-44f51911947f" data-file-name="app/dashboard/absensi-guru/page.tsx">Terdaftar di sistem</span></p>
             </motion.div>
             
             <motion.div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-4 text-white shadow-md" initial={{
