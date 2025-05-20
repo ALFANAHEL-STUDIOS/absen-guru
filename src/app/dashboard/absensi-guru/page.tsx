@@ -166,7 +166,7 @@ export default function AbsensiGuruPage() {
               <p className="text-xs text-green-100 mt-1" data-unique-id="b831ba99-1ad1-4c1a-89d4-b73a1e03502d" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="c8497a56-9db0-4871-90c9-0ea075f79a58" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru hadir hari ini</span></p>
             </motion.div>
             
-            <motion.div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-4 text-white shadow-md" initial={{
+            <motion.div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-4 text-white shadow-md" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -181,7 +181,7 @@ export default function AbsensiGuruPage() {
                 <h3 className="font-semibold text-base" data-unique-id="41337cfd-dfc5-4603-a4c6-80c9bb0aa7b1" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="838cdc1e-51c7-4834-9876-1acedb90fa77" data-file-name="app/dashboard/absensi-guru/page.tsx">Terlambat</span></h3>
               </div>
               <p className="text-2xl font-bold" data-unique-id="9d718184-3e2f-4a48-98a1-12bac901babf" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.lateToday}</p>
-              <p className="text-xs text-orange-100 mt-1" data-unique-id="0ab214f3-66a5-4cce-a6ef-33cd3424e019" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="95601146-e7e0-4859-8874-b2aa31e1e53f" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru terlambat hari ini</span></p>
+              <p className="text-xs text-purple-100 mt-1" data-unique-id="0ab214f3-66a5-4cce-a6ef-33cd3424e019" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="95601146-e7e0-4859-8874-b2aa31e1e53f" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru terlambat hari ini</span></p>
             </motion.div>
             
             <motion.div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-4 text-white shadow-md" initial={{
@@ -248,7 +248,7 @@ export default function AbsensiGuruPage() {
             
             <div className="p-4 border-t border-gray-100 flex justify-end" data-unique-id="9eda83bd-154a-4d76-8aec-523138e8d5e5" data-file-name="app/dashboard/absensi-guru/page.tsx">
               <Link href="/dashboard/absensi-guru/reports" className="text-primary font-medium hover:underline text-sm flex items-center" data-unique-id="e760e95f-cd0d-4099-a79f-d81e26f9fde9" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="08f727a2-c415-411d-8362-16d138315e9f" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                Lihat Semua...
+                Lihat semua riwayat
                 </span><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor" data-unique-id="3ab99b06-96c4-4826-8113-2ee630996cd0" data-file-name="app/dashboard/absensi-guru/page.tsx">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
