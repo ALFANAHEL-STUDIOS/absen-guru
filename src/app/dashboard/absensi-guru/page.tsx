@@ -259,8 +259,8 @@ export default function AbsensiGuruPage() {
 {/* Quick Access */}
           <div className="bg-white rounded-xl shadow-sm p-6 mb-6" data-unique-id="6d68b07e-ed09-4f31-8cb7-b7c50c4c011f" data-file-name="app/dashboard/absensi-guru/page.tsx">
             <h2 className="text-lg font-semibold mb-4 flex items-center" data-unique-id="14582cc2-b3c2-4d80-9a58-40babe5d4efc" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <Zap className="h-5 w-5 text-primary mr-2" />
-              <span className="editable-text" data-unique-id="93574865-2592-4298-89d4-93290fdf2f52" data-file-name="app/dashboard/absensi-guru/page.tsx">Akses Cepat</span>
+              <Setting className="h-5 w-5 text-primary mr-2" />
+              <span className="editable-text" data-unique-id="93574865-2592-4298-89d4-93290fdf2f52" data-file-name="app/dashboard/absensi-guru/page.tsx">Akses Cepat Admin</span>
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-unique-id="d355c194-eea1-48bd-8463-81380bd477ef" data-file-name="app/dashboard/absensi-guru/page.tsx">
