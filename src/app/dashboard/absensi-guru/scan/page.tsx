@@ -98,56 +98,60 @@ export default function TeacherAttendanceScan() {
    };
  }, [router, schoolId, userRole, user]);
  // Start camera for scanning
- const startCamera = async () => {
-   try {
-     setScanning(true);
-     // Request camera access
-     const stream = await navigator.mediaDevices.getUserMedia({
-       video: {
-         width: 640,
-         height: 480,
-         facingMode: "user"
-       }
-     });
-     // Store stream in ref for later cleanup
-     streamRef.current = stream;
-     // Connect stream to video element
-     if (videoRef.current) {
-       videoRef.current.srcObject = stream;
-     }
-     // Get location
-     navigator.geolocation.getCurrentPosition(
-     // Success callback
-     position => {
-       const userLocation = {
-         lat: position.coords.latitude,
-         lng: position.coords.longitude
-       };
-       setLocation(userLocation);
-       // Calculate distance from school
-       if (settings.schoolLocation.lat && settings.schoolLocation.lng) {
-         const distance = calculateDistance(userLocation.lat, userLocation.lng, settings.schoolLocation.lat, settings.schoolLocation.lng);
-         if (distance <= settings.radius) {
-           setLocationMessage("Lokasi terdeteksi di area sekolah");
-         } else {
-           setLocationMessage(`Lokasi diluar area sekolah (${Math.round(distance)} meter)`);
-         }
-       } else {
-         setLocationMessage("Posisi terdeteksi, tapi lokasi sekolah belum diatur");
-       }
-     },
-     // Error callback
-     error => {
-       console.error("Geolocation error:", error);
-       setLocationMessage("Gagal mendapatkan lokasi. Pastikan GPS diaktifkan.");
-       toast.error("Tidak dapat mengakses lokasi. Pastikan GPS diaktifkan.");
-     });
-   } catch (error) {
-     console.error("Error starting camera:", error);
-     toast.error("Gagal mengakses kamera");
-     setScanning(false);
-   }
- };
+const startCamera = async () => {
+  try {
+    setScanning(true); // biodata akan tampil saat scanning true
+
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        width: 640,
+        height: 480,
+        facingMode: "user"
+      }
+    });
+
+    streamRef.current = stream;
+    if (videoRef.current) {
+      videoRef.current.srcObject = stream;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        setLocation(userLocation);
+
+        if (settings.schoolLocation.lat && settings.schoolLocation.lng) {
+          const distance = calculateDistance(
+            userLocation.lat,
+            userLocation.lng,
+            settings.schoolLocation.lat,
+            settings.schoolLocation.lng
+          );
+          if (distance <= settings.radius) {
+            setLocationMessage("Lokasi terdeteksi di area sekolah");
+          } else {
+            setLocationMessage(`Lokasi diluar area sekolah (${Math.round(distance)} meter)`);
+          }
+        } else {
+          setLocationMessage("Posisi terdeteksi, tapi lokasi sekolah belum diatur");
+        }
+      },
+      error => {
+        console.error("Geolocation error:", error);
+        setLocationMessage("Gagal mendapatkan lokasi. Pastikan GPS diaktifkan.");
+        toast.error("Tidak dapat mengakses lokasi. Pastikan GPS diaktifkan.");
+      }
+    );
+  } catch (error) {
+    console.error("Error starting camera:", error);
+    toast.error("Gagal mengakses kamera");
+    setScanning(false);
+  }
+};
+
  // Stop camera
  const stopCamera = () => {
    if (streamRef.current) {
@@ -405,6 +409,33 @@ export default function TeacherAttendanceScan() {
            {/* Camera view */}
            <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden mb-4">
              {scanning ? <>
+              {/* Biodata Guru - tampil saat scanning aktif */}
+{scanning && recognizedTeacher && (
+  <div className="bg-white border border-gray-200 p-4 rounded-lg mb-4 text-sm text-gray-800">
+    <div className="mb-1"><strong>Nama:</strong> {recognizedTeacher.name}</div>
+    <div className="mb-1"><strong>NIK:</strong> {recognizedTeacher.nik}</div>
+    <div><strong>Jabatan:</strong> {recognizedTeacher.role}</div>
+  </div>
+)}
+{/* Camera view */}
+<div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden mb-4">
+
+  {/* Biodata Guru */}
+  {scanning && recognizedTeacher && (
+    <div className="absolute top-2 left-2 bg-white bg-opacity-80 p-3 rounded-md shadow-md text-sm z-10">
+      <div><strong>Nama:</strong> {recognizedTeacher.name}</div>
+      <div><strong>NIK:</strong> {recognizedTeacher.nik}</div>
+      <div><strong>Jabatan:</strong> {recognizedTeacher.role}</div>
+    </div>
+  )}
+
+  {scanning ? (
+    <video ref={videoRef} className="w-full h-full object-cover" autoPlay playsInline muted></video>
+  ) : (
+    <div className="flex items-center justify-center h-full text-white">Kamera belum aktif</div>
+  )}
+</div>
+
                  <video ref={videoRef} className="w-full h-full object-cover" autoPlay playsInline muted></video>
 
                  {/* Photo capture guide overlay */}
