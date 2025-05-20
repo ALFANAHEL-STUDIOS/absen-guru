@@ -460,7 +460,7 @@ return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-3 sm:px-4 md:px-6">
         </div>
       </div>}
     {/* Instructions card */}
-    <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg">
+    {/*<div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg">
       <div className="flex">
         <div className="flex-shrink-0">
           <AlertCircle className="h-5 w-5 text-yellow-500" />
@@ -476,7 +476,7 @@ return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-3 sm:px-4 md:px-6">
             </ul>
           </div>
         </div>
-      </div>
+      </div>*/}
     </div>
   </div>;
 }
