@@ -208,7 +208,9 @@ export default function AbsensiGuruPage() {
           {/* Recent Attendance */}
           <div className="bg-white rounded-xl shadow-sm overflow-hidden" data-unique-id="235fbb04-6698-46e8-bc05-3ba2bc521d24" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
             <div className="p-6 border-b border-gray-100" data-unique-id="76e5c98a-93f9-4f65-97fa-67c45a23e9e9" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <h2 className="text-lg font-semibold" data-unique-id="f3941cd3-0a89-45c1-b6dc-a63dd3f41778" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="6b19a077-9ce8-4ce7-8003-22315c6e521b" data-file-name="app/dashboard/absensi-guru/page.tsx">Riwayat Absensi Terbaru</span></h2>
+              <h2 className="text-lg font-semibold" data-unique-id="f3941cd3-0a89-45c1-b6dc-a63dd3f41778" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <Calendar className="h-4 sm:h-5 w-4 sm:w-5 text-primary mr-1.5 sm:mr-2" />
+                <span className="editable-text" data-unique-id="6b19a077-9ce8-4ce7-8003-22315c6e521b" data-file-name="app/dashboard/absensi-guru/page.tsx">Riwayat Absensi Terbaru</span></h2>
             </div>
             
             {recentAttendance.length > 0 ? <div className="overflow-x-auto" data-unique-id="dbc6683b-e5c8-434b-9e06-d7d9cc2f2be7" data-file-name="app/dashboard/absensi-guru/page.tsx">
