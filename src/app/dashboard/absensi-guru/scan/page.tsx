@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
 import { sendTelegramNotification } from "@/lib/telegram";
-import * as faceapi from 'face-api.js';
+//import * as faceapi from 'face-api.js';
 const MODELS_PATH = '/models';
 const ALLOWED_RADIUS_METERS = 100; // 100 meters radius
 export default function AbsensiGuruScanPage() {
@@ -45,19 +45,23 @@ export default function AbsensiGuruScanPage() {
  });
  // Load face-api models
  const loadModels = async () => {
-   try {
-     await Promise.all([
-       faceapi.nets.tinyFaceDetector.loadFromUri(MODELS_PATH),
-       faceapi.nets.faceLandmark68Net.loadFromUri(MODELS_PATH),
-       faceapi.nets.faceRecognitionNet.loadFromUri(MODELS_PATH),
-     ]);
-     setModelsLoaded(true);
-     console.log("Face detection models loaded!");
-   } catch (error) {
-     console.error("Error loading face detection models:", error);
-     toast.error("Gagal memuat model pendeteksi wajah");
-   }
- };
+  try {
+    const faceapi = await import('face-api.js');
+
+    await Promise.all([
+      faceapi.nets.tinyFaceDetector.loadFromUri(MODELS_PATH),
+      faceapi.nets.faceLandmark68Net.loadFromUri(MODELS_PATH),
+      faceapi.nets.faceRecognitionNet.loadFromUri(MODELS_PATH),
+    ]);
+
+    setModelsLoaded(true);
+    console.log("Face detection models loaded!");
+    return faceapi; // return instance for later use
+  } catch (error) {
+    console.error("Error loading face detection models:", error);
+    toast.error("Gagal memuat model pendeteksi wajah");
+  }
+};
  // Check if current time is within allowed attendance time
  const isWithinAttendanceTime = () => {
    const hour = currentTime.getHours();
@@ -197,24 +201,15 @@ export default function AbsensiGuruScanPage() {
 
  // Take attendance with selfie
  const takeAttendance = async () => {
-   if (!videoRef.current || !canvasRef.current || !isInRadius || !userData) {
-     return;
-   }
+  const faceapi = await import('face-api.js');
+  ...
+  const detections = await faceapi.detectSingleFace(
+    videoRef.current,
+    new faceapi.TinyFaceDetectorOptions()
+  );
+  ...
+}
 
-   setIsProcessing(true);
-
-   try {
-     // Check if there's a face in the frame
-     const detections = await faceapi.detectSingleFace(
-       videoRef.current,
-       new faceapi.TinyFaceDetectorOptions()
-     );
-
-     if (!detections) {
-       toast.error("Wajah tidak terdeteksi. Pastikan wajah Anda terlihat jelas");
-       setIsProcessing(false);
-       return;
-     }
 
      // Take a screenshot from video
      const context = canvasRef.current.getContext('2d');
