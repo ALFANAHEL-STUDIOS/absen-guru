@@ -20,7 +20,7 @@
     "db:generate": "npx drizzle-kit generate && npx drizzle-kit migrate && git add . && git commit -m 'chore: update migration'"
   },
   "dependencies": {
-	  "face-api.js": "^0.22.2"
+	  "face-api.js": "^0.22.2",
     "@jest/globals": "^29.7.0",
     "@types/eslint": "^8.56.10",
     "@types/jest": "^29.5.14",
