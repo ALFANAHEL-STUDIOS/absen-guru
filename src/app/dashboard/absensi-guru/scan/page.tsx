@@ -335,8 +335,8 @@ const sendTelegramNotification = async (teacherName: string, attendanceType: str
       return;
     }
     // Format message
-    const messageType = attendanceType === 'in' ? 'Masuk' : 'Pulang';
-    const message = `Pegawai dengan nama : ${teacherName} telah melakukan Absen ${messageType} di sekolah pada tanggal ${date} pukul ${time}.`;
+    const messageType = attendanceType === 'in' ? 'MASUK' : 'PULANG';
+    const message = `GTK dengan nama : ${teacherName} telah melakukan "Absen : ${messageType}" di Sekolah pada tanggal ${date} pukul ${time}.`;
     // Send notification
     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
