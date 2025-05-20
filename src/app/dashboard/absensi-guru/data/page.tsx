@@ -400,10 +400,10 @@ export default function TeacherDataPage() {
             <p className="text-gray-500 mb-4" data-unique-id="4d3f2eaf-291e-4e7a-a47d-ff143e28a41a" data-file-name="app/dashboard/absensi-guru/data/page.tsx" data-dynamic-text="true">
               {searchQuery || roleFilter !== "all" ? "Tidak ada guru yang sesuai dengan pencarian atau filter" : "Belum ada data guru. Tambahkan data guru baru."}
             </p>
-            <button onClick={() => setShowAddModal(true)} className="bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors" data-unique-id="48f9a46d-409d-4dd3-87cd-59eea73890f5" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
+            {/*<button onClick={() => setShowAddModal(true)} className="bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary hover:bg-opacity-90 transition-colors" data-unique-id="48f9a46d-409d-4dd3-87cd-59eea73890f5" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
               <Plus className="h-5 w-5 inline-block mr-2" /><span className="editable-text" data-unique-id="02480ce4-0ba4-490c-a6b6-2ff9b6dbb386" data-file-name="app/dashboard/absensi-guru/data/page.tsx">
               Tambah Data Guru
-            </span></button>
+            </span></button>*/}
           </div>
         </div>}
       
