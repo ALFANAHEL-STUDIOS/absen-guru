@@ -255,7 +255,7 @@ export default function AbsensiGuruPage() {
 
  {/* Quick Access */}
           <div className="bg-white rounded-xl shadow-sm p-6 mb-6" data-unique-id="d8ed1595-71c6-40b8-9c73-d97e954ec38e" data-file-name="app/dashboard/absensi-guru/page.tsx">
-            <h2 className="text-lg font-semibold mb-4" data-unique-id="c9168274-eae5-4078-9121-bb7c2d47749a" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="30cfbc72-86e7-4599-ba40-09c1f771ac96" data-file-name="app/dashboard/absensi-guru/page.tsx">Akses Cepat</span></h2>
+            <h2 className="text-lg font-semibold mb-4" data-unique-id="c9168274-eae5-4078-9121-bb7c2d47749a" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="30cfbc72-86e7-4599-ba40-09c1f771ac96" data-file-name="app/dashboard/absensi-guru/page.tsx"> <Settings className="h-4 sm:h-5 w-4 sm:w-5 text-primary mr-1.5 sm:mr-2" /> Akses Cepat</span></h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-unique-id="8e064cf0-b7f4-400c-8610-cc86edbbf46e" data-file-name="app/dashboard/absensi-guru/page.tsx">
               <Link href="/dashboard/absensi-guru/scan" className="flex flex-col items-center p-4 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors" data-unique-id="77289fd9-ef3e-4a32-a7a9-2969f6bd163e" data-file-name="app/dashboard/absensi-guru/page.tsx">
