@@ -248,7 +248,7 @@ export default function AbsensiGuruPage() {
             
             <div className="p-4 border-t border-gray-100 flex justify-end" data-unique-id="9eda83bd-154a-4d76-8aec-523138e8d5e5" data-file-name="app/dashboard/absensi-guru/page.tsx">
               <Link href="/dashboard/absensi-guru/reports" className="text-primary font-medium hover:underline text-sm flex items-center" data-unique-id="e760e95f-cd0d-4099-a79f-d81e26f9fde9" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="08f727a2-c415-411d-8362-16d138315e9f" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                Lihat semua riwayat
+                Lihat Semua...
                 </span><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor" data-unique-id="3ab99b06-96c4-4826-8113-2ee630996cd0" data-file-name="app/dashboard/absensi-guru/page.tsx">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
