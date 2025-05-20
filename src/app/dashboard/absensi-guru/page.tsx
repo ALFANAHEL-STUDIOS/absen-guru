@@ -203,32 +203,7 @@ export default function AbsensiGuruPage() {
             </motion.div>
           </div>
           
-          {/* Quick Access */}
-          <div className="bg-white rounded-xl shadow-sm p-6 mb-6" data-unique-id="d8ed1595-71c6-40b8-9c73-d97e954ec38e" data-file-name="app/dashboard/absensi-guru/page.tsx">
-            <h2 className="text-lg font-semibold mb-4" data-unique-id="c9168274-eae5-4078-9121-bb7c2d47749a" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="30cfbc72-86e7-4599-ba40-09c1f771ac96" data-file-name="app/dashboard/absensi-guru/page.tsx">Akses Cepat</span></h2>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-unique-id="8e064cf0-b7f4-400c-8610-cc86edbbf46e" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <Link href="/dashboard/absensi-guru/scan" className="flex flex-col items-center p-4 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors" data-unique-id="77289fd9-ef3e-4a32-a7a9-2969f6bd163e" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <Camera className="h-10 w-10 text-blue-600 mb-2" />
-                <span className="font-medium text-blue-800" data-unique-id="92042028-da93-4aa8-ba4b-53dc2a5756e7" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="30ff822d-68dc-4830-a66d-61ea25fb2d27" data-file-name="app/dashboard/absensi-guru/page.tsx">Scan Absensi</span></span>
-              </Link>
-              
-              <Link href="/dashboard/absensi-guru/data" className="flex flex-col items-center p-4 bg-green-50 rounded-xl border border-green-100 hover:bg-green-100 transition-colors" data-unique-id="e23b5e6b-488c-40c0-951b-18155594ce09" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <Users className="h-10 w-10 text-green-600 mb-2" />
-                <span className="font-medium text-green-800" data-unique-id="524f1a05-df67-412f-adca-0f688c16d734" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="bfdf6807-7522-4f7f-ae2f-eea062a77231" data-file-name="app/dashboard/absensi-guru/page.tsx">Data Guru</span></span>
-              </Link>
-              
-              <Link href="/dashboard/absensi-guru/reports" className="flex flex-col items-center p-4 bg-purple-50 rounded-xl border border-purple-100 hover:bg-purple-100 transition-colors" data-unique-id="4ad2dce4-87ad-46f2-8d87-a9a759311c8f" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <FileText className="h-10 w-10 text-purple-600 mb-2" />
-                <span className="font-medium text-purple-800" data-unique-id="56b4e3d0-3879-489d-affe-f4ca34e137b2" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="52d1a1d7-68d6-4697-a831-0a33b658297f" data-file-name="app/dashboard/absensi-guru/page.tsx">Laporan</span></span>
-              </Link>
-              
-              <Link href="/dashboard/absensi-guru/settings" className="flex flex-col items-center p-4 bg-amber-50 rounded-xl border border-amber-100 hover:bg-amber-100 transition-colors" data-unique-id="620397a9-59d4-4945-8358-fa56397f5c62" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                <Settings className="h-10 w-10 text-amber-600 mb-2" />
-                <span className="font-medium text-amber-800" data-unique-id="4fecc510-b58a-4f63-8d42-b74a1dd16746" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="fcbcc88d-0838-4523-97cd-ad1c16d2d004" data-file-name="app/dashboard/absensi-guru/page.tsx">Pengaturan</span></span>
-              </Link>
-            </div>
-          </div>
+         
           
           {/* Recent Attendance */}
           <div className="bg-white rounded-xl shadow-sm overflow-hidden" data-unique-id="235fbb04-6698-46e8-bc05-3ba2bc521d24" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
@@ -277,6 +252,35 @@ export default function AbsensiGuruPage() {
               </Link>
             </div>
           </div>
+
+ {/* Quick Access */}
+          <div className="bg-white rounded-xl shadow-sm p-6 mb-6" data-unique-id="d8ed1595-71c6-40b8-9c73-d97e954ec38e" data-file-name="app/dashboard/absensi-guru/page.tsx">
+            <h2 className="text-lg font-semibold mb-4" data-unique-id="c9168274-eae5-4078-9121-bb7c2d47749a" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="30cfbc72-86e7-4599-ba40-09c1f771ac96" data-file-name="app/dashboard/absensi-guru/page.tsx">Akses Cepat</span></h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-unique-id="8e064cf0-b7f4-400c-8610-cc86edbbf46e" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <Link href="/dashboard/absensi-guru/scan" className="flex flex-col items-center p-4 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors" data-unique-id="77289fd9-ef3e-4a32-a7a9-2969f6bd163e" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <Camera className="h-10 w-10 text-blue-600 mb-2" />
+                <span className="font-medium text-blue-800" data-unique-id="92042028-da93-4aa8-ba4b-53dc2a5756e7" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="30ff822d-68dc-4830-a66d-61ea25fb2d27" data-file-name="app/dashboard/absensi-guru/page.tsx">Scan Absensi</span></span>
+              </Link>
+              
+              <Link href="/dashboard/absensi-guru/data" className="flex flex-col items-center p-4 bg-green-50 rounded-xl border border-green-100 hover:bg-green-100 transition-colors" data-unique-id="e23b5e6b-488c-40c0-951b-18155594ce09" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <Users className="h-10 w-10 text-green-600 mb-2" />
+                <span className="font-medium text-green-800" data-unique-id="524f1a05-df67-412f-adca-0f688c16d734" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="bfdf6807-7522-4f7f-ae2f-eea062a77231" data-file-name="app/dashboard/absensi-guru/page.tsx">Data Guru</span></span>
+              </Link>
+              
+              <Link href="/dashboard/absensi-guru/reports" className="flex flex-col items-center p-4 bg-purple-50 rounded-xl border border-purple-100 hover:bg-purple-100 transition-colors" data-unique-id="4ad2dce4-87ad-46f2-8d87-a9a759311c8f" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <FileText className="h-10 w-10 text-purple-600 mb-2" />
+                <span className="font-medium text-purple-800" data-unique-id="56b4e3d0-3879-489d-affe-f4ca34e137b2" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="52d1a1d7-68d6-4697-a831-0a33b658297f" data-file-name="app/dashboard/absensi-guru/page.tsx">Laporan</span></span>
+              </Link>
+              
+              <Link href="/dashboard/absensi-guru/settings" className="flex flex-col items-center p-4 bg-amber-50 rounded-xl border border-amber-100 hover:bg-amber-100 transition-colors" data-unique-id="620397a9-59d4-4945-8358-fa56397f5c62" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                <Settings className="h-10 w-10 text-amber-600 mb-2" />
+                <span className="font-medium text-amber-800" data-unique-id="4fecc510-b58a-4f63-8d42-b74a1dd16746" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="fcbcc88d-0838-4523-97cd-ad1c16d2d004" data-file-name="app/dashboard/absensi-guru/page.tsx">Pengaturan</span></span>
+              </Link>
+            </div>
+          </div>
+
+          
         </>}
     </div>;
 }
