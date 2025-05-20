@@ -131,7 +131,7 @@ export default function AbsensiGuruPage() {
         </div> : <>
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" data-unique-id="b6b88fa7-337e-4f78-800b-643f2235ddbb" data-file-name="app/dashboard/absensi-guru/page.tsx">
-            <motion.div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-4 text-white shadow-md" initial={{
+            <motion.div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-4 text-white shadow-md" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -145,7 +145,7 @@ export default function AbsensiGuruPage() {
                 <h3 className="font-semibold text-base" data-unique-id="93b364dc-3f23-4f03-b511-602c1d86363f" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="450072da-01ca-4352-81db-43f9a961159e" data-file-name="app/dashboard/absensi-guru/page.tsx">Jumlah Guru</span></h3>
               </div>
               <p className="text-2xl font-bold" data-unique-id="2dcf4d3d-10f4-4a99-b1ca-829914626d61" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.totalTeachers}</p>
-              <p className="text-xs text-blue-100 mt-1" data-unique-id="98142754-0911-4986-90dc-0aad07d95e29" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="1bcaddd2-de77-4143-875b-44f51911947f" data-file-name="app/dashboard/absensi-guru/page.tsx">Terdaftar di sistem</span></p>
+              <p className="text-xs text-purple-100 mt-1" data-unique-id="98142754-0911-4986-90dc-0aad07d95e29" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="1bcaddd2-de77-4143-875b-44f51911947f" data-file-name="app/dashboard/absensi-guru/page.tsx">Terdaftar di sistem</span></p>
             </motion.div>
             
             <motion.div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-4 text-white shadow-md" initial={{
@@ -166,7 +166,7 @@ export default function AbsensiGuruPage() {
               <p className="text-xs text-green-100 mt-1" data-unique-id="b831ba99-1ad1-4c1a-89d4-b73a1e03502d" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="c8497a56-9db0-4871-90c9-0ea075f79a58" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru hadir hari ini</span></p>
             </motion.div>
             
-            <motion.div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-4 text-white shadow-md" initial={{
+            <motion.div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-4 text-white shadow-md" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -181,7 +181,7 @@ export default function AbsensiGuruPage() {
                 <h3 className="font-semibold text-base" data-unique-id="41337cfd-dfc5-4603-a4c6-80c9bb0aa7b1" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="838cdc1e-51c7-4834-9876-1acedb90fa77" data-file-name="app/dashboard/absensi-guru/page.tsx">Terlambat</span></h3>
               </div>
               <p className="text-2xl font-bold" data-unique-id="9d718184-3e2f-4a48-98a1-12bac901babf" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{stats.lateToday}</p>
-              <p className="text-xs text-purple-100 mt-1" data-unique-id="0ab214f3-66a5-4cce-a6ef-33cd3424e019" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="95601146-e7e0-4859-8874-b2aa31e1e53f" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru terlambat hari ini</span></p>
+              <p className="text-xs text-orange-100 mt-1" data-unique-id="0ab214f3-66a5-4cce-a6ef-33cd3424e019" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="95601146-e7e0-4859-8874-b2aa31e1e53f" data-file-name="app/dashboard/absensi-guru/page.tsx">Guru terlambat hari ini</span></p>
             </motion.div>
             
             <motion.div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-4 text-white shadow-md" initial={{
