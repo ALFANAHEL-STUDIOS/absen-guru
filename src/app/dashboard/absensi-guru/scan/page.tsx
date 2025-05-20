@@ -1,549 +1,513 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { QrCode, Camera, MapPin, CheckCircle, XCircle, AlertTriangle, Loader2, Clock } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { toast } from "react-hot-toast";
+import { Camera, MapPin, User, AlertCircle, ArrowLeft, Loader2, CheckCircle, Timer, LogIn, LogOut, X } from "lucide-react";
 import Link from "next/link";
-import { sendTelegramNotification } from "@/lib/telegram";
-import * as faceapi from 'face-api.js';
-const MODELS_PATH = '/models';
-const ALLOWED_RADIUS_METERS = 100; // 100 meters radius
-export default function AbsensiGuruScanPage() {
- const { user, userData, schoolId } = useAuth();
- const [isLoading, setIsLoading] = useState(true);
- const [isCameraActive, setIsCameraActive] = useState(false);
- const [isProcessing, setIsProcessing] = useState(false);
- const [attendanceSuccess, setAttendanceSuccess] = useState(false);
- const [attendanceError, setAttendanceError] = useState<string | null>(null);
- const [currentTime, setCurrentTime] = useState(new Date());
- const [attendanceType, setAttendanceType] = useState<'masuk' | 'pulang'>('masuk');
- const [schoolLocation, setSchoolLocation] = useState({ lat: 0, lon: 0, radius: 100 });
- const [currentLocation, setCurrentLocation] = useState({ lat: 0, lon: 0 });
- const [isInRadius, setIsInRadius] = useState(false);
- const [locationProcessing, setLocationProcessing] = useState(false);
- const [modelsLoaded, setModelsLoaded] = useState(false);
+import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
+export default function TeacherAttendanceScan() {
+  const {
+    user,
+    userRole,
+    schoolId
+  } = useAuth();
+  const router = useRouter();
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [scanning, setScanning] = useState(false);
+  const [capturing, setCapturing] = useState(false);
+  const [processingCapture, setProcessingCapture] = useState(false);
+  const [capturedImage, setCapturedImage] = useState<string | null>(null);
+  const [photoTaken, setPhotoTaken] = useState(false);
+  const [location, setLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
+  const [locationMessage, setLocationMessage] = useState("");
+  const [attendanceType, setAttendanceType] = useState<"in" | "out">("in");
+  const [recognizedTeacher, setRecognizedTeacher] = useState<any>(null);
+  const [success, setSuccess] = useState(false);
+  const [settings, setSettings] = useState({
+    radius: 100,
+    schoolLocation: {
+      lat: 0,
+      lng: 0
+    }
+  });
 
- const videoRef = useRef<HTMLVideoElement>(null);
- const canvasRef = useRef<HTMLCanvasElement>(null);
- const streamRef = useRef<MediaStream | null>(null);
+  // Handle page initialization and cleanup
+  useEffect(() => {
+    // Check authorization
+    if (userRole !== 'admin' && userRole !== 'teacher' && userRole !== 'staff') {
+      toast.error("Anda tidak memiliki akses ke halaman ini");
+      router.push('/dashboard');
+      return;
+    }
 
- // Check if the camera has been initiated
- const [isCameraInitiated, setCameraInitiated] = useState(false);
- // Format time for display
- const formattedTime = currentTime.toLocaleTimeString('id-ID', {
-   hour: '2-digit',
-   minute: '2-digit',
-   second: '2-digit'
- });
- // Format date for display
- const formattedDate = currentTime.toLocaleDateString('id-ID', {
-   weekday: 'long',
-   day: 'numeric',
-   month: 'long',
-   year: 'numeric'
- });
- // Load face-api models
- const loadModels = async () => {
-   try {
-     await Promise.all([
-       faceapi.nets.tinyFaceDetector.loadFromUri(MODELS_PATH),
-       faceapi.nets.faceLandmark68Net.loadFromUri(MODELS_PATH),
-       faceapi.nets.faceRecognitionNet.loadFromUri(MODELS_PATH),
-     ]);
-     setModelsLoaded(true);
-     console.log("Face detection models loaded!");
-   } catch (error) {
-     console.error("Error loading face detection models:", error);
-     toast.error("Gagal memuat model pendeteksi wajah");
-   }
- };
- // Check if current time is within allowed attendance time
- const isWithinAttendanceTime = () => {
-   const hour = currentTime.getHours();
-   // Example: Morning attendance 06:00-09:00, Evening attendance 15:00-18:00
-   if (hour >= 6 && hour < 9) {
-     setAttendanceType('masuk');
-     return true;
-   } else if (hour >= 15 && hour < 18) {
-     setAttendanceType('pulang');
-     return true;
-   }
-   return false;
- };
- // Calculate distance between two coordinates
- const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
-   const R = 6371e3; // Earth radius in meters
-   const φ1 = lat1 * Math.PI/180; // φ, λ in radians
-   const φ2 = lat2 * Math.PI/180;
-   const Δφ = (lat2-lat1) * Math.PI/180;
-   const Δλ = (lon2-lon1) * Math.PI/180;
-   const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-             Math.cos(φ1) * Math.cos(φ2) *
-             Math.sin(Δλ/2) * Math.sin(Δλ/2);
-   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-   return R * c; // in meters
- };
- // Fetch school location from Firestore
- const fetchSchoolLocation = async () => {
-   if (!schoolId) return;
+    // Load settings
+    const loadSettings = async () => {
+      if (!schoolId) return;
+      try {
+        const {
+          doc,
+          getDoc
+        } = await import('firebase/firestore');
+        const {
+          db
+        } = await import('@/lib/firebase');
+        const settingsDoc = await getDoc(doc(db, "settings", "location"));
+        if (settingsDoc.exists()) {
+          const data = settingsDoc.data();
+          setSettings({
+            radius: data.radius || 100,
+            schoolLocation: {
+              lat: data.latitude || 0,
+              lng: data.longitude || 0
+            }
+          });
+        }
+      } catch (error) {
+        console.error("Error loading settings:", error);
+      }
+    };
+    loadSettings();
+    setLoading(false);
 
-   try {
-     const { db } = await import('@/lib/firebase');
-     const { doc, getDoc } = await import('firebase/firestore');
+    // Clean up function to stop camera when component unmounts
+    return () => {
+      if (streamRef.current) {
+        const tracks = streamRef.current.getTracks();
+        tracks.forEach(track => track.stop());
+      }
+    };
+  }, [router, schoolId, userRole]);
 
-     // Get location settings
-     const settingsRef = doc(db, "schools", schoolId, "settings", "location");
-     const settingsDoc = await getDoc(settingsRef);
+  // Start camera for scanning
+  const startCamera = async () => {
+    try {
+      setScanning(true);
 
-     if (settingsDoc.exists()) {
-       const locationData = settingsDoc.data();
-       setSchoolLocation({
-         lat: locationData.lat || 0,
-         lon: locationData.lon || 0,
-         radius: locationData.radius || 100
-       });
-     } else {
-       // Fallback to default location or school document
-       const schoolRef = doc(db, "schools", schoolId);
-       const schoolDoc = await getDoc(schoolRef);
+      // Request camera access
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          width: 640,
+          height: 480,
+          facingMode: "user"
+        }
+      });
 
-       if (schoolDoc.exists() && schoolDoc.data().location) {
-         const location = schoolDoc.data().location;
-         setSchoolLocation({
-           lat: location.lat || 0,
-           lon: location.lon || 0,
-           radius: location.radius || 100
-         });
-       }
-     }
-   } catch (error) {
-     console.error("Error fetching school location:", error);
-     toast.error("Gagal mengambil lokasi sekolah");
-   }
- };
- // Get current user location
- const getCurrentLocation = () => {
-   setLocationProcessing(true);
-   if (navigator.geolocation) {
-     navigator.geolocation.getCurrentPosition(
-       (position) => {
-         const { latitude, longitude } = position.coords;
-         setCurrentLocation({ lat: latitude, lon: longitude });
+      // Store stream in ref for later cleanup
+      streamRef.current = stream;
 
-         // Calculate distance to school
-         const distance = calculateDistance(
-           latitude, longitude,
-           schoolLocation.lat, schoolLocation.lon
-         );
+      // Connect stream to video element
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
 
-         const inRadius = distance <= (schoolLocation.radius || ALLOWED_RADIUS_METERS);
-         setIsInRadius(inRadius);
+      // No need for face detection initialization anymore
 
-         if (!inRadius) {
-           toast.error(`Anda berada diluar radius sekolah (${Math.round(distance)}m)`);
-         } else {
-           toast.success(`Lokasi terdeteksi (${Math.round(distance)}m dari sekolah)`);
-         }
-         setLocationProcessing(false);
-       },
-       (error) => {
-         console.error("Error getting location:", error);
-         toast.error("Gagal mendapatkan lokasi. " + error.message);
-         setLocationProcessing(false);
-       },
-       { enableHighAccuracy: true }
-     );
-   } else {
-     toast.error("Geolocation tidak didukung oleh perangkat ini");
-     setLocationProcessing(false);
-   }
- };
- // Start camera
- const startCamera = async () => {
-   try {
-     if (!videoRef.current) return;
+      // Get location
+      navigator.geolocation.getCurrentPosition(
+      // Success callback
+      position => {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        setLocation(userLocation);
 
-     const stream = await navigator.mediaDevices.getUserMedia({
-       video: { facingMode: "user" },
-       audio: false
-     });
+        // Calculate distance from school
+        if (settings.schoolLocation.lat && settings.schoolLocation.lng) {
+          const distance = calculateDistance(userLocation.lat, userLocation.lng, settings.schoolLocation.lat, settings.schoolLocation.lng);
+          if (distance <= settings.radius) {
+            setLocationMessage("Lokasi terdeteksi di area sekolah");
+          } else {
+            setLocationMessage(`Lokasi diluar area sekolah (${Math.round(distance)} meter)`);
+          }
+        } else {
+          setLocationMessage("Posisi terdeteksi, tapi lokasi sekolah belum diatur");
+        }
+      },
+      // Error callback
+      error => {
+        console.error("Geolocation error:", error);
+        setLocationMessage("Gagal mendapatkan lokasi. Pastikan GPS diaktifkan.");
+        toast.error("Tidak dapat mengakses lokasi. Pastikan GPS diaktifkan.");
+      });
+    } catch (error) {
+      console.error("Error starting camera:", error);
+      toast.error("Gagal mengakses kamera");
+      setScanning(false);
+    }
+  };
 
-     videoRef.current.srcObject = stream;
-     streamRef.current = stream;
-     setCameraInitiated(true);
-     setIsCameraActive(true);
+  // Stop camera
+  const stopCamera = () => {
+    if (streamRef.current) {
+      const tracks = streamRef.current.getTracks();
+      tracks.forEach(track => track.stop());
+      streamRef.current = null;
+    }
+    if (videoRef.current) {
+      videoRef.current.srcObject = null;
+    }
+    setScanning(false);
+    setPhotoTaken(false);
+  };
 
-     // Get location when camera starts
-     getCurrentLocation();
+  // Capture image
+  const captureImage = async () => {
+    if (!videoRef.current || !canvasRef.current) return;
+    try {
+      setCapturing(true);
 
-   } catch (error) {
-     console.error("Error accessing camera:", error);
-     toast.error("Gagal mengakses kamera");
-   }
- };
- // Stop camera
- const stopCamera = () => {
-   if (streamRef.current) {
-     const tracks = streamRef.current.getTracks();
-     tracks.forEach(track => track.stop());
-     streamRef.current = null;
-   }
-   if (videoRef.current) {
-     videoRef.current.srcObject = null;
-   }
-   setIsCameraActive(false);
- };
+      // Draw video frame to canvas
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+      const context = canvas.getContext('2d');
+      if (!context) return;
 
- // Take attendance with selfie
- const takeAttendance = async () => {
-   if (!videoRef.current || !canvasRef.current || !isInRadius || !userData) {
-     return;
-   }
+      // Set canvas dimensions
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
 
-   setIsProcessing(true);
+      // Draw video frame to canvas
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-   try {
-     // Check if there's a face in the frame
-     const detections = await faceapi.detectSingleFace(
-       videoRef.current,
-       new faceapi.TinyFaceDetectorOptions()
-     );
+      // Get image data as base64
+      const imageData = canvas.toDataURL('image/jpeg');
+      setCapturedImage(imageData);
 
-     if (!detections) {
-       toast.error("Wajah tidak terdeteksi. Pastikan wajah Anda terlihat jelas");
-       setIsProcessing(false);
-       return;
-     }
+      // Process the image (detect face and identify)
+      await processImage(imageData);
+    } catch (error) {
+      console.error("Error capturing image:", error);
+      toast.error("Gagal mengambil gambar");
+      setCapturing(false);
+    }
+  };
 
-     // Take a screenshot from video
-     const context = canvasRef.current.getContext('2d');
-     if (!context) {
-       throw new Error("Canvas context is null");
-     }
+  // Process the captured image
+  const processImage = async (imageData: string) => {
+    try {
+      setProcessingCapture(true);
+      setPhotoTaken(true);
 
-     canvasRef.current.width = videoRef.current.videoWidth;
-     canvasRef.current.height = videoRef.current.videoHeight;
-     context.drawImage(videoRef.current, 0, 0);
+      // Simulated teacher data - in a real app, you would identify the teacher
+      // based on login information or selection
+      setTimeout(() => {
+        setRecognizedTeacher({
+          id: "teacher123",
+          name: "SOLEHAN, S.Pd",
+          nik: "198506152010011002",
+          role: "Guru"
+        });
+        setProcessingCapture(false);
+        setCapturing(false);
+      }, 1000);
+    } catch (error) {
+      console.error("Error processing image:", error);
+      toast.error("Gagal memproses gambar");
+      setProcessingCapture(false);
+      setCapturing(false);
+    }
+  };
 
-     // Convert canvas to base64 image
-     const selfieImage = canvasRef.current.toDataURL('image/jpeg', 0.8);
+  // Submit attendance
+  const submitAttendance = async () => {
+    if (!schoolId || !recognizedTeacher || !location) {
+      toast.error("Data tidak lengkap");
+      return;
+    }
+    try {
+      setProcessingCapture(true);
+      const currentDate = new Date();
+      const dateStr = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
+      const timeStr = currentDate.toLocaleTimeString('id-ID', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
 
-     // Save attendance to Firestore
-     const { db, storage } = await import('@/lib/firebase');
-     const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
-     const { ref, uploadString, getDownloadURL } = await import('firebase/storage');
+      // Check if within allowed distance
+      if (!location || !settings.schoolLocation) {
+        toast.error("Data lokasi tidak lengkap");
+        setProcessingCapture(false);
+        return;
+      }
+      const distance = calculateDistance(location.lat, location.lng, settings.schoolLocation.lat, settings.schoolLocation.lng);
+      if (distance > settings.radius) {
+        toast.error(`Anda berada di luar area sekolah (${Math.round(distance)} meter)`);
+        setProcessingCapture(false);
+        return;
+      }
 
-     // Upload selfie to Firebase Storage
-     const imageRef = ref(storage, `attendances/${userData.id}/${Date.now()}.jpg`);
-     await uploadString(imageRef, selfieImage, 'data_url');
-     const imageUrl = await getDownloadURL(imageRef);
+      // Check if already submitted for today
+      const {
+        collection,
+        query,
+        where,
+        getDocs,
+        addDoc,
+        serverTimestamp
+      } = await import('firebase/firestore');
+      const {
+        db
+      } = await import('@/lib/firebase');
+      const attendanceRef = collection(db, "teacherAttendance");
+      const existingAttendanceQuery = query(attendanceRef, where("teacherId", "==", recognizedTeacher.id), where("date", "==", dateStr), where("type", "==", attendanceType));
+      const existingSnapshot = await getDocs(existingAttendanceQuery);
+      if (!existingSnapshot.empty) {
+        toast.error(`Anda sudah melakukan absensi ${attendanceType === 'in' ? 'masuk' : 'pulang'} hari ini`);
+        setProcessingCapture(false);
+        return;
+      }
 
-     // Add attendance record to Firestore
-     const attendanceRef = collection(db, `schools/${schoolId}/teacher_attendances`);
-     await addDoc(attendanceRef, {
-       userId: userData.id,
-       userName: userData.name,
-       userEmail: userData.email,
-       userRole: userData.role,
-       selfieUrl: imageUrl,
-       location: {
-         lat: currentLocation.lat,
-         lon: currentLocation.lon,
-         inRadius: isInRadius
-       },
-       schoolLocation: schoolLocation,
-       timestamp: serverTimestamp(),
-       date: new Date().toISOString().split('T')[0],
-       time: new Date().toLocaleTimeString('id-ID'),
-       type: attendanceType,
-       status: 'hadir'
-     });
+      // Determine status based on allowed time (mock, in real app should check against settings)
+      let status = "present"; // Default status
+      const hour = currentDate.getHours();
+      if (attendanceType === 'in' && hour >= 8) {
+        // If checking in after 8 AM
+        status = "late";
+      }
 
-     // Send Telegram notification
-     const principalTelegramId = await getPrincipalTelegramId();
-     if (principalTelegramId) {
-       const message = `Pegawai dengan nama : ${userData.name} telah melakukan Absen ${attendanceType === 'masuk' ? 'Masuk' : 'Pulang'} hari ini di sekolah pada ${new Date().toLocaleString('id-ID')}.`;
-       await sendTelegramNotification({
-         phoneNumber: principalTelegramId,
-         message: message
-       });
-     }
+      // Save attendance record
+      const attendanceData = {
+        teacherId: recognizedTeacher.id,
+        teacherName: recognizedTeacher.name,
+        teacherNik: recognizedTeacher.nik,
+        date: dateStr,
+        time: timeStr,
+        timestamp: serverTimestamp(),
+        type: attendanceType,
+        status: status,
+        location: {
+          lat: location.lat,
+          lng: location.lng
+        },
+        schoolId: schoolId
+      };
+      await addDoc(attendanceRef, attendanceData);
 
-     // Success!
-     setAttendanceSuccess(true);
-     toast.success(`Absensi ${attendanceType} berhasil dicatat!`);
+      // Send Telegram notification
+      await sendTelegramNotification(recognizedTeacher.name, attendanceType, dateStr, timeStr);
+      setSuccess(true);
+      toast.success(`Absensi ${attendanceType === 'in' ? 'masuk' : 'pulang'} berhasil tercatat!`);
+    } catch (error) {
+      console.error("Error submitting attendance:", error);
+      toast.error("Gagal mencatat absensi");
+    } finally {
+      setProcessingCapture(false);
+    }
+  };
 
-     // Stop camera after successful attendance
-     stopCamera();
+  // Reset the process
+  const resetProcess = () => {
+    setCapturedImage(null);
+    setPhotoTaken(false);
+    setRecognizedTeacher(null);
+    setSuccess(false);
+    stopCamera();
+  };
 
-   } catch (error) {
-     console.error("Error taking attendance:", error);
-     setAttendanceError("Gagal mencatat kehadiran. Silakan coba lagi.");
-     toast.error("Gagal mencatat kehadiran");
-   } finally {
-     setIsProcessing(false);
-   }
- };
+  // Calculate distance between two points using Haversine formula
+  const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
+    const R = 6371e3; // Earth radius in meters
+    const φ1 = lat1 * Math.PI / 180;
+    const φ2 = lat2 * Math.PI / 180;
+    const Δφ = (lat2 - lat1) * Math.PI / 180;
+    const Δλ = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c; // Distance in meters
+  };
 
- // Get principal's Telegram ID
- const getPrincipalTelegramId = async (): Promise<string> => {
-   if (!schoolId) return '';
+  // Send Telegram notification
+  const sendTelegramNotification = async (teacherName: string, attendanceType: string, date: string, time: string) => {
+    try {
+      const {
+        doc,
+        getDoc
+      } = await import('firebase/firestore');
+      const {
+        db
+      } = await import('@/lib/firebase');
 
-   try {
-     const { db } = await import('@/lib/firebase');
-     const { doc, getDoc } = await import('firebase/firestore');
+      // Get Telegram settings
+      const telegramSettingsDoc = await getDoc(doc(db, "settings", "telegram"));
+      if (!telegramSettingsDoc.exists()) {
+        console.error("Telegram settings not found");
+        return;
+      }
+      const telegramSettings = telegramSettingsDoc.data();
+      const token = telegramSettings.token || "7702797779:AAELhARB3HkvB9hh5e5D64DCC4faDfcW9IM";
+      const chatId = telegramSettings.chatId || ""; // Should be the school principal's chat ID
 
-     // First try to get from settings
-     const settingsRef = doc(db, "schools", schoolId, "settings", "telegram");
-     const settingsDoc = await getDoc(settingsRef);
+      if (!chatId) {
+        console.error("No chat ID found for notification");
+        return;
+      }
 
-     if (settingsDoc.exists() && settingsDoc.data().principalTelegramId) {
-       return settingsDoc.data().principalTelegramId;
-     }
+      // Format message
+      const messageType = attendanceType === 'in' ? 'Masuk' : 'Pulang';
+      const message = `Pegawai dengan nama : ${teacherName} telah melakukan Absen ${messageType} di sekolah pada ${date} pukul ${time}.`;
 
-     // If not found in settings, try to get from principal's user record
-     const schoolRef = doc(db, "schools", schoolId);
-     const schoolDoc = await getDoc(schoolRef);
-
-     if (schoolDoc.exists() && schoolDoc.data().principalId) {
-       const principalId = schoolDoc.data().principalId;
-       const principalRef = doc(db, "users", principalId);
-       const principalDoc = await getDoc(principalRef);
-
-       if (principalDoc.exists() && principalDoc.data().telegramId) {
-         return principalDoc.data().telegramId;
-       }
-     }
-
-     return '';
-   } catch (error) {
-     console.error("Error getting principal's Telegram ID:", error);
-     return '';
-   }
- };
- // Initialize timer
- useEffect(() => {
-   const timer = setInterval(() => {
-     setCurrentTime(new Date());
-   }, 1000);
-
-   return () => clearInterval(timer);
- }, []);
- // Load face detection models and fetch school location on mount
- useEffect(() => {
-   const initializeResources = async () => {
-     setIsLoading(true);
-     await loadModels();
-     await fetchSchoolLocation();
-     setIsLoading(false);
-   };
-
-   initializeResources();
-
-   return () => {
-     // Clean up camera on unmount
-     stopCamera();
-   };
- }, [schoolId]);
- return (
-   <div className="pb-20 md:pb-6">
-     <div className="max-w-md mx-auto">
-       {/* Header */}
-       <div className="bg-[#0A2463] text-white p-4 rounded-b-xl shadow-lg mb-6">
-         <h1 className="text-xl font-bold text-center">Absensi Selfie & Lokasi</h1>
-         <div className="flex justify-between items-center mt-2">
-           <div className="flex items-center">
-             <Clock className="w-5 h-5 mr-2" />
-             <span>{formattedTime}</span>
-           </div>
-           <div>
-             <span className="text-sm">{formattedDate}</span>
-           </div>
-         </div>
-       </div>
-
-       {/* Main content */}
-       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-         {isLoading ? (
-           <div className="flex flex-col items-center justify-center p-10">
-             <Loader2 className="w-12 h-12 text-[#0A2463] animate-spin mb-4" />
-             <p>Memuat sistem absensi...</p>
-           </div>
-         ) : attendanceSuccess ? (
-           <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             className="p-6 flex flex-col items-center"
-           >
-             <div className="bg-green-100 p-4 rounded-full mb-6">
-               <CheckCircle className="w-16 h-16 text-green-600" />
-             </div>
-             <h2 className="text-xl font-bold mb-2 text-center">Absensi Berhasil!</h2>
-             <p className="text-gray-600 mb-6 text-center">
-               {`Absensi ${attendanceType} Anda telah berhasil dicatat pada ${formattedTime}.`}
-             </p>
-             <Link href="/dashboard" className="bg-[#0A2463] text-white py-3 px-6 rounded-lg font-medium hover:bg-opacity-90 transition-all">
-               Kembali ke Dashboard
-             </Link>
-           </motion.div>
-         ) : (
-           <div className="p-6">
-             <AnimatePresence>
-               {attendanceError && (
-                 <motion.div
-                   initial={{ opacity: 0, height: 0 }}
-                   animate={{ opacity: 1, height: 'auto' }}
-                   exit={{ opacity: 0, height: 0 }}
-                   className="bg-red-100 border-l-4 border-red-600 text-red-700 p-4 mb-6"
-                 >
-                   <div className="flex items-center">
-                     <AlertTriangle className="w-5 h-5 mr-2" />
-                     <p>{attendanceError}</p>
-                   </div>
-                 </motion.div>
-               )}
-             </AnimatePresence>
-
-             {/* Camera view */}
-             <div className="flex flex-col items-center">
-               <div className="relative w-full max-w-sm rounded-xl overflow-hidden bg-gray-100 mb-6 aspect-[3/4]">
-                 {isCameraActive ? (
-                   <>
-                     <video
-                       ref={videoRef}
-                       autoPlay
-                       playsInline
-                       muted
-                       className="w-full h-full object-cover"
-                     />
-                     <div className="absolute bottom-4 left-0 right-0 flex justify-center">
-                       <div className={`px-3 py-1 rounded-full text-xs font-medium ${isInRadius ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
-                         {isInRadius ? '✓ Dalam radius sekolah' : '✗ Di luar radius sekolah'}
-                       </div>
-                     </div>
-                   </>
-                 ) : (
-                   <div className="w-full h-full flex flex-col items-center justify-center p-6">
-                     <Camera className="w-20 h-20 text-gray-300 mb-4" />
-                     <p className="text-gray-500 text-center">
-                       Kamera tidak aktif. Klik tombol di bawah untuk memulai.
-                     </p>
-                   </div>
-                 )}
-               </div>
-
-               {/* Hidden canvas for capturing images */}
-               <canvas ref={canvasRef} className="hidden" />
-
-               {/* Location status */}
-               <div className="w-full bg-gray-50 rounded-lg p-4 mb-6">
-                 <div className="flex items-center justify-between mb-2">
-                   <div className="flex items-center">
-                     <MapPin className="w-5 h-5 text-gray-500 mr-2" />
-                     <span className="font-medium">Status Lokasi</span>
-                   </div>
-
-                   {locationProcessing ? (
-                     <span className="text-gray-500 flex items-center">
-                       <Loader2 className="w-4 h-4 animate-spin mr-1" />
-                       Memeriksa...
-                     </span>
-                   ) : isInRadius ? (
-                     <span className="text-green-600 font-medium flex items-center">
-                       <CheckCircle className="w-4 h-4 mr-1" />
-                       Lokasi Valid
-                     </span>
-                   ) : (
-                     <span className="text-red-600 font-medium flex items-center">
-                       <XCircle className="w-4 h-4 mr-1" />
-                       Di Luar Radius
-                     </span>
-                   )}
-                 </div>
-
-                 <div className="text-sm text-gray-500">
-                   {currentLocation.lat !== 0 ? (
-                     <>
-                       <p>Koordinat: {currentLocation.lat.toFixed(6)}, {currentLocation.lon.toFixed(6)}</p>
-                       <p>
-                         Jarak ke sekolah: {Math.round(calculateDistance(
-                           currentLocation.lat, currentLocation.lon,
-                           schoolLocation.lat, schoolLocation.lon
-                         ))} meter
-                       </p>
-                     </>
-                   ) : (
-                     <p>Lokasi belum dideteksi</p>
-                   )}
-                 </div>
-               </div>
-
-               {/* Action buttons */}
-               <div className="w-full flex flex-col gap-4">
-                 {isCameraActive ? (
-                   <>
-                     <button
-                       onClick={takeAttendance}
-                       disabled={isProcessing || !isInRadius || !modelsLoaded}
-                       className={`w-full py-3 rounded-lg font-medium flex items-center justify-center ${
-                         isInRadius && modelsLoaded ? 'bg-[#0A2463] text-white hover:bg-opacity-90' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                       } transition-all`}
-                     >
-                       {isProcessing ? (
-                         <>
-                           <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                           Memproses...
-                         </>
-                       ) : (
-                         <>
-                           <Camera className="w-5 h-5 mr-2" />
-                           Ambil Absensi {attendanceType === 'masuk' ? 'Masuk' : 'Pulang'}
-                         </>
-                       )}
-                     </button>
-
-                     <button
-                       onClick={stopCamera}
-                       disabled={isProcessing}
-                       className="w-full py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-all"
-                     >
-                       Matikan Kamera
-                     </button>
-                   </>
-                 ) : (
-                   <button
-                     onClick={startCamera}
-                     disabled={isProcessing}
-                     className="w-full bg-[#0A2463] text-white py-3 rounded-lg font-medium hover:bg-opacity-90 transition-all flex items-center justify-center"
-                   >
-                     <Camera className="w-5 h-5 mr-2" />
-                     Mulai Kamera
-                   </button>
-                 )}
-
-                 {!isCameraActive && (
-                   <Link href="/dashboard" className="w-full py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-all text-center">
-                     Kembali ke Dashboard
-                   </Link>
-                 )}
-               </div>
-             </div>
-           </div>
-         )}
-       </div>
-
-       {/* Helper text */}
-       <div className="bg-blue-50 p-4 rounded-lg mt-6">
-         <h3 className="font-medium text-blue-800 mb-1 text-sm">Panduan Absensi:</h3>
-         <ol className="text-sm text-blue-700 list-decimal pl-4 space-y-1">
-           <li>Pastikan wajah Anda terlihat jelas di kamera</li>
-           <li>Posisikan diri Anda di dalam radius sekolah</li>
-           <li>Izinkan akses kamera dan lokasi</li>
-           <li>Jangan menggunakan VPN atau fake GPS</li>
-         </ol>
-       </div>
-     </div>
-   </div>
- );
+      // Send notification
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      });
+    } catch (error) {
+      console.error("Error sending Telegram notification:", error);
+    }
+  };
+  return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-3 sm:px-4 md:px-6" data-unique-id="d32104d6-9a9f-4fdc-a446-9411cd0c34cf" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+      <div className="flex items-center justify-between mb-6" data-unique-id="e06b4d55-8811-42a8-83fe-e7eab42a347b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+        <div className="flex items-center" data-unique-id="630174f8-fee5-4106-b054-fd9c2f1e92d2" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+          <Link href="/dashboard/absensi-guru" className="p-2 mr-2 hover:bg-gray-100 rounded-full" data-unique-id="a15401f8-be4a-47e7-9bc0-f4e61c998325" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <ArrowLeft size={20} />
+          </Link>
+          <h1 className="text-2xl font-bold text-gray-800" data-unique-id="551c237e-4e62-49ff-8d5e-d433334b6161" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="8455f28f-021e-4e04-9de7-07f1de44e331" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Absensi Selfie + Lokasi</span></h1>
+        </div>
+      </div>
+      
+      {loading ? <div className="flex justify-center items-center h-64" data-unique-id="fe54b613-e70f-4277-b895-c5ac6f8fa98b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+          <Loader2 className="h-12 w-12 text-primary animate-spin" />
+        </div> : success ? <motion.div className="bg-white rounded-xl shadow-md p-8 text-center" initial={{
+      opacity: 0,
+      scale: 0.9
+    }} animate={{
+      opacity: 1,
+      scale: 1
+    }} transition={{
+      duration: 0.3
+    }} data-unique-id="57e4b430-6ab5-41ca-94cf-45f23085a235" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" data-unique-id="af2c4197-8014-482e-8641-fd816cc33b41" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <CheckCircle className="h-12 w-12 text-green-600" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2" data-unique-id="4fde3a97-f7ed-4e5d-b97d-ec8d360747bc" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="ee5bd20d-363c-4500-b632-0b4a873aad5c" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Absensi Berhasil!</span></h2>
+          <p className="text-gray-600 mb-6" data-unique-id="3c74b736-e495-4765-9d70-4df0a9f58e44" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+            {recognizedTeacher?.name}<span className="editable-text" data-unique-id="d0228bb2-bc6f-453c-b390-f8b0a4de4a83" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"> berhasil melakukan absensi </span>{attendanceType === 'in' ? 'masuk' : 'pulang'}<span className="editable-text" data-unique-id="260409cd-e64e-4b08-bae0-58f82854bb80" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">.
+          </span></p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4" data-unique-id="043fe91a-7a0d-4627-ba94-0cc92b0e33dd" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="f087e8b2-a121-449d-a9af-cc549ecfcf85" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="d0e4c7bf-6b27-4cfc-812d-0d472ca7fc1c" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+              Absen Lagi
+            </span></button>
+            <Link href="/dashboard/absensi-guru" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors" data-unique-id="01da0994-ca5f-4c0b-a27e-0ed9734c930e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="8700a239-359c-4979-aaa9-419d1be023fc" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+              Kembali
+            </span></Link>
+          </div>
+        </motion.div> : <div className="bg-white rounded-xl shadow-md overflow-hidden" data-unique-id="6f9d916d-6050-4cbe-87f8-34c62533f030" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+          <div className="p-6 border-b border-gray-200" data-unique-id="85fc3f86-5707-42b0-ba27-0b36ad991804" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+            <h2 className="text-lg font-semibold mb-4" data-unique-id="f2fecdd3-7d45-41f4-97a0-9fb9c43d5a39" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="83f939e9-760a-4231-a36d-80a9d93d2be5" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Scan Absensi dengan Wajah</span></h2>
+            
+            {/* Attendance type selector */}
+            <div className="flex items-center justify-center p-3 bg-gray-50 rounded-lg mb-4" data-unique-id="0b3ffd9f-e6d6-4bf5-ba03-5b9ff0d98147" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+              <div className="flex space-x-2 bg-white p-1 rounded-lg shadow-sm" data-unique-id="20ddb7ec-a123-4935-b1f9-27d4b5fbd372" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <button onClick={() => setAttendanceType("in")} className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-blue-600 text-white" : "bg-white text-gray-700"}`} data-unique-id="fb78072a-b7a8-4ecc-bf60-0aa65ffd8ead" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                  <LogIn size={16} />
+                  <span data-unique-id="dae415a4-d34d-497a-acb8-7da3dea071ea" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="a4801963-9e77-4804-bf8f-34a7d42f9adb" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Absen Masuk</span></span>
+                </button>
+                <button onClick={() => setAttendanceType("out")} className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-blue-600 text-white" : "bg-white text-gray-700"}`} data-unique-id="6aea60ad-6834-4857-8d5b-f478b1c7cfaa" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                  <LogOut size={16} />
+                  <span data-unique-id="6881853f-c787-47c1-aec6-6a10a721470e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="b5107b3c-d154-4eb4-9bbf-b9371be7661d" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Absen Pulang</span></span>
+                </button>
+              </div>
+            </div>
+            
+            {/* Camera view */}
+            <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden mb-4" data-unique-id="b1282829-5b86-4ba6-8850-0f4038557805" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+              {scanning ? <>
+                  <video ref={videoRef} className="w-full h-full object-cover" autoPlay playsInline muted data-unique-id="83042e39-7504-4e68-b6d9-b2ec1f909ac3" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></video>
+                  
+                  {/* Photo capture guide overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center" data-unique-id="80747ac7-e41a-47cb-876a-2338606da1ae" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                    <div className="absolute bottom-8 left-0 right-0 text-center" data-unique-id="aabf3439-ac03-422a-b37c-d754fb2c0eb1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                      <p className="text-white text-sm bg-black bg-opacity-50 inline-block px-3 py-1 rounded-full" data-unique-id="a8cb4557-4a5b-409a-ac54-ec879ee2c8b1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="fc87cb46-0c2d-498a-a78a-b257880124b8" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                        Posisikan diri Anda dengan jelas
+                      </span></p>
+                    </div>
+                  </div>
+                </> : capturedImage ? <img src={capturedImage} alt="Captured" className="w-full h-full object-cover" data-unique-id="4b314dbf-9f47-4aaa-a17d-2b53ec8d82e9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" /> : <div className="flex flex-col items-center justify-center h-full" data-unique-id="59aa8741-aa88-4f20-9418-e80e3ee949ab" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                  <Camera size={48} className="text-gray-400 mb-4" />
+                  <p className="text-gray-400" data-unique-id="dd5f52ed-e7b8-44d4-8c9c-01218ec5b692" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="88395645-fffb-4f92-9f8b-498849af1bc6" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Kamera belum diaktifkan</span></p>
+                </div>}
+              
+              {/* Hidden canvas for processing */}
+              <canvas ref={canvasRef} className="hidden" data-unique-id="c28c65e0-4b20-452e-add8-717f8e252d0c" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></canvas>
+            </div>
+            
+            {/* Location information */}
+            <div className={`p-3 mb-4 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`} data-unique-id="36050dcd-586a-4788-a014-05a2af6ec65b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+              <MapPin className="h-5 w-5 mr-2" />
+              <p className="text-sm" data-unique-id="4a7d4a84-e340-4754-b00e-a6f8ea0418e2" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">{locationMessage || "Mendeteksi lokasi..."}</p>
+            </div>
+            
+            {/* Recognized teacher */}
+            {recognizedTeacher && <div className="p-4 bg-blue-50 rounded-lg mb-4 border border-blue-200" data-unique-id="d76028ae-5461-4bb5-bce6-90db1217b151" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <h3 className="text-lg font-semibold text-blue-800" data-unique-id="b97e6b06-4f45-4642-8b52-4c301fc8b5e4" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">{recognizedTeacher.name}</h3>
+                <p className="text-sm text-blue-600" data-unique-id="e47f9dc0-ed0f-4f03-9dc7-72d4d6f3a420" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true"><span className="editable-text" data-unique-id="1384b8b4-92f3-4c2e-b6e1-25e9f12990cf" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">NIK: </span>{recognizedTeacher.nik}</p>
+                <p className="text-sm text-blue-600" data-unique-id="56b194dc-5b65-4b00-87d6-93a80a21bf25" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true"><span className="editable-text" data-unique-id="78ea938d-f4ca-4eee-887e-b4c4c14542c6" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Jabatan: </span>{recognizedTeacher.role}</p>
+              </div>}
+          </div>
+          
+          <div className="p-6 flex justify-between" data-unique-id="3c1469f6-f467-47ee-b663-5fb20ceef731" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+            {!scanning && !capturedImage && <button onClick={startCamera} className="w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2" data-unique-id="49184681-0d8a-4b8b-9050-b163c528ecae" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <Camera size={20} /><span className="editable-text" data-unique-id="94f4bc66-44c3-44bd-9596-4b5602902b98" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                Aktifkan Kamera
+              </span></button>}
+            
+            {scanning && !capturing && <button onClick={captureImage} className="w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2" disabled={capturing} data-unique-id="f2f93cf0-041d-4ca0-a163-c0b9a68194c1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <Camera size={20} /><span className="editable-text" data-unique-id="4cb3fcb2-97c5-4d14-96a1-e8ad371e200b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                Ambil Gambar
+              </span></button>}
+            
+            {capturedImage && photoTaken && recognizedTeacher && !processingCapture && <button onClick={submitAttendance} className="w-full py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2" disabled={processingCapture} data-unique-id="5e5ea177-0374-4bb7-a39d-4579edecf9ff" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <CheckCircle size={20} /><span className="editable-text" data-unique-id="131eba1e-2b76-4d01-948b-162569c6c5b7" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                Simpan Absensi
+              </span></button>}
+            
+            {(scanning || capturedImage) && !processingCapture && <button onClick={resetProcess} className="py-3 bg-gray-200 text-gray-800 rounded-lg font-medium hover:bg-gray-300 transition-colors px-6 flex items-center justify-center gap-2" data-unique-id="fd6ee1d3-0fed-4cf7-b0f8-d7500aaf6b8f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <X size={20} /><span className="editable-text" data-unique-id="f8ad156f-e433-45db-b4d1-6424b0f81750" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                Batal
+              </span></button>}
+            
+            {processingCapture && <div className="flex items-center justify-center w-full py-3 bg-gray-300 text-gray-700 rounded-lg font-medium" data-unique-id="70690cce-8b91-44af-b454-1dc97032b3be" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <Loader2 size={20} className="animate-spin mr-2" /><span className="editable-text" data-unique-id="8577b6ab-b9ce-4e5f-bc54-a386f5d32018" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                Memproses...
+              </span></div>}
+          </div>
+        </div>}
+      
+      {/* Instructions card */}
+      <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg" data-unique-id="57cbbee6-aa2e-43b7-8e58-0e2490896f80" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+        <div className="flex" data-unique-id="4fead07a-ef5f-463a-a209-fbd70dbca5ba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+          <div className="flex-shrink-0" data-unique-id="f887e578-d9f9-47ec-8e0b-5058b75c51c7" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <AlertCircle className="h-5 w-5 text-yellow-500" />
+          </div>
+          <div className="ml-3" data-unique-id="e963c878-4fe5-44fa-a57a-ec9db45993fe" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <h3 className="text-sm font-medium text-yellow-800" data-unique-id="38ec490e-0314-4afe-934b-dab6228e0923" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="89d789b4-0d71-4bad-90cd-c73f328d91aa" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Petunjuk Absensi</span></h3>
+            <div className="mt-2 text-sm text-yellow-700" data-unique-id="1019e24f-d209-4e91-a978-e76d15da829a" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+              <ul className="list-disc pl-5 space-y-1" data-unique-id="f01b4859-ff3b-43c7-8a55-6fcfb9185d1c" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <li data-unique-id="df98c955-6716-4ba3-af58-59bcbbfb9e82" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="7432c07b-204d-4882-a1ce-818a7d519340" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Pastikan foto selfie Anda terlihat jelas</span></li>
+                <li data-unique-id="04fae238-24c0-4a5e-ae17-706b83dfb6a5" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="6150d406-9f15-4fda-8cda-aa0906d2b765" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Pastikan pencahayaan cukup terang</span></li>
+                <li data-unique-id="d306c388-ec1b-4ad2-a0d2-327536537ff1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="b0342b46-177f-44ac-b839-e86d6ada4407" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Pastikan Anda berada di area sekolah</span></li>
+                <li data-unique-id="4898cf59-90fb-4d47-9d66-6395bacf63f7" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="79056f55-bdbf-4624-8346-8519b953c920" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Aktifkan GPS pada perangkat Anda</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>;
 }
