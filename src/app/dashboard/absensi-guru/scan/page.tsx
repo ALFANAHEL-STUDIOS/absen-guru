@@ -491,12 +491,12 @@ export default function TeacherAttendanceScan() {
         </div>}
       
       {/* Instructions card */}
-      <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg" data-unique-id="57cbbee6-aa2e-43b7-8e58-0e2490896f80" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+      {/*<div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg" data-unique-id="57cbbee6-aa2e-43b7-8e58-0e2490896f80" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
         <div className="flex" data-unique-id="4fead07a-ef5f-463a-a209-fbd70dbca5ba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
           <div className="flex-shrink-0" data-unique-id="f887e578-d9f9-47ec-8e0b-5058b75c51c7" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
             <AlertCircle className="h-5 w-5 text-yellow-500" />
           </div>
-          {/*<div className="ml-3" data-unique-id="e963c878-4fe5-44fa-a57a-ec9db45993fe" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+          <div className="ml-3" data-unique-id="e963c878-4fe5-44fa-a57a-ec9db45993fe" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
             <h3 className="text-sm font-medium text-yellow-800" data-unique-id="38ec490e-0314-4afe-934b-dab6228e0923" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="89d789b4-0d71-4bad-90cd-c73f328d91aa" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Petunjuk Absensi</span></h3>
             <div className="mt-2 text-sm text-yellow-700" data-unique-id="1019e24f-d209-4e91-a978-e76d15da829a" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <ul className="list-disc pl-5 space-y-1" data-unique-id="f01b4859-ff3b-43c7-8a55-6fcfb9185d1c" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
@@ -506,8 +506,8 @@ export default function TeacherAttendanceScan() {
                 <li data-unique-id="4898cf59-90fb-4d47-9d66-6395bacf63f7" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="79056f55-bdbf-4624-8346-8519b953c920" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Aktifkan GPS pada perangkat Anda</span></li>
               </ul>
             </div>
-          </div>*/}
+          </div>
         </div>
       </div>
-    </div>;
+    </div>;*/}
 }
