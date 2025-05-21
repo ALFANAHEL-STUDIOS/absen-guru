@@ -162,7 +162,7 @@ export default function TeacherDashboard({
               <Link href="/dashboard/absensi-guru/profile-user" className="bg-[#4361EE] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="9d56790f-5ed5-419b-8809-f415e7fb832f" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
                 <div className="flex flex-col items-center justify-center" data-unique-id="d67e1a99-fb89-4289-b835-96eebddd4a47" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
                   <div className="bg-[#4361EE] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="5359fecb-882f-44c5-8873-a5452e2dcf29" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
-                    <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    <User className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="16805e52-91c4-4a67-b018-3b1961e0b23c" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="44a1374d-6b4d-4b27-babc-0a54ecde4535" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Profile Saya</span></h3>
                 </div>
