@@ -149,7 +149,7 @@ export default function Reports() {
     <div className="pb-20 md:pb-6">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-800">
-          Laporan Bulan Absensi : {formattedMonth}
+          Laporan Absensi Bulan : {formattedMonth}
         </h1>
         
         <div className="flex items-center space-x-2">
