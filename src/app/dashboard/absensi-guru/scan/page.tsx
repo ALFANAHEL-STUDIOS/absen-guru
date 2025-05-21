@@ -501,7 +501,7 @@ export default function TeacherAttendanceScan() {
                 <p className="text-sm text-white" data-unique-id="2011a9ff-236b-44ea-831d-c27ef674a9d9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
                   <span className="editable-text" data-unique-id="d63d5544-1a6b-41ba-9257-e9457b13f38b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></span>{recognizedTeacher.nik}</p>
                 <p className="text-sm text-white" data-unique-id="f5a19de5-8351-4ece-8e86-1946ae997569" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
-                  <span className="editable-text" data-unique-id="85e40a5d-3d0d-4e2e-b575-70051340847b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></span>{recognizedTeacher.role}</p>
+                  <span className="editable-text" data-unique-id="85e40a5d-3d0d-4e2e-b575-70051340847b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Status : </span>{recognizedTeacher.role}</p>
               </div></center>}
           </div>
           
