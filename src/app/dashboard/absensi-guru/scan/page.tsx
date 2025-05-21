@@ -433,7 +433,7 @@ export default function TeacherAttendanceScan() {
           <p className="text-gray-600 mb-6" data-unique-id="7d960c80-b028-4bad-9f3d-6bebe47e690b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
            GTK dengan nama {recognizedTeacher?.name}<span className="editable-text" data-unique-id="747dde10-4f66-4bef-aee0-b40328684309" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"> 
              telah melakukan Absensi</span>"{attendanceType === 'in' ? 'MASUK' : 'PULANG'}
-            di Sekolah pada tanggal {$.date} pukul {$.time}<span className="editable-text" data-unique-id="26f29e7d-558a-4cb8-8fc0-874fcdf7a59f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">"WIB.
+            di Area Sekolah<span className="editable-text" data-unique-id="26f29e7d-558a-4cb8-8fc0-874fcdf7a59f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">".
           </span></p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4" data-unique-id="3a31698a-0e73-4cfe-b5cd-5461c54a24af" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
             {/*<button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="ab94985c-1582-4532-9d2a-8a7c196c8aa1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="97399fef-c22f-4132-b97c-b9d89ad26fd9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
