@@ -412,7 +412,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
         })
       });
     } catch (error) {
-      console.error("Error sending Telegram notification:", error);
+      console.error("Error sending Telegram notification :", error);
     }
   };
 
