@@ -111,7 +111,7 @@ export default function Dashboard() {
       }
     };
     fetchSchoolData();
-    setUserName(user?.displayName || "Pengguna");
+    setUserName(user?.displayName || "Selamat Datang");
 
     // Check if the user is an admin without school setup
     if (typeof window !== 'undefined' && userRole === 'admin') {
@@ -132,7 +132,7 @@ export default function Dashboard() {
         </h1>
         <div className="flex items-center mt-1 text-gray-500" data-unique-id="1950b5b0-fb7b-4aa8-ba9f-d6aa997f5d33" data-file-name="app/dashboard/page.tsx">
           <Home size={14} className="mr-1.5" />
-          <span className="font-medium text-xs" data-unique-id="11743eef-f70a-40b2-b0c8-ab113a91932d" data-file-name="app/dashboard/page.tsx"><span className="editable-text" data-unique-id="6c5d7bc0-f711-4096-8b8e-b19233478b23" data-file-name="app/dashboard/page.tsx">SELAMAT DATANG DI ABSENSI DIGITAL</span></span>
+          <span className="font-medium text-xs" data-unique-id="11743eef-f70a-40b2-b0c8-ab113a91932d" data-file-name="app/dashboard/page.tsx"><span className="editable-text" data-unique-id="6c5d7bc0-f711-4096-8b8e-b19233478b23" data-file-name="app/dashboard/page.tsx">SISTEM ABSENSI DIGITAL GURU DAN SISWA</span></span>
         </div>
       </div>
 
