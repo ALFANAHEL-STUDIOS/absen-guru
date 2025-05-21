@@ -331,7 +331,7 @@ export default function TeacherAttendanceScan() {
       // Send Telegram notification
       await sendTelegramNotification(recognizedTeacher.name, attendanceType, dateStr, timeStr);
       setSuccess(true);
-      toast.success(`Absensi ${attendanceType === 'in' ? 'masuk' : 'pulang'} berhasil tercatat!`);
+      toast.success(`Absensi ${attendanceType === 'in' ? 'Masuk' : 'Pulang'} berhasil tercatat!`);
     } catch (error) {
       console.error("Error submitting attendance:", error);
       toast.error("Gagal mencatat absensi");
@@ -431,7 +431,7 @@ export default function TeacherAttendanceScan() {
           </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2" data-unique-id="5dd794d1-4816-42b6-85ae-fb73b3244e41" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="25c960ba-f7d3-48a2-a3ef-62fe5acd0234" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Absensi Berhasil!</span></h2>
           <p className="text-gray-600 mb-6" data-unique-id="7d960c80-b028-4bad-9f3d-6bebe47e690b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
-            {recognizedTeacher?.name}<span className="editable-text" data-unique-id="747dde10-4f66-4bef-aee0-b40328684309" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"> berhasil melakukan Absensi </span>{attendanceType === 'in' ? 'Masuk' : 'Pulang'}<span className="editable-text" data-unique-id="26f29e7d-558a-4cb8-8fc0-874fcdf7a59f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">.
+            {recognizedTeacher?.name}<span className="editable-text" data-unique-id="747dde10-4f66-4bef-aee0-b40328684309" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"> berhasil melakukan "Absensi </span>{attendanceType === 'in' ? 'Masuk' : 'Pulang'}<span className="editable-text" data-unique-id="26f29e7d-558a-4cb8-8fc0-874fcdf7a59f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">".
           </span></p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4" data-unique-id="3a31698a-0e73-4cfe-b5cd-5461c54a24af" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
             {/*<button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="ab94985c-1582-4532-9d2a-8a7c196c8aa1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="97399fef-c22f-4132-b97c-b9d89ad26fd9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
@@ -496,9 +496,9 @@ export default function TeacherAttendanceScan() {
             {recognizedTeacher && 
               <center><div className="p-4 bg-green-50 rounded-lg mb-4 border border-green-200" data-unique-id="079b614b-8eea-4002-8e0c-117536b80737" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
                 <h3 className="text-lg font-semibold text-blue-800" data-unique-id="3685f6bc-8cbe-49d8-8954-1e7df183a1a1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">{recognizedTeacher.name}</h3>
-                <p className="text-sm text-green-700" data-unique-id="2011a9ff-236b-44ea-831d-c27ef674a9d9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+                <p className="text-sm text-blue-700" data-unique-id="2011a9ff-236b-44ea-831d-c27ef674a9d9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
                   <span className="editable-text" data-unique-id="d63d5544-1a6b-41ba-9257-e9457b13f38b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></span>{recognizedTeacher.nik}</p>
-                <p className="text-sm text-green-700" data-unique-id="f5a19de5-8351-4ece-8e86-1946ae997569" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+                <p className="text-sm text-blue-700" data-unique-id="f5a19de5-8351-4ece-8e86-1946ae997569" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
                   <span className="editable-text" data-unique-id="85e40a5d-3d0d-4e2e-b575-70051340847b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></span>{recognizedTeacher.role}</p>
               </div></center>}
           </div>
