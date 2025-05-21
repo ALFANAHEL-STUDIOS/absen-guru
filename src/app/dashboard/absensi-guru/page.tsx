@@ -264,9 +264,9 @@ export default function AbsensiGuruPage() {
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-unique-id="d355c194-eea1-48bd-8463-81380bd477ef" data-file-name="app/dashboard/absensi-guru/page.tsx">
-              <Link href="/dashboard/absensi-guru/scan" className="flex flex-col items-center p-4 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors" data-unique-id="a159f640-10ed-442f-8a6c-d4848142e984" data-file-name="app/dashboard/absensi-guru/page.tsx">
+              <Link href="/dashboard/absensi-guru/attendance-table" className="flex flex-col items-center p-4 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors" data-unique-id="a159f640-10ed-442f-8a6c-d4848142e984" data-file-name="app/dashboard/absensi-guru/page.tsx">
                 <Camera className="h-10 w-10 text-blue-600 mb-2" />
-                <span className="font-medium text-blue-800" data-unique-id="39e9fefe-cc59-43ed-87f0-250e3e637179" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="26c767e3-151f-4b95-8667-c9377d050264" data-file-name="app/dashboard/absensi-guru/page.tsx">Scan Absensi</span></span>
+                <span className="font-medium text-blue-800" data-unique-id="39e9fefe-cc59-43ed-87f0-250e3e637179" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="26c767e3-151f-4b95-8667-c9377d050264" data-file-name="app/dashboard/absensi-guru/page.tsx">Absensi Guru</span></span>
               </Link>
               
               <Link href="/dashboard/absensi-guru/data" className="flex flex-col items-center p-4 bg-green-50 rounded-xl border border-green-100 hover:bg-green-100 transition-colors" data-unique-id="1fa917cc-4622-408e-a531-22bf0b52ba72" data-file-name="app/dashboard/absensi-guru/page.tsx">
