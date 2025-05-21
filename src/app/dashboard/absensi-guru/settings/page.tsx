@@ -395,8 +395,8 @@ export default function TeacherAttendanceSettings() {
             {activeTab === 'telegram' && <div data-unique-id="5cdae872-6ead-4913-802d-9cafa7ed417e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                 <h2 className="text-lg font-semibold mb-6" data-unique-id="ba87a4f5-ac49-4bb8-a20f-e1cc89275a88" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="de5d1f5c-47b8-4413-9d94-963fccf9fa92" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">Pengaturan Telegram</span></h2>
                 
-                {/*<div className="mb-6" data-unique-id="8c00bd5f-1356-45ad-8615-73633d63f0e9" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
-                  <div className="flex items-start bg-blue-50 p-4 rounded-lg mb-6" data-unique-id="a70b5fb3-32be-4d72-b796-643d8ccea97a" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
+                <div className="mb-6" data-unique-id="8c00bd5f-1356-45ad-8615-73633d63f0e9" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
+                  {/*<div className="flex items-start bg-blue-50 p-4 rounded-lg mb-6" data-unique-id="a70b5fb3-32be-4d72-b796-643d8ccea97a" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                     <AlertCircle className="h-5 w-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" />
                     <div data-unique-id="5edf4510-071c-4254-baae-4b83f15d7def" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                       <h4 className="font-medium text-blue-700" data-unique-id="aff650cc-e14f-41ee-a71e-28dd9d1f42a9" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="65b91cb3-4492-4c5d-9181-dc8a32163f4e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">Informasi Bot Telegram</span></h4>
@@ -410,15 +410,15 @@ export default function TeacherAttendanceSettings() {
                   
                   <div className="grid grid-cols-1 gap-4 mb-6" data-unique-id="9c5900b0-da84-4caf-bfe6-4b3392813b54" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" data-dynamic-text="true">
                     {/* Bot Token */}
-                    <div data-unique-id="9dcb48e4-7aa9-46ae-b353-5ff500545138" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
+                    {/*<div data-unique-id="9dcb48e4-7aa9-46ae-b353-5ff500545138" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                       <label htmlFor="token" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="1b913997-4d01-4e7f-bfef-3ff9b3b0566d" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="be6c6365-ea42-4802-b706-890a5c2960a1" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         Token Bot
                       </span></label>
-                      <input type="text" id="token" name="token" value={telegramSettings.token} onChange={handleTelegramChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="14078faa-936e-4889-a53f-93d97072782a" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                      <input type="text" id="token" name="token" disabled value={telegramSettings.token} onChange={handleTelegramChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="14078faa-936e-4889-a53f-93d97072782a" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                       <p className="text-xs text-gray-500 mt-1" data-unique-id="09ed8827-f85c-48e8-a72d-21d48f281790" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="f56c291b-1b8f-4717-b558-d9847415cb15" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         Token default: </span><code data-unique-id="c2a921cc-7436-499d-8c78-36ad5d7b1bc0" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="67163368-fa7a-48ae-beb9-65aee51d638e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">7702797779:AAELhARB3HkvB9hh5e5D64DCC4faDfcW9IM</span></code>
                       </p>
-                    </div>
+                    </div>*/}
                     
                     {/* Chat ID */}
                     <div data-unique-id="a4670cde-f7b7-40f6-bf42-036162326337" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
@@ -435,7 +435,7 @@ export default function TeacherAttendanceSettings() {
                       </span></label>
                       <div className="relative" data-unique-id="fba0a09f-7ef4-4fb2-adf8-9f390e7aaca1" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500" data-unique-id="54653a66-4b5c-466a-8511-6ca2ed96db49" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="981d2f59-4377-4475-a54d-402079728dc3" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">@</span></span>
-                        <input type="text" id="botUsername" name="botUsername" value={telegramSettings.botUsername} onChange={handleTelegramChange} className="w-full pl-8 px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="613b45d6-8e13-4944-9ea3-36eb34274b2e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="text" id="botUsername" name="botUsername" disabled value={telegramSettings.botUsername} onChange={handleTelegramChange} className="w-full pl-8 px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="613b45d6-8e13-4944-9ea3-36eb34274b2e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                       </div>
                     </div>
                   </div>
