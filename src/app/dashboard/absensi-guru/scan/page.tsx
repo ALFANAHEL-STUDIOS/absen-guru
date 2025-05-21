@@ -470,9 +470,10 @@ export default function TeacherAttendanceScan() {
                   
                   {/* Photo capture guide overlay */}
                   <div className="absolute inset-0 flex items-center justify-center" data-unique-id="7c3dd98f-8b00-4c3c-a80a-04c723feb4e2" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
-                    <div className="absolute bottom-8 left-0 right-0 text-center" data-unique-id="144b7fe4-fb17-42ad-be1d-4a5c5efe20a4" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
-                      <p className="text-white text-sm bg-black bg-opacity-50 inline-block px-3 py-1 rounded-full" data-unique-id="aec2e790-fd40-4d0e-9945-1fb6d3b56dba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="9fe61513-9d1f-4b12-a964-3d930d0a3b42" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
-                        Posisikan diri Anda dengan jelas
+                    <div className="absolute bottom-4 left-0 right-0 text-center" data-unique-id="144b7fe4-fb17-42ad-be1d-4a5c5efe20a4" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                      <p className="text-gray-500 text-sm bg-black bg-opacity-50 inline-block px-3 py-1 rounded-full" data-unique-id="aec2e790-fd40-4d0e-9945-1fb6d3b56dba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                        <span className="editable-text" data-unique-id="9fe61513-9d1f-4b12-a964-3d930d0a3b42" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                        Posisikan diri Anda dengan tepat
                       </span></p>
                     </div>
                   </div>
