@@ -41,10 +41,10 @@ export default function TeacherAttendanceSettings() {
     radius: 100
   });
   const [attendanceTimeSettings, setAttendanceTimeSettings] = useState<AttendanceTimeSettings>({
-    checkInStart: "",
-    checkInEnd: "",
-    checkOutStart: "",
-    checkOutEnd: ""
+   checkInStart: "06:00",
+    checkInEnd: "08:00",
+    checkOutStart: "15:00",
+    checkOutEnd: "17:00"
   });
   const [telegramSettings, setTelegramSettings] = useState<TelegramSettings>({
     token: "7702797779:AAELhARB3HkvB9hh5e5D64DCC4faDfcW9IM",
@@ -271,7 +271,7 @@ export default function TeacherAttendanceSettings() {
               </span></button>
               <button className={`py-4 px-6 font-medium text-sm border-b-2 ${activeTab === 'time' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-700'}`} onClick={() => setActiveTab('time')} data-unique-id="dd0b038a-54d3-4db9-baf8-36f2b67d7e31" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                 <Clock size={16} className="inline-block mr-2" /><span className="editable-text" data-unique-id="9a4e1cff-c3d3-4654-909b-f8c2c31e19ab" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
-                Jam Kerja
+                Jam
               </span></button>
               <button className={`py-4 px-6 font-medium text-sm border-b-2 ${activeTab === 'telegram' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-700'}`} onClick={() => setActiveTab('telegram')} data-unique-id="71bb5a8e-5bf5-46ed-94b1-d09c81b39f06" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                 <MessageSquare size={16} className="inline-block mr-2" /><span className="editable-text" data-unique-id="9c72a272-f67e-47a4-9fc2-65cad561672c" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
@@ -356,13 +356,13 @@ export default function TeacherAttendanceSettings() {
                         <label htmlFor="checkInStart" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="b36d5833-eb6b-4de1-ac4c-e725b58caf95" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="8fa91982-5c05-44ac-a83a-c9133a253392" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           Waktu Mulai
                         </span></label>
-                        <input type="time" id="checkInStart" name="checkInStart" value={attendanceTimeSettings.checkInStart} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="de5ceb4a-2270-48c7-a0fc-03ad8c6939de" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="time" id="checkInStart" name="checkInStart" disabled value={attendanceTimeSettings.checkInStart} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="de5ceb4a-2270-48c7-a0fc-03ad8c6939de" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                       </div>
                       <div data-unique-id="5d9ad993-42df-4ad4-9a41-c3546dcd0065" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         <label htmlFor="checkInEnd" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="b97da800-ce05-4230-b8d9-b6bb9c0502cd" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="02537f32-58e6-482b-aa02-4023c5a1ad7b" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           Batas Waktu
                         </span></label>
-                        <input type="time" id="checkInEnd" name="checkInEnd" value={attendanceTimeSettings.checkInEnd} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="3003eeb7-9a22-4830-a5cf-00e3c0c022f0" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="time" id="checkInEnd" name="checkInEnd" disabled value={attendanceTimeSettings.checkInEnd} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="3003eeb7-9a22-4830-a5cf-00e3c0c022f0" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                         <p className="text-xs text-gray-500 mt-1" data-unique-id="6960cb8c-002a-49e7-a42e-639b2eed483e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="98681867-31e3-4f3a-9059-bea14e5cc5eb" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           * Absensi setelah waktu ini akan dianggap terlambat
                         </span></p>
