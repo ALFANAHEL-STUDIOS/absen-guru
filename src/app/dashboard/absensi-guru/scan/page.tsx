@@ -485,7 +485,7 @@ export default function TeacherAttendanceScan() {
                 <span className="editable-text" data-unique-id="020d44a7-bf22-4e3d-8b48-a8505d3768a2" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Batal</span>
               </button>}
             
-            {processingCapture && <div className="col-span-full flex items-center justify-center py-3 bg-gray-300 text-gray-700 rounded-lg font-medium" data-unique-id="dc83e4eb-3edd-4b00-958e-6a3bd8bcc77e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            {processingCapture && <div className="col-span-full flex items-center justify-center py-3 bg-orange-300 text-white rounded-lg font-medium" data-unique-id="dc83e4eb-3edd-4b00-958e-6a3bd8bcc77e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
                 <Loader2 size={20} className="animate-spin mr-2" />
                 <span className="editable-text" data-unique-id="de71410d-4e5e-4a35-b7be-0a1ee05510b3" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Memproses...</span>
               </div>}
