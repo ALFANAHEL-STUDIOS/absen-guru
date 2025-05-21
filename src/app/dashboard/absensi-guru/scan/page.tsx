@@ -439,7 +439,7 @@ export default function TeacherAttendanceScan() {
             {/*<button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="ab94985c-1582-4532-9d2a-8a7c196c8aa1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="97399fef-c22f-4132-b97c-b9d89ad26fd9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               Absen Lagi
             </span></button>*/}
-            <Link href="/dashboard/absensi-guru/attendance-table" className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center" data-unique-id="e44ce7c5-e2b2-4cda-bb93-d75bb8ae21ba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <Link href="https://api.telegram.org/bot${token}/sendMessage" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center" data-unique-id="e44ce7c5-e2b2-4cda-bb93-d75bb8ae21ba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <span className="editable-text" data-unique-id="271dcb13-3785-4c2e-abe2-d0df598e858d" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Lihat Hasil Absensi</span>
             </Link>
             <Link href="/dashboard/absensi-guru" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center justify-center" data-unique-id="980f8a59-f3d7-4376-8251-802dd82d0aff" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="14ffee72-2a96-4bd3-a0e6-cbf7e851afb3" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
