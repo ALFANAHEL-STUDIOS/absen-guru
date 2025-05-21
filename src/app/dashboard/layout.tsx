@@ -359,20 +359,33 @@ const DashboardLayout = ({
           
           {/* TEACHER NAVIGATION */}
           {userRole === 'teacher' && <>            
-              <Link href="/dashboard/students" className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${isActive('/dashboard/students') ? 'bg-blue-800 text-white font-medium' : 'text-white hover:bg-blue-800'}`} onClick={() => setMenuOpen(false)} data-unique-id="259fbafe-ad6a-479d-92c8-62692283d982" data-file-name="app/dashboard/layout.tsx">
-                <Users size={20} />
-                <span data-unique-id="d3f36798-6f83-42c1-82a9-ca6ec4fdcd27" data-file-name="app/dashboard/layout.tsx"><span className="editable-text" data-unique-id="d0af66be-8c34-44a2-b215-b1e0fa7de230" data-file-name="app/dashboard/layout.tsx">Daftar Siswa</span></span>
-              </Link>
               
               <Link href="/dashboard/classes" className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${isActive('/dashboard/classes') ? 'bg-blue-800 text-white font-medium' : 'text-white hover:bg-blue-800'}`} onClick={() => setMenuOpen(false)} data-unique-id="56c85ad1-407f-42b8-82d4-9f338c174a33" data-file-name="app/dashboard/layout.tsx">
                 <BookOpen size={20} />
-                <span data-unique-id="b2ecb1ec-153a-4598-87c1-650ce34ed279" data-file-name="app/dashboard/layout.tsx"><span className="editable-text" data-unique-id="0548d7ad-28d2-4e3f-9005-5b078cbfa228" data-file-name="app/dashboard/layout.tsx">Daftar Kelas</span></span>
+                <span data-unique-id="b2ecb1ec-153a-4598-87c1-650ce34ed279" data-file-name="app/dashboard/layout.tsx"><span className="editable-text" data-unique-id="0548d7ad-28d2-4e3f-9005-5b078cbfa228" data-file-name="app/dashboard/layout.tsx">Manajemen Kelas</span></span>
               </Link>
-              
+
+            <Link href="/dashboard/students" className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${isActive('/dashboard/students') ? 'bg-blue-800 text-white font-medium' : 'text-white hover:bg-blue-800'}`} onClick={() => setMenuOpen(false)} data-unique-id="259fbafe-ad6a-479d-92c8-62692283d982" data-file-name="app/dashboard/layout.tsx">
+                <Users size={20} />
+                <span data-unique-id="d3f36798-6f83-42c1-82a9-ca6ec4fdcd27" data-file-name="app/dashboard/layout.tsx"><span className="editable-text" data-unique-id="d0af66be-8c34-44a2-b215-b1e0fa7de230" data-file-name="app/dashboard/layout.tsx">Manajemen Siswa</span></span>
+              </Link>
+                            
               <Link href="/dashboard/scan" className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${isActive('/dashboard/scan') ? 'bg-blue-800 text-white font-medium' : 'text-white hover:bg-blue-800'}`} onClick={() => setMenuOpen(false)} data-unique-id="8452dace-0f39-4699-a723-9e377dca752e" data-file-name="app/dashboard/layout.tsx">
                 <Scan size={20} />
-                <span data-unique-id="13ba8a42-97d7-4430-bea4-808c9e10db74" data-file-name="app/dashboard/layout.tsx"><span className="editable-text" data-unique-id="f3a6caab-3d61-489c-aba1-d7f06413534a" data-file-name="app/dashboard/layout.tsx">Scan Absensi</span></span>
+                <span data-unique-id="13ba8a42-97d7-4430-bea4-808c9e10db74" data-file-name="app/dashboard/layout.tsx"><span className="editable-text" data-unique-id="f3a6caab-3d61-489c-aba1-d7f06413534a" data-file-name="app/dashboard/layout.tsx">Absensi Siswa</span></span>
               </Link>
+
+
+            <Link href="/dashboard/students/qr" className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${isActive('/dashboard/students') ? 'bg-blue-800 text-white font-medium' : 'text-white hover:bg-blue-800'}`} onClick={() => setMenuOpen(false)} data-unique-id="259fbafe-ad6a-479d-92c8-62692283d982" data-file-name="app/dashboard/layout.tsx">
+                <Qr-Code size={20} />
+                <span data-unique-id="d3f36798-6f83-42c1-82a9-ca6ec4fdcd27" data-file-name="app/dashboard/layout.tsx"><span className="editable-text" data-unique-id="d0af66be-8c34-44a2-b215-b1e0fa7de230" data-file-name="app/dashboard/layout.tsx">Kartu QR Siswa</span></span>
+              </Link>
+
+            <Link href="/dashboard/absensi-guru" className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${isActive('/dashboard/scan') ? 'bg-blue-800 text-white font-medium' : 'text-white hover:bg-blue-800'}`} onClick={() => setMenuOpen(false)} data-unique-id="8452dace-0f39-4699-a723-9e377dca752e" data-file-name="app/dashboard/layout.tsx">
+                <Scan size={20} />
+                <span data-unique-id="13ba8a42-97d7-4430-bea4-808c9e10db74" data-file-name="app/dashboard/layout.tsx"><span className="editable-text" data-unique-id="f3a6caab-3d61-489c-aba1-d7f06413534a" data-file-name="app/dashboard/layout.tsx">Absensi Guru</span></span>
+              </Link>
+              
             </>}
           
           {/* COMMON NAVIGATION FOR ALL USERS */}          
