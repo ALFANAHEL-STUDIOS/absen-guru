@@ -216,7 +216,7 @@ export default function ScanQR() {
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center">
           <QrCode className="h-7 w-7 text-primary mr-3" />
-          <h1 className="text-2xl font-bold text-gray-800">Scan QR Pegawai</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Scan QR Siswa</h1>
         </div>
         
         <button onClick={toggleMute} className="p-2 rounded-full hover:bg-gray-100">
