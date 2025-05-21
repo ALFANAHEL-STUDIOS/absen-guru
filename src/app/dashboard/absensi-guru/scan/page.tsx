@@ -449,7 +449,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
           <h2 className="text-2xl font-bold text-gray-800 mb-2" data-unique-id="5dd794d1-4816-42b6-85ae-fb73b3244e41" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="25c960ba-f7d3-48a2-a3ef-62fe5acd0234" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Absensi Berhasil!</span></h2>
           <p className="text-gray-600 mb-6" data-unique-id="7d960c80-b028-4bad-9f3d-6bebe47e690b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
            {recognizedTeacher?.name} <span className="editable-text" data-unique-id="747dde10-4f66-4bef-aee0-b40328684309" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"> 
-             berhasil melakukan Absensi</span> "{attendanceType === 'in' ? 'MASUK' : 'PULANG'}" pada hari ini {formattedDate} pukul {formattedTime} WIB.
+             telah berhasil melakukan Absensi</span> "{attendanceType === 'in' ? 'MASUK' : 'PULANG'}" pada hari ini {formattedDate} pukul {formattedTime} WIB.
             <span className="editable-text" data-unique-id="26f29e7d-558a-4cb8-8fc0-874fcdf7a59f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
           </span></p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4" data-unique-id="3a31698a-0e73-4cfe-b5cd-5461c54a24af" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
