@@ -446,7 +446,8 @@ export default function TeacherAttendanceScan() {
           </div>
         </motion.div> : <div className="bg-white rounded-xl shadow-md overflow-hidden" data-unique-id="f6796bc6-edfa-4594-9e8e-171434a2007e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
           <div className="p-6 border-b border-gray-200" data-unique-id="5126f0f3-e6a1-4da6-9129-954e72682513" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
-            <h2 className="text-lg font-semibold mb-4" data-unique-id="f4311397-5296-4eaa-9f18-425b8b968cfa" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="3b0f0f36-126f-4734-8dd3-1fa872c95fa2" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Pilih Jenis Absensi :</span></h2>
+            <center><h2 className="text-lg font-semibold mb-4" data-unique-id="f4311397-5296-4eaa-9f18-425b8b968cfa" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+              <span className="editable-text" data-unique-id="3b0f0f36-126f-4734-8dd3-1fa872c95fa2" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Pilih Jenis Absensi :</span></h2></center>
             
             {/* Attendance type selector */}
             <div className="flex items-center justify-center p-3 bg-gray-50 rounded-lg mb-4" data-unique-id="ef23db88-c069-479a-bc49-482fd9b6fa09" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
