@@ -551,7 +551,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
           </div>
         </div>}
       <hr className="border-t border-none mb-5" />
-    <hr className="border-t border-none mb-5" />
+   
       {/* Instructions card */}
     {/*<div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg">
       <div className="flex">
