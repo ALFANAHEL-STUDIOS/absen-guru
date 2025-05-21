@@ -218,11 +218,12 @@ export default function AbsensiGuruPage() {
                 <table className="w-full" data-unique-id="f81c4173-19a8-4f54-8709-9b2f8ec1740f" data-file-name="app/dashboard/absensi-guru/page.tsx">
                   <thead data-unique-id="1bd0e741-a923-4ace-973e-f0ffa28b1269" data-file-name="app/dashboard/absensi-guru/page.tsx">
                     <tr className="bg-gray-50 text-left" data-unique-id="0c21f8f7-489e-42dd-b5da-79a0196ed8d3" data-file-name="app/dashboard/absensi-guru/page.tsx">
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="d1c21a69-2fe9-4c10-9379-510f6eb0d913" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="37ecd54c-510f-4bda-86d9-26c52104a34c" data-file-name="app/dashboard/absensi-guru/page.tsx">Nama</span></th>
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="bcc6c5f7-5d45-4f4a-9f51-4cea598656c9" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="4ac88219-35f6-4f63-9892-8d2bbd45d14e" data-file-name="app/dashboard/absensi-guru/page.tsx">Tanggal</span></th>
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="aecfe1a3-58f9-4229-9a42-9da6c8a1edc7" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="c1e3d480-8c04-4de9-9db3-3b371abb01f7" data-file-name="app/dashboard/absensi-guru/page.tsx">Waktu</span></th>
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="622970de-3890-46be-bebe-ecf78bd380a4" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="c3fc79c0-4a4b-4162-b81a-378814e1d8d6" data-file-name="app/dashboard/absensi-guru/page.tsx">Status</span></th>
-                      <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" data-unique-id="701fb816-0252-4636-a175-db4de5a3b1b6" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="ac51879e-5ec0-4fa7-b7d1-2ace2ba495ee" data-file-name="app/dashboard/absensi-guru/page.tsx">Jenis</span></th>
+                      <th className="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider" data-unique-id="d1c21a69-2fe9-4c10-9379-510f6eb0d913" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="37ecd54c-510f-4bda-86d9-26c52104a34c" data-file-name="app/dashboard/absensi-guru/page.tsx">Nama</span></th>
+                      <th className="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider" data-unique-id="bcc6c5f7-5d45-4f4a-9f51-4cea598656c9" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="4ac88219-35f6-4f63-9892-8d2bbd45d14e" data-file-name="app/dashboard/absensi-guru/page.tsx">Tanggal</span></th>
+                      <th className="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider" data-unique-id="aecfe1a3-58f9-4229-9a42-9da6c8a1edc7" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="c1e3d480-8c04-4de9-9db3-3b371abb01f7" data-file-name="app/dashboard/absensi-guru/page.tsx">Waktu</span></th>
+                      
+                      <th className="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider" data-unique-id="701fb816-0252-4636-a175-db4de5a3b1b6" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="ac51879e-5ec0-4fa7-b7d1-2ace2ba495ee" data-file-name="app/dashboard/absensi-guru/page.tsx">Absensi</span></th>
+                      <th className="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider" data-unique-id="622970de-3890-46be-bebe-ecf78bd380a4" data-file-name="app/dashboard/absensi-guru/page.tsx"><span className="editable-text" data-unique-id="c3fc79c0-4a4b-4162-b81a-378814e1d8d6" data-file-name="app/dashboard/absensi-guru/page.tsx">Status</span></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200" data-unique-id="e731452e-34af-4a47-b618-e38c4b72177f" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
@@ -230,15 +231,18 @@ export default function AbsensiGuruPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-600" data-is-mapped="true" data-unique-id="71e63011-fe85-476e-bc3b-583eaf35c90f" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{entry.teacherName}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-is-mapped="true" data-unique-id="cab5ff65-6e43-472f-a81d-d1bfe37b3f5c" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{formatDate(entry.date)}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-is-mapped="true" data-unique-id="904e5bc7-9d64-47a3-8784-5b49e0a2b8da" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">{entry.time}</td>
-                        <td className="px-6 py-4 whitespace-nowrap" data-is-mapped="true" data-unique-id="1624f5c9-6187-439f-a636-95ad2417c97c" data-file-name="app/dashboard/absensi-guru/page.tsx">
+                        
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-is-mapped="true" data-unique-id="1d6c4ac5-6e25-4e03-bacf-34905ce71040" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
+                          {entry.type === "in" ? "Masuk" : "Pulang"}
+                        </td>
+                      
+                      <td className="px-6 py-4 whitespace-nowrap" data-is-mapped="true" data-unique-id="1624f5c9-6187-439f-a636-95ad2417c97c" data-file-name="app/dashboard/absensi-guru/page.tsx">
                           <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
                             ${entry.status === "present" ? "bg-green-100 text-green-800" : entry.status === "late" ? "bg-orange-100 text-orange-800" : "bg-red-100 text-red-800"}`} data-is-mapped="true" data-unique-id="a28c9abb-e931-4c15-aeb6-6fdcbb0fa8ac" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
                             {entry.status === "present" ? "Hadir" : entry.status === "late" ? "Terlambat" : "Tidak Hadir"}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" data-is-mapped="true" data-unique-id="1d6c4ac5-6e25-4e03-bacf-34905ce71040" data-file-name="app/dashboard/absensi-guru/page.tsx" data-dynamic-text="true">
-                          {entry.type === "in" ? "Masuk" : "Pulang"}
-                        </td>
+                        
                       </tr>)}
                   </tbody>
                 </table>
