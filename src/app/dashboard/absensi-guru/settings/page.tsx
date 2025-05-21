@@ -41,10 +41,10 @@ export default function TeacherAttendanceSettings() {
     radius: 100
   });
   const [attendanceTimeSettings, setAttendanceTimeSettings] = useState<AttendanceTimeSettings>({
-    checkInStart: "06:00",
-    checkInEnd: "08:00",
-    checkOutStart: "15:00",
-    checkOutEnd: "17:00"
+    checkInStart: "",
+    checkInEnd: "",
+    checkOutStart: "",
+    checkOutEnd: ""
   });
   const [telegramSettings, setTelegramSettings] = useState<TelegramSettings>({
     token: "7702797779:AAELhARB3HkvB9hh5e5D64DCC4faDfcW9IM",
