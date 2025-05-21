@@ -342,7 +342,7 @@ export default function TeacherAttendanceSettings() {
                 
                 <div className="mb-6" data-unique-id="2925b35b-07c1-4632-85ef-6981a1ae1298" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                   <p className="text-gray-600 mb-4" data-unique-id="1c7c79df-c844-4175-9559-6a9d231b4ad3" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="1233e92b-c37a-4e56-8356-5f02de175aa5" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
-                    Atur jam absensi masuk dan pulang. Guru dan tenaga kependidikan hanya dapat
+                    Atur jam absensi masuk dan pulang. Guru hanya dapat
                     melakukan absensi dalam rentang waktu yang ditentukan.
                   </span></p>
                 </div>
@@ -356,13 +356,13 @@ export default function TeacherAttendanceSettings() {
                         <label htmlFor="checkInStart" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="b36d5833-eb6b-4de1-ac4c-e725b58caf95" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="8fa91982-5c05-44ac-a83a-c9133a253392" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           Waktu Mulai
                         </span></label>
-                        <input type="time" id="checkInStart" name="checkInStart" disabled value={attendanceTimeSettings.checkInStart} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="de5ceb4a-2270-48c7-a0fc-03ad8c6939de" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="time" id="checkInStart" name="checkInStart" value={attendanceTimeSettings.checkInStart} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="de5ceb4a-2270-48c7-a0fc-03ad8c6939de" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                       </div>
                       <div data-unique-id="5d9ad993-42df-4ad4-9a41-c3546dcd0065" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         <label htmlFor="checkInEnd" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="b97da800-ce05-4230-b8d9-b6bb9c0502cd" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="02537f32-58e6-482b-aa02-4023c5a1ad7b" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           Batas Waktu
                         </span></label>
-                        <input type="time" id="checkInEnd" name="checkInEnd" disabled value={attendanceTimeSettings.checkInEnd} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="3003eeb7-9a22-4830-a5cf-00e3c0c022f0" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="time" id="checkInEnd" name="checkInEnd" value={attendanceTimeSettings.checkInEnd} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="3003eeb7-9a22-4830-a5cf-00e3c0c022f0" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                         <p className="text-xs text-gray-500 mt-1" data-unique-id="6960cb8c-002a-49e7-a42e-639b2eed483e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="98681867-31e3-4f3a-9059-bea14e5cc5eb" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           * Absensi setelah waktu ini akan dianggap terlambat
                         </span></p>
@@ -378,13 +378,13 @@ export default function TeacherAttendanceSettings() {
                         <label htmlFor="checkOutStart" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="61f1aef8-5f26-4881-9e18-b2af3e1d360e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="0ad69c8e-a3ad-412d-8310-6fcc1393d744" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           Waktu Mulai
                         </span></label>
-                        <input type="time" id="checkOutStart" name="checkOutStart" value={attendanceTimeSettings.checkOutStart} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="8367a040-85ec-4530-be2c-263b7c5d383a" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="time" id="checkOutStart" name="checkOutStart" disabled value={attendanceTimeSettings.checkOutStart} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="8367a040-85ec-4530-be2c-263b7c5d383a" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                       </div>
                       <div data-unique-id="cc2f1b2b-f022-49b6-b555-dc4c24204ac4" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         <label htmlFor="checkOutEnd" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="a03a4478-816c-4c41-adfe-24c47da1dd21" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="7c2570d5-b799-40c9-8888-9393de1b3058" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           Batas Waktu
                         </span></label>
-                        <input type="time" id="checkOutEnd" name="checkOutEnd" value={attendanceTimeSettings.checkOutEnd} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="cc4ca97b-8a6d-4bb2-8d98-b9a1df6b4545" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="time" id="checkOutEnd" name="checkOutEnd" disabled value={attendanceTimeSettings.checkOutEnd} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="cc4ca97b-8a6d-4bb2-8d98-b9a1df6b4545" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                       </div>
                     </div>
                   </div>
