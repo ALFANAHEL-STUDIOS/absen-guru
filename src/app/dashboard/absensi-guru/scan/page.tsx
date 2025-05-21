@@ -408,7 +408,7 @@ export default function TeacherAttendanceScan() {
   return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-3 sm:px-4 md:px-6" data-unique-id="e7d7d9cf-285f-4e30-b642-41618ec495eb" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
       <div className="flex items-center justify-between mb-6" data-unique-id="78d4601e-fb30-478d-9c9c-7154c30ca677" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
         <div className="flex items-center" data-unique-id="eab2c760-eb69-4fb3-a4ab-6a36cbada17e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
-          <Link href="/dashboard" className="p-2 mr-2 hover:bg-gray-100 rounded-full" data-unique-id="0cdfe06b-05ba-437c-aba6-688c31ce9fa7" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+          <Link href="/dashboard/absensi-guru" className="p-2 mr-2 hover:bg-gray-100 rounded-full" data-unique-id="0cdfe06b-05ba-437c-aba6-688c31ce9fa7" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
             <ArrowLeft size={20} />
           </Link>
           <h1 className="text-2xl font-bold text-gray-800" data-unique-id="d36fb74b-8b02-4652-87fd-30af2c5de32d" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="7366c998-b51b-4af5-ad40-fa979a4d9f54" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Scan Absensi GTK</span></h1>
@@ -442,7 +442,7 @@ export default function TeacherAttendanceScan() {
             <Link href="https://api.telegram.org/bot${token}/sendMessage" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center" data-unique-id="e44ce7c5-e2b2-4cda-bb93-d75bb8ae21ba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <span className="editable-text" data-unique-id="271dcb13-3785-4c2e-abe2-d0df598e858d" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Lihat Hasil Absensi</span>
             </Link>
-            <Link href="/dashboard/absensi-guru" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center justify-center" data-unique-id="980f8a59-f3d7-4376-8251-802dd82d0aff" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="14ffee72-2a96-4bd3-a0e6-cbf7e851afb3" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <Link href="/dashboard" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center justify-center" data-unique-id="980f8a59-f3d7-4376-8251-802dd82d0aff" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="14ffee72-2a96-4bd3-a0e6-cbf7e851afb3" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               Kembali
             </span></Link>
           </div>
