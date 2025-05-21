@@ -279,7 +279,7 @@ export default function TeacherAttendanceScan() {
       }
       const distance = calculateDistance(location.lat, location.lng, settings.schoolLocation.lat, settings.schoolLocation.lng);
       if (distance > settings.radius) {
-        toast.error(`Anda berada di luar area sekolah (${Math.round(distance)} meter)`);
+        toast.error(`Anda berada di luar area Absensi Sekolah, dengan jarak (${Math.round(distance)} meter)`);
         setProcessingCapture(false);
         return;
       }
@@ -399,7 +399,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
       
       // Format message
     const messageType = attendanceType === 'in' ? 'MASUK' : 'PULANG';
-    const message = `GTK dengan nama ${teacherName} telah melakukan Absensi "${messageType}" pada hari ini ${formattedDate} pukul ${formattedTime} WIB.`;
+    const message = `Guru dengan nama ${teacherName} telah melakukan Absensi "${messageType}" pada hari ini ${formattedDate} pukul ${formattedTime} WIB.`;
     // Send notification
     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
