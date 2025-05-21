@@ -117,7 +117,7 @@ export default function TeacherDashboard({
               <Link href="/dashboard/scan" className="bg-[#4361EE] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="e41a49c7-6a89-42bb-acbf-0cdb00ee9716" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
                 <div className="flex flex-col items-center justify-center" data-unique-id="19d33a33-a166-4961-b422-a0ca932ce176" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
                   <div className="bg-[#4361EE] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="0be5bf8e-0a1d-44fd-8e98-62bd60495927" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
-                    <QrCode className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    <Scan className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="83811814-f37e-427e-9edd-abb8ed47ac59" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="7b4d3f8b-8556-4bd1-a465-0b4f247bcfb1" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Absensi Siswa</span></h3>
                 </div>
@@ -153,7 +153,7 @@ export default function TeacherDashboard({
               <Link href="/dashboard/absensi-guru/scan" className="bg-[#7B2CBF] rounded-xl shadow-sm p-4 sm:p-5 hover:shadow-md transition-all" data-unique-id="dfccf1a7-01a5-45ad-a537-fab66c24a794" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
                 <div className="flex flex-col items-center justify-center" data-unique-id="e8ebba56-3ef0-401d-bd31-293c8da80855" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
                   <div className="bg-[#7B2CBF] bg-opacity-20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3" data-unique-id="ec186dd1-4d43-46f4-b71c-552d14aad252" data-file-name="app/dashboard/components/TeacherDashboard.tsx">
-                    <QrCode className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    <Scan className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="font-medium text-white text-center text-xs sm:text-sm" data-unique-id="e36245d5-5c12-4735-b3e6-1f6b46eba5c5" data-file-name="app/dashboard/components/TeacherDashboard.tsx"><span className="editable-text" data-unique-id="a534fb32-54ff-4738-929e-ecb7afc55cb5" data-file-name="app/dashboard/components/TeacherDashboard.tsx">Absensi Guru</span></h3>
                 </div>
