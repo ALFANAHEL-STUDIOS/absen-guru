@@ -289,7 +289,7 @@ export default function TeacherAttendanceSettings() {
                 <div className="mb-6" data-unique-id="0e0a9a34-79cb-4b53-925d-faf88f6dffee" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                   <p className="text-gray-600 mb-4" data-unique-id="7ee5ce92-9194-4cdc-92ef-64d9f2443096" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="1bdc8975-ca6e-4e11-92df-1132085ef266" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                     Tentukan lokasi sekolah dan radius (dalam meter) di mana absensi diizinkan.
-                    Tenaga kependidikan hanya dapat melakukan absensi jika berada dalam radius yang ditentukan.
+                    Guru hanya dapat melakukan absensi jika berada dalam radius yang ditentukan.
                   </span></p>
                   <button onClick={getCurrentLocation} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mb-6" data-unique-id="4a1233ab-d185-45ba-9aea-aae569bc35a7" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                     <MapPin size={16} className="inline-block mr-2" /><span className="editable-text" data-unique-id="320119de-1413-439d-ba54-a66e263fc713" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
@@ -356,13 +356,13 @@ export default function TeacherAttendanceSettings() {
                         <label htmlFor="checkInStart" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="b36d5833-eb6b-4de1-ac4c-e725b58caf95" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="8fa91982-5c05-44ac-a83a-c9133a253392" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           Waktu Mulai
                         </span></label>
-                        <input type="time" id="checkInStart" name="checkInStart" value={attendanceTimeSettings.checkInStart} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="de5ceb4a-2270-48c7-a0fc-03ad8c6939de" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="time" id="checkInStart" name="checkInStart" disabled value={attendanceTimeSettings.checkInStart} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="de5ceb4a-2270-48c7-a0fc-03ad8c6939de" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                       </div>
                       <div data-unique-id="5d9ad993-42df-4ad4-9a41-c3546dcd0065" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         <label htmlFor="checkInEnd" className="block text-sm font-medium text-gray-700 mb-1" data-unique-id="b97da800-ce05-4230-b8d9-b6bb9c0502cd" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="02537f32-58e6-482b-aa02-4023c5a1ad7b" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           Batas Waktu
                         </span></label>
-                        <input type="time" id="checkInEnd" name="checkInEnd" value={attendanceTimeSettings.checkInEnd} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="3003eeb7-9a22-4830-a5cf-00e3c0c022f0" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
+                        <input type="time" id="checkInEnd" name="checkInEnd" disabled value={attendanceTimeSettings.checkInEnd} onChange={handleTimeChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" data-unique-id="3003eeb7-9a22-4830-a5cf-00e3c0c022f0" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" />
                         <p className="text-xs text-gray-500 mt-1" data-unique-id="6960cb8c-002a-49e7-a42e-639b2eed483e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="98681867-31e3-4f3a-9059-bea14e5cc5eb" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                           * Absensi setelah waktu ini akan dianggap terlambat
                         </span></p>
@@ -395,18 +395,18 @@ export default function TeacherAttendanceSettings() {
             {activeTab === 'telegram' && <div data-unique-id="5cdae872-6ead-4913-802d-9cafa7ed417e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                 <h2 className="text-lg font-semibold mb-6" data-unique-id="ba87a4f5-ac49-4bb8-a20f-e1cc89275a88" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="de5d1f5c-47b8-4413-9d94-963fccf9fa92" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">Pengaturan Telegram</span></h2>
                 
-                <div className="mb-6" data-unique-id="8c00bd5f-1356-45ad-8615-73633d63f0e9" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
+                {/*<div className="mb-6" data-unique-id="8c00bd5f-1356-45ad-8615-73633d63f0e9" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                   <div className="flex items-start bg-blue-50 p-4 rounded-lg mb-6" data-unique-id="a70b5fb3-32be-4d72-b796-643d8ccea97a" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                     <AlertCircle className="h-5 w-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" />
                     <div data-unique-id="5edf4510-071c-4254-baae-4b83f15d7def" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                       <h4 className="font-medium text-blue-700" data-unique-id="aff650cc-e14f-41ee-a71e-28dd9d1f42a9" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="65b91cb3-4492-4c5d-9181-dc8a32163f4e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">Informasi Bot Telegram</span></h4>
                       <p className="text-sm text-blue-600 mt-1" data-unique-id="1d4744f8-6a4c-4c42-b2f1-a3ca44fce92e" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="e5579d78-4104-4aad-8f3a-31640f217246" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         Untuk mendapatkan ID Chat, silakan kirim pesan ke 
-                        </span><a href="https://t.me/AbsenModernBot" target="_blank" rel="noopener noreferrer" className="text-blue-700 underline mx-1" data-unique-id="b4a3c910-5415-4c03-9dcb-ac58f71c942f" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="fc95b12c-730b-4654-82ac-866287521204" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">@AbsenModernBot</span></a><span className="editable-text" data-unique-id="9cf95e31-ac8d-496c-8a24-dc328277bcb1" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
+                        </span><a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" className="text-blue-700 underline mx-1" data-unique-id="b4a3c910-5415-4c03-9dcb-ac58f71c942f" data-file-name="app/dashboard/absensi-guru/settings/page.tsx"><span className="editable-text" data-unique-id="fc95b12c-730b-4654-82ac-866287521204" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">@userinfobot</span></a><span className="editable-text" data-unique-id="9cf95e31-ac8d-496c-8a24-dc328277bcb1" data-file-name="app/dashboard/absensi-guru/settings/page.tsx">
                         dan masukkan ID yang diberikan oleh bot.
                       </span></p>
                     </div>
-                  </div>
+                  </div>*/}
                   
                   <div className="grid grid-cols-1 gap-4 mb-6" data-unique-id="9c5900b0-da84-4caf-bfe6-4b3392813b54" data-file-name="app/dashboard/absensi-guru/settings/page.tsx" data-dynamic-text="true">
                     {/* Bot Token */}
