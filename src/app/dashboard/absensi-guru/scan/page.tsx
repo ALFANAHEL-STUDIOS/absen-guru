@@ -494,11 +494,11 @@ export default function TeacherAttendanceScan() {
             
             {/* Recognized teacher */}
             {recognizedTeacher && 
-              <center><div className="p-4 bg-blue-50 rounded-lg mb-4 border border-blue-200" data-unique-id="079b614b-8eea-4002-8e0c-117536b80737" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+              <center><div className="p-4 bg-green-50 rounded-lg mb-4 border border-green-200" data-unique-id="079b614b-8eea-4002-8e0c-117536b80737" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
                 <h3 className="text-lg font-semibold text-blue-800" data-unique-id="3685f6bc-8cbe-49d8-8954-1e7df183a1a1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">{recognizedTeacher.name}</h3>
-                <p className="text-sm text-blue-700" data-unique-id="2011a9ff-236b-44ea-831d-c27ef674a9d9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+                <p className="text-sm text-green-700" data-unique-id="2011a9ff-236b-44ea-831d-c27ef674a9d9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
                   <span className="editable-text" data-unique-id="d63d5544-1a6b-41ba-9257-e9457b13f38b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></span>{recognizedTeacher.nik}</p>
-                <p className="text-sm text-blue-700" data-unique-id="f5a19de5-8351-4ece-8e86-1946ae997569" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
+                <p className="text-sm text-green-700" data-unique-id="f5a19de5-8351-4ece-8e86-1946ae997569" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
                   <span className="editable-text" data-unique-id="85e40a5d-3d0d-4e2e-b575-70051340847b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></span>{recognizedTeacher.role}</p>
               </div></center>}
           </div>
