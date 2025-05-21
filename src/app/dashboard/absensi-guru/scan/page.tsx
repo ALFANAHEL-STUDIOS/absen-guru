@@ -390,6 +390,8 @@ export default function TeacherAttendanceScan() {
         return;
       }
 
+
+      
 const currentDateTime = new Date(); 
 const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
 const formattedTime = format(currentDateTime, "HH:mm:ss"); 
@@ -414,7 +416,10 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
     }
   };
 
-  
+  const currentDateTime = new Date(); 
+const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
+const formattedTime = format(currentDateTime, "HH:mm:ss"); 
+
   
   return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-3 sm:px-4 md:px-6" data-unique-id="e7d7d9cf-285f-4e30-b642-41618ec495eb" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
       <div className="flex items-center justify-between mb-6" data-unique-id="78d4601e-fb30-478d-9c9c-7154c30ca677" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
