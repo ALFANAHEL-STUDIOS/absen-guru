@@ -261,7 +261,7 @@ export default function TeacherAttendanceReports() {
      // Main attendance table
      let yPos = margin + 48;
      // Table headers
-     const headers = ["No.", "Nama Guru/Tendik", "NIP/NIK", "Jabatan", "Hadir", "Terlambat", "Izin", "Alpha", "Total"];
+     const headers = ["No.", "Nama Guru/Tendik", "NIK", "Jabatan", "Hadir", "Terlambat", "Izin", "Alpha", "Total"];
      const colWidths = [10, 50, 25, 20, 15, 20, 15, 15, 15];
      // Draw table header - Light blue background
      pdfDoc.setFillColor(173, 216, 230);
@@ -465,7 +465,7 @@ export default function TeacherAttendanceReports() {
        pdfDoc.setFontSize(10);
        pdfDoc.setFont("helvetica", "bold");
        pdfDoc.text(title + " Terbanyak :", margin, startY);
-       const tableHeaders = ["No.", "Nama", "NIP/NIK", "Jabatan", "Jumlah"];
+       const tableHeaders = ["No.", "Nama", "NIK", "Jabatan", "Jumlah"];
        const colWidths = [10, 50, 30, 20, 30];
        let yPosition = startY + 5;
        // Draw header row
@@ -549,14 +549,14 @@ export default function TeacherAttendanceReports() {
      // Check if we need a new page for the remaining sections
      if (yPos + 80 > pageHeight) {
        pdfDoc.addPage();
-       yPos = margin + 2;
+       yPos = margin + 20;
      }
      // Teachers with most "Izin"
      yPos = addTeacherCategorySection("Guru/Tendik dengan Izin", topTeachersByCategory.izin, yPos) + 5;
      // Teachers with most "Alpha"
      yPos = addTeacherCategorySection("Guru/Tendik dengan Alpha", topTeachersByCategory.alpha, yPos) + 15;
      // Add signature section
-     yPos += 10;
+     yPos += 100;
      // Signature layout
      const signatureWidth = (pageWidth - margin * 2) / 2;
      pdfDoc.setFontSize(10);
@@ -571,7 +571,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.text("KEPALA SEKOLAH,", signatureWidth * 0.25 + margin, yPos, {
        align: "center"
      });
-     pdfDoc.text("Nama Sekolah,", signatureWidth * 1.75 + margin, yPos, {
+     pdfDoc.text("Absensi Digital,", signatureWidth * 1.75 + margin, yPos, {
        align: "center"
      });
      yPos += 25;
