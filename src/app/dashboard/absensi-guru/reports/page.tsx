@@ -443,7 +443,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.text(totalAll.toString(), xPos + colWidths[8] / 2, yPos + 5, {
        align: "center"
      });
-     yPos += 150;
+     yPos += 18;
      // Get top teachers by category
      const getTopTeachersByCategory = () => {
        const sortedByHadir = [...teachers].sort((a, b) => (b.hadir || 0) - (a.hadir || 0)).slice(0, 3);
@@ -513,7 +513,7 @@ export default function TeacherAttendanceReports() {
            align: "center"
          });
          xPosition += colWidths[3];
-         pdfDoc.line(xPosition, yPosition, xPosition, yPosition + 8);
+         pdfDoc.line(xPosition, yPosition, xPosition, yPosition + 5);
          // Count - varies depending on section type
          let count = 0;
          switch (title) {
