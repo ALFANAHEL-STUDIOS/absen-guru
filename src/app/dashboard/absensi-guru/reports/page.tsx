@@ -842,8 +842,8 @@ export default function TeacherAttendanceReports() {
        </div>
 
        {/* School Information and Table */}
-       {/*<div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-         <div className="text-center p-4 border-b border-gray-200">
+       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+         {/*<div className="text-center p-4 border-b border-gray-200">
            <h2 className="text-xl font-bold uppercase">{schoolInfo.name}</h2>
            <p className="text-gray-600 font-medium">{schoolInfo.address}</p>
          </div>*/}
@@ -856,7 +856,7 @@ export default function TeacherAttendanceReports() {
           <hr className="border-t border-gray-800 mt-1 mb-6" />
           <div className="text-center mb-4 sm:mb-6">
            
-            <h3 className="text-gray-600 uppercase">REKAP LAPORAN KEHADIRAN SISWA</h3>
+            <h3 className="text-gray-600 uppercase">REKAP LAPORAN KEHADIRAN GURU DAN TENDIK</h3>
             <p className="text-gray-600">BULAN {formattedMonth.toUpperCase()}</p>
           </div>
 
@@ -870,7 +870,7 @@ export default function TeacherAttendanceReports() {
                <thead>
                  <tr className="bg-green-100">
                    <th className="border px-2 py-2 text-center text-sm font-bold text-gray-700"><span className="editable-text">Nama</span></th>
-                   <th className="border px-2 py-2 text-center text-sm font-bold text-gray-700"><span className="editable-text">NIP/NIK</span></th>
+                   <th className="border px-2 py-2 text-center text-sm font-bold text-gray-700"><span className="editable-text">NIK</span></th>
                    <th className="border px-2 py-2 text-center text-sm font-bold text-gray-700"><span className="editable-text">Jabatan</span></th>
                    <th className="border px-2 py-2 text-center text-sm font-bold text-gray-700"><span className="editable-text">Hadir</span></th>
                    <th className="border px-2 py-2 text-center text-sm font-bold text-gray-700"><span className="editable-text">Terlambat</span></th>
@@ -882,16 +882,16 @@ export default function TeacherAttendanceReports() {
                <tbody>
                  {filteredTeachers.length > 0 ? filteredTeachers.map((teacher, index) => (
                    <tr key={teacher.id} className={index % 2 === 0 ? "bg-gray-50" : ""}>
-                     <td className="border px-2 py-1 text-xs sm:text-sm">{teacher.name}</td>
-                     <td className="border px-2 py-1 text-xs sm:text-sm text-center">{teacher.nik}</td>
-                     <td className="border px-2 py-1 text-xs sm:text-sm text-center">
+                     <td className="text-gray-600 border px-2 py-1 text-xs sm:text-sm">{teacher.name}</td>
+                     <td className="text-gray-600 border px-2 py-1 text-xs sm:text-sm text-center">{teacher.nik}</td>
+                     <td className="text-gray-600 border px-2 py-1 text-xs sm:text-sm text-center">
                        {teacher.role === 'teacher' ? 'Guru' : 'Tendik'}
                      </td>
-                     <td className="border px-2 py-1 text-xs sm:text-sm text-center">{teacher.hadir}</td>
-                     <td className="border px-2 py-1 text-xs sm:text-sm text-center">{teacher.terlambat}</td>
-                     <td className="border px-2 py-1 text-xs sm:text-sm text-center">{teacher.izin}</td>
-                     <td className="border px-2 py-1 text-xs sm:text-sm text-center">{teacher.alpha}</td>
-                     <td className="border px-2 py-1 text-xs sm:text-sm text-center">
+                     <td className="text-gray-600 border px-2 py-1 text-xs sm:text-sm text-center">{teacher.hadir}</td>
+                     <td className="text-gray-600 border px-2 py-1 text-xs sm:text-sm text-center">{teacher.terlambat}</td>
+                     <td className="text-gray-600 border px-2 py-1 text-xs sm:text-sm text-center">{teacher.izin}</td>
+                     <td className="text-gray-600 border px-2 py-1 text-xs sm:text-sm text-center">{teacher.alpha}</td>
+                     <td className="text-gray-600 border px-2 py-1 text-xs sm:text-sm text-center">
                        {(teacher.hadir || 0) + (teacher.terlambat || 0) + (teacher.izin || 0) + (teacher.alpha || 0)}
                      </td>
                    </tr>
