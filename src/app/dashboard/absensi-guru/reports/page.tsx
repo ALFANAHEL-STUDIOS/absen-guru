@@ -513,7 +513,7 @@ export default function TeacherAttendanceReports() {
            align: "center"
          });
          xPosition += colWidths[3];
-         pdfDoc.line(xPosition, yPosition, xPosition, yPosition + 5);
+         pdfDoc.line(xPosition, yPosition, xPosition, yPosition + 1);
          // Count - varies depending on section type
          let count = 0;
          switch (title) {
@@ -530,7 +530,7 @@ export default function TeacherAttendanceReports() {
              count = teacher.alpha || 0;
              break;
          }
-         pdfDoc.text(count.toString(), xPosition + colWidths[4] / 2, yPosition + 80, {
+         pdfDoc.text(count.toString(), xPosition + colWidths[4] / 2, yPosition + 5, {
            align: "center"
          });
          yPosition += 8;
