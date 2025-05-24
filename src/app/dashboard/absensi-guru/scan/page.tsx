@@ -455,9 +455,9 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
             <span className="editable-text" data-unique-id="26f29e7d-558a-4cb8-8fc0-874fcdf7a59f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
           </span></p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4" data-unique-id="3a31698a-0e73-4cfe-b5cd-5461c54a24af" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
-            <button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="ab94985c-1582-4532-9d2a-8a7c196c8aa1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="97399fef-c22f-4132-b97c-b9d89ad26fd9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            {/*<button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="ab94985c-1582-4532-9d2a-8a7c196c8aa1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="97399fef-c22f-4132-b97c-b9d89ad26fd9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               Absen Lagi
-            </span></button>
+            </span></button>*/}
             <Link href="https://t.me/AbsenModernBot" target="_blank" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center" data-unique-id="e44ce7c5-e2b2-4cda-bb93-d75bb8ae21ba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <span className="editable-text" data-unique-id="271dcb13-3785-4c2e-abe2-d0df598e858d" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Lihat Hasil Absensi</span>
             </Link>
