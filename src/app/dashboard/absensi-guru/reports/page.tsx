@@ -549,7 +549,7 @@ export default function TeacherAttendanceReports() {
      // Check if we need a new page for the remaining sections
      if (yPos + 80 > pageHeight) {
        pdfDoc.addPage();
-       yPos = margin + 20;
+       yPos = margin + 2;
      }
      // Teachers with most "Izin"
      yPos = addTeacherCategorySection("Guru/Tendik dengan Izin", topTeachersByCategory.izin, yPos) + 5;
@@ -856,8 +856,8 @@ export default function TeacherAttendanceReports() {
           <hr className="border-t border-gray-800 mt-1 mb-6" />
           <div className="text-center mb-4 sm:mb-6">
            
-            <h3 className="text-gray-600 uppercase">REKAP LAPORAN KEHADIRAN GURU DAN TENDIK</h3>
-            <p className="text-gray-600">BULAN {formattedMonth.toUpperCase()}</p>
+            <h3 className="text-gray-700 uppercase">REKAP LAPORAN KEHADIRAN GURU DAN TENDIK</h3>
+            <p className="text-gray-700">BULAN {formattedMonth.toUpperCase()}</p>
           </div>
 
          {loading ? (
