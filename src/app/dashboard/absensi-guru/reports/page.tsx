@@ -513,7 +513,7 @@ export default function TeacherAttendanceReports() {
            align: "center"
          });
          xPosition += colWidths[3];
-         pdfDoc.line(xPosition, yPosition, xPosition, yPosition + 1);
+         pdfDoc.line(xPosition, yPosition, xPosition, yPosition + 10);
          // Count - varies depending on section type
          let count = 0;
          switch (title) {
