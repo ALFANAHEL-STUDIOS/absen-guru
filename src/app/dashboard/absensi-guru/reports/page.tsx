@@ -849,9 +849,9 @@ export default function TeacherAttendanceReports() {
          </div>*/}
 
           <div className="text-center p-4">
-            <h2 className="text-gray-800 sm:text-xl font-bold uppercase">{schoolInfo.name}</h2>
-            <p className="text-gray-800 font-bold">{schoolInfo.address}</p>
-            <p className="text-gray-800 font-bold">NPSN : {schoolInfo.npsn}</p>
+            <h2 className="text-gray-700 sm:text-xl font-bold uppercase">{schoolInfo.name}</h2>
+            <p className="text-gray-700 font-bold">{schoolInfo.address}</p>
+            <p className="text-gray-700 font-bold">NPSN : {schoolInfo.npsn}</p>
           </div>
           <hr className="border-t border-gray-800 mt-1 mb-6" />
           <div className="text-center mb-4 sm:mb-6">
