@@ -269,7 +269,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.setDrawColor(0);
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "S"); // Border
      let xPos = margin;
-     pdfDoc.setFontSize(10);
+     pdfDoc.setFontSize(9);
      pdfDoc.setTextColor(0);
      // Draw vertical lines and headers
      headers.forEach((header, i) => {
@@ -462,7 +462,7 @@ export default function TeacherAttendanceReports() {
      const topTeachersByCategory = getTopTeachersByCategory();
      // Add sections for teachers with most attendance in each category
      const addTeacherCategorySection = (title, teachers, startY) => {
-       pdfDoc.setFontSize(8);
+       pdfDoc.setFontSize(9);
        pdfDoc.setFont("helvetica", "normal");
        pdfDoc.text(title + " Terbanyak :", margin, startY);
        const tableHeaders = ["No.", "Nama", "NIK", "Jabatan", "Jumlah"];
