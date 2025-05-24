@@ -533,7 +533,7 @@ export default function TeacherAttendanceReports() {
          pdfDoc.text(count.toString(), xPosition + colWidths[4] / 2, yPosition + 5, {
            align: "center"
          });
-         yPosition += 18;
+         yPosition += 10;
        });
        return yPosition;
      };
