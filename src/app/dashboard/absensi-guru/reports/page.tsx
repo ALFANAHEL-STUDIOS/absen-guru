@@ -261,7 +261,7 @@ export default function TeacherAttendanceReports() {
      // Main attendance table
      let yPos = margin + 48;
      // Table headers
-     const headers = ["No.", "Nama Guru/Tendik", "NIK", "Jabatan", "Hadir", "Terlambat", "Izin", "Alpha", "Total"];
+     const headers = ["NO.", "NAMA GURU", "NIK", "JABATAN", "HADIR", "TERLAMBAT", "IZIN", "ALPHA", "TOAL"];
      const colWidths = [10, 50, 25, 20, 15, 20, 15, 15, 15];
      // Draw table header - Light blue background
      pdfDoc.setFillColor(173, 216, 230);
@@ -410,7 +410,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.setFontSize(10);
      pdfDoc.setFont("helvetica", "normal");
      // Total text
-     pdfDoc.text("Total", xPos + colWidths[0] / 2 + colWidths[1] / 2, yPos + 5, {
+     pdfDoc.text("TOTAL", xPos + colWidths[0] / 2 + colWidths[1] / 2, yPos + 5, {
        align: "center"
      });
      xPos += colWidths[0] + colWidths[1] + colWidths[2] + colWidths[3];
@@ -513,7 +513,7 @@ export default function TeacherAttendanceReports() {
            align: "center"
          });
          xPosition += colWidths[3];
-         pdfDoc.line(xPosition, yPosition, xPosition, yPosition + 5);
+         pdfDoc.line(xPosition, yPosition, xPosition, yPosition + 8);
          // Count - varies depending on section type
          let count = 0;
          switch (title) {
