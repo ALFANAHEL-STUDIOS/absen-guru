@@ -261,8 +261,8 @@ export default function TeacherAttendanceReports() {
      // Main attendance table
      let yPos = margin + 48;
      // Table headers
-     const headers = ["NO.", "NAMA GURU", "NIK", "JABATAN", "HADIR", "TERLAMBAT", "IZIN", "ALPHA", "TOAL"];
-     const colWidths = [10, 50, 25, 20, 15, 20, 15, 15, 15];
+     const headers = ["NO.", "NAMA GURU", "", "JABATAN", "HADIR", "TERLAMBAT", "IZIN", "ALPHA", "TOAL"];
+     const colWidths = [10, 50, 25, 0, 15, 20, 15, 15, 15];
      // Draw table header - Light blue background
      pdfDoc.setFillColor(173, 216, 230);
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "F");
@@ -318,12 +318,12 @@ export default function TeacherAttendanceReports() {
        const displayName = teacher.name.length > 25 ? teacher.name.substring(0, 22) + "..." : teacher.name;
        pdfDoc.text(displayName || "", xPos + 2, yPos + 5);
        xPos += colWidths[1];
-       // Draw vertical line
-       pdfDoc.line(xPos, yPos, xPos, yPos + 7);
-       pdfDoc.text(teacher.nik || "", xPos + colWidths[2] / 2, yPos + 5, {
-         align: "center"
-       });
-       xPos += colWidths[2];
+  // Draw vertical line
+      // pdfDoc.line(xPos, yPos, xPos, yPos + 7);
+       //pdfDoc.text(teacher.nik || "", xPos + colWidths[2] / 2, yPos + 5, {
+        // align: "center"
+      // });
+      // xPos += colWidths[2];
        // Draw vertical line
        pdfDoc.line(xPos, yPos, xPos, yPos + 7);
        const roleText = teacher.role === 'teacher' ? 'Guru' : 'Tendik';
