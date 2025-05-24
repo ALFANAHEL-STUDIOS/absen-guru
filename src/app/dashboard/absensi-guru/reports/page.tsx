@@ -319,11 +319,11 @@ export default function TeacherAttendanceReports() {
        pdfDoc.text(displayName || "", xPos + 2, yPos + 5);
        xPos += colWidths[1];
   // Draw vertical line
-      // pdfDoc.line(xPos, yPos, xPos, yPos + 7);
+      pdfDoc.line(xPos, yPos, xPos, yPos + 7);
        //pdfDoc.text(teacher.nik || "", xPos + colWidths[2] / 2, yPos + 5, {
         // align: "center"
       // });
-      // xPos += colWidths[2];
+      xPos += colWidths[2];
        // Draw vertical line
        pdfDoc.line(xPos, yPos, xPos, yPos + 7);
        const roleText = teacher.role === 'teacher' ? 'Guru' : 'Tendik';
