@@ -408,7 +408,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "S");
      xPos = margin;
      pdfDoc.setFontSize(10);
-     pdfDoc.setFont("helvetica", "bold");
+     pdfDoc.setFont("helvetica", "normal");
      // Total text
      pdfDoc.text("Total", xPos + colWidths[0] / 2 + colWidths[1] / 2, yPos + 5, {
        align: "center"
@@ -443,7 +443,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.text(totalAll.toString(), xPos + colWidths[8] / 2, yPos + 5, {
        align: "center"
      });
-     yPos += 15;
+     yPos += 150;
      // Get top teachers by category
      const getTopTeachersByCategory = () => {
        const sortedByHadir = [...teachers].sort((a, b) => (b.hadir || 0) - (a.hadir || 0)).slice(0, 3);
