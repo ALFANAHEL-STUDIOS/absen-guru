@@ -842,24 +842,23 @@ export default function TeacherAttendanceReports() {
        </div>
 
        {/* School Information and Table */}
-       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+       {/*<div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
          <div className="text-center p-4 border-b border-gray-200">
            <h2 className="text-xl font-bold uppercase">{schoolInfo.name}</h2>
            <p className="text-gray-600 font-medium">{schoolInfo.address}</p>
-         </div>
+         </div>*/}
 
-         <div className="text-center p-4">
-           <h2 className="text-xl font-bold uppercase">{schoolInfo.name}</h2>
-           <p className="text-gray-600 font-bold">{schoolInfo.address}</p>
-           <p className="text-gray-600 font-bold"><span className="editable-text">NPSN: </span>{schoolInfo.npsn}</p>
-         </div>
-
-         <hr className="border-t border-gray-300 mt-1 mb-3" />
-
-         <div className="text-center mb-4">
-           <h3 className="text-lg uppercase"><span className="editable-text">REKAP LAPORAN KEHADIRAN GURU DAN TENDIK</span></h3>
-           <p className="font-medium"><span className="editable-text">BULAN </span>{formattedMonth.toUpperCase()}</p>
-         </div>
+          <div className="text-center p-4">
+            <h2 className="text-gray-800 sm:text-xl font-bold uppercase">{schoolInfo.name}</h2>
+            <p className="text-gray-800 font-bold">{schoolInfo.address}</p>
+            <p className="text-gray-800 font-bold">NPSN : {schoolInfo.npsn}</p>
+          </div>
+          <hr className="border-t border-gray-800 mt-1 mb-6" />
+          <div className="text-center mb-4 sm:mb-6">
+           
+            <h3 className="text-gray-600 uppercase">REKAP LAPORAN KEHADIRAN SISWA</h3>
+            <p className="text-gray-600">BULAN {formattedMonth.toUpperCase()}</p>
+          </div>
 
          {loading ? (
            <div className="flex justify-center items-center h-64">
