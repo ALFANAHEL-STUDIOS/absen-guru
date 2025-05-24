@@ -483,7 +483,7 @@ export default function TeacherAttendanceReports() {
          });
          xPosition += colWidths[i];
        });
-       yPosition += 5;
+       yPosition += 8;
        // Draw rows
        pdfDoc.setFont("helvetica", "bold");
        teachers.forEach((teacher, index) => {
@@ -530,10 +530,10 @@ export default function TeacherAttendanceReports() {
              count = teacher.alpha || 0;
              break;
          }
-         pdfDoc.text(count.toString(), xPosition + colWidths[4] / 2, yPosition + 5, {
+         pdfDoc.text(count.toString(), xPosition + colWidths[4] / 2, yPosition + 8, {
            align: "center"
          });
-         yPosition += 10;
+         yPosition += 8;
        });
        return yPosition;
      };
