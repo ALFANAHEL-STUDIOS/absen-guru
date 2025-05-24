@@ -238,7 +238,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.text(schoolInfo.name.toUpperCase(), pageWidth / 2, margin, {
        align: "center"
      });
-     pdfDoc.setFontSize(11);
+     pdfDoc.setFontSize(12);
      pdfDoc.setFont("helvetica", "normal");
      pdfDoc.text(schoolInfo.address, pageWidth / 2, margin + 7, {
        align: "center"
@@ -250,8 +250,8 @@ export default function TeacherAttendanceReports() {
      pdfDoc.setLineWidth(0.5);
      pdfDoc.line(margin, margin + 20, pageWidth - margin, margin + 20);
      // Add title
-     pdfDoc.setFontSize(14);
-     pdfDoc.setFont("helvetica", "bold");
+     pdfDoc.setFontSize(12);
+     pdfDoc.setFont("helvetica", "normal");
      pdfDoc.text("REKAPITULASI LAPORAN ABSENSI GURU DAN TENAGA KEPENDIDIKAN", pageWidth / 2, margin + 30, {
        align: "center"
      });
@@ -370,7 +370,7 @@ export default function TeacherAttendanceReports() {
          pdfDoc.text(schoolInfo.name.toUpperCase(), pageWidth / 2, margin + 6, {
            align: "center"
          });
-         pdfDoc.setFontSize(10);
+         pdfDoc.setFontSize(12);
          pdfDoc.setFont("helvetica", "normal");
          pdfDoc.text(schoolInfo.address, pageWidth / 2, margin + 12, {
            align: "center"
@@ -408,7 +408,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "S");
      xPos = margin;
      pdfDoc.setFontSize(10);
-     pdfDoc.setFont("helvetica", "normal");
+     pdfDoc.setFont("helvetica", "bold");
      // Total text
      pdfDoc.text("Total", xPos + colWidths[0] / 2 + colWidths[1] / 2, yPos + 5, {
        align: "center"
@@ -440,7 +440,7 @@ export default function TeacherAttendanceReports() {
      xPos += colWidths[7];
      // Draw vertical line
      pdfDoc.line(xPos, yPos, xPos, yPos + 8);
-     pdfDoc.text(totalAll.toString(), xPos + colWidths[8] / 2, yPos + 5, {
+     pdfDoc.text(totalAll.toString(), xPos + colWidths[8] / 2, yPos + 15, {
        align: "center"
      });
      yPos += 15;
@@ -613,7 +613,7 @@ export default function TeacherAttendanceReports() {
        ["REKAPITULASI LAPORAN ABSENSI GURU DAN TENAGA KEPENDIDIKAN"],
        [`BULAN ${formattedMonth.toUpperCase()}`],
        [""],
-       ["No.", "Nama Guru/Tendik", "NIP/NIK", "Jabatan", "Hadir", "Terlambat", "Izin", "Alpha", "Total"]
+       ["No.", "Nama Guru/Tendik", "NIK", "Jabatan", "Hadir", "Terlambat", "Izin", "Alpha", "Total"]
      ];
      // Calculate totals for summary
      let totalHadir = 0;
