@@ -262,7 +262,7 @@ export default function TeacherAttendanceReports() {
      let yPos = margin + 48;
      // Table headers
      const headers = ["NO.", "NAMA GURU", "", "JABATAN", "HADIR", "TERLAMBAT", "IZIN", "ALPHA", "TOAL"];
-     const colWidths = [10, 50, 25, 0, 15, 20, 15, 15, 15];
+     const colWidths = [10, 50, 0, 25, 15, 20, 15, 15, 15];
      // Draw table header - Light blue background
      pdfDoc.setFillColor(173, 216, 230);
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "F");
