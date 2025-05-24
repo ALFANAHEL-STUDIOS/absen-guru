@@ -525,7 +525,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
           </div>
           
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4" data-unique-id="584cd3d7-b43f-4246-8616-cbf497b37fac" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
-            {!scanning && !capturedImage && <button onClick={startCamera} className="col-span-full py-3 bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-orange-800 active:bg-orange-800 transition-colors flex items-center justify-center gap-2" data-unique-id="ca3e062f-bb9c-42e9-858f-e08a504bfe9e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            {!scanning && !capturedImage && <button onClick={startCamera} className="col-span-full py-3 bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-orange-500 active:bg-orange-600 transition-colors flex items-center justify-center gap-2" data-unique-id="ca3e062f-bb9c-42e9-858f-e08a504bfe9e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
                 <Camera size={20} />
                 <span className="editable-text" data-unique-id="5507e3aa-849a-4ac2-8b2d-fed711743630" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Aktifkan Kamera</span>
               </button>}
