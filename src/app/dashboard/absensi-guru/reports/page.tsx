@@ -800,7 +800,7 @@ export default function TeacherAttendanceReports() {
            <div className="bg-blue-100 p-2 rounded-lg mr-3">
              <Calendar className="h-6 w-6 text-blue-600" />
            </div>
-           <h2 className="text-xl font-semibold"><span className="editable-text">Laporan Bulan: </span>{formattedMonth}</h2>
+           <h2 className="text-xl font-semibold"><span className="editable-text">Bulan : </span>{formattedMonth}</h2>
          </div>
 
          <div className="flex items-center space-x-2 w-full sm:w-auto justify-between sm:justify-end">
