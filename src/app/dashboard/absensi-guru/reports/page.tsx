@@ -375,7 +375,7 @@ export default function TeacherAttendanceReports() {
          pdfDoc.text(schoolInfo.address, pageWidth / 2, margin + 12, {
            align: "center"
          });
-         pdfDoc.text(`NPSN: ${schoolInfo.npsn}`, pageWidth / 2, margin + 18, {
+         pdfDoc.text(`NPSN : ${schoolInfo.npsn}`, pageWidth / 2, margin + 18, {
            align: "center"
          });
          // Add horizontal line
@@ -545,7 +545,7 @@ export default function TeacherAttendanceReports() {
      // Teachers with most "Hadir"
      yPos = addTeacherCategorySection("Guru/Tendik dengan Hadir", topTeachersByCategory.hadir, yPos) + 5;
      // Teachers with most "Terlambat"
-     yPos = addTeacherCategorySection("Guru/Tendik dengan Terlambat", topTeachersByCategory.terlambat, yPos) + 50;
+     yPos = addTeacherCategorySection("Guru/Tendik dengan Terlambat", topTeachersByCategory.terlambat, yPos) + 10;
      // Check if we need a new page for the remaining sections
      if (yPos + 80 > pageHeight) {
        pdfDoc.addPage();
@@ -853,7 +853,7 @@ export default function TeacherAttendanceReports() {
             <p className="text-gray-700 font-bold">{schoolInfo.address}</p>
             <p className="text-gray-700 font-bold">NPSN : {schoolInfo.npsn}</p>
           </div>
-          <hr className="border-t border-gray-800 mt-1 mb-6" />
+          <hr className="border-t border-gray-600 mt-1 mb-6" />
           <div className="text-center mb-4 sm:mb-6">
            
             <h3 className="text-gray-700 uppercase">REKAP LAPORAN KEHADIRAN GURU DAN TENDIK</h3>
