@@ -248,14 +248,14 @@ export default function TeacherAttendanceReports() {
      });
      // Add horizontal line
      pdfDoc.setLineWidth(0.5);
-     pdfDoc.line(margin, margin + 20, pageWidth - margin, margin + 25);
+     pdfDoc.line(margin, margin + 20, pageWidth - margin, margin + 20);
      // Add title
      pdfDoc.setFontSize(12);
      pdfDoc.setFont("helvetica", "normal");
-     pdfDoc.text("REKAPITULASI LAPORAN ABSENSI GURU DAN TENAGA KEPENDIDIKAN", pageWidth / 2, margin + 25, {
+     pdfDoc.text("REKAPITULASI LAPORAN ABSENSI GURU DAN TENAGA KEPENDIDIKAN", pageWidth / 2, margin + 30, {
        align: "center"
      });
-     pdfDoc.text(`BULAN ${formattedMonth.toUpperCase()}`, pageWidth / 2, margin + 30, {
+     pdfDoc.text(`BULAN ${formattedMonth.toUpperCase()}`, pageWidth / 2, margin + 38, {
        align: "center"
      });
      // Main attendance table
