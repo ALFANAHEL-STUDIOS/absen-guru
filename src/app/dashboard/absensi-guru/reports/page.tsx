@@ -269,7 +269,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.setDrawColor(0);
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "S"); // Border
      let xPos = margin;
-     pdfDoc.setFontSize(9);
+     pdfDoc.setFontSize(10);
      pdfDoc.setTextColor(0);
      // Draw vertical lines and headers
      headers.forEach((header, i) => {
@@ -283,7 +283,7 @@ export default function TeacherAttendanceReports() {
      });
      yPos += 8;
      // Draw table rows
-     pdfDoc.setFontSize(8);
+     pdfDoc.setFontSize(10);
      let totalHadir = 0,
        totalTerlambat = 0,
        totalIzin = 0,
@@ -370,7 +370,7 @@ export default function TeacherAttendanceReports() {
          pdfDoc.text(schoolInfo.name.toUpperCase(), pageWidth / 2, margin + 6, {
            align: "center"
          });
-         pdfDoc.setFontSize(9);
+         pdfDoc.setFontSize(10);
          pdfDoc.setFont("helvetica", "normal");
          pdfDoc.text(schoolInfo.address, pageWidth / 2, margin + 12, {
            align: "center"
@@ -387,7 +387,7 @@ export default function TeacherAttendanceReports() {
          pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "F");
          pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "S");
          xPos = margin;
-         pdfDoc.setFontSize(9);
+         pdfDoc.setFontSize(10);
          // Draw headers again
          headers.forEach((header, i) => {
            if (i > 0) {
@@ -399,7 +399,7 @@ export default function TeacherAttendanceReports() {
            xPos += colWidths[i];
          });
          yPos += 8;
-         pdfDoc.setFontSize(8);
+         pdfDoc.setFontSize(10);
        }
      });
      // Add total row
@@ -407,8 +407,8 @@ export default function TeacherAttendanceReports() {
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "F");
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "S");
      xPos = margin;
-     pdfDoc.setFontSize(9);
-     pdfDoc.setFont("helvetica", "bold");
+     pdfDoc.setFontSize(10);
+     pdfDoc.setFont("helvetica", "normal");
      // Total text
      pdfDoc.text("Total", xPos + colWidths[0] / 2 + colWidths[1] / 2, yPos + 5, {
        align: "center"
@@ -533,7 +533,7 @@ export default function TeacherAttendanceReports() {
          pdfDoc.text(count.toString(), xPosition + colWidths[4] / 2, yPosition + 5, {
            align: "center"
          });
-         yPosition += 8;
+         yPosition += 18;
        });
        return yPosition;
      };
