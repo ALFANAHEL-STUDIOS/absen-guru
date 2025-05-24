@@ -462,11 +462,11 @@ export default function TeacherAttendanceReports() {
      const topTeachersByCategory = getTopTeachersByCategory();
      // Add sections for teachers with most attendance in each category
      const addTeacherCategorySection = (title, teachers, startY) => {
-       pdfDoc.setFontSize(9);
+       pdfDoc.setFontSize(10);
        pdfDoc.setFont("helvetica", "normal");
        pdfDoc.text(title + " Terbanyak :", margin, startY);
        const tableHeaders = ["No.", "Nama", "NIK", "Jabatan", "Jumlah"];
-       const colWidths = [10, 50, 30, 20, 30];
+       const colWidths = [10, 50, 38, 20, 30];
        let yPosition = startY + 5;
        // Draw header row
        pdfDoc.setFillColor(173, 216, 230);
@@ -559,7 +559,7 @@ export default function TeacherAttendanceReports() {
      yPos += 5;
      // Signature layout
      const signatureWidth = (pageWidth - margin * 2) / 2;
-     pdfDoc.setFontSize(9);
+     pdfDoc.setFontSize(10);
      pdfDoc.setFont("helvetica", "normal");
      pdfDoc.text("Mengetahui", signatureWidth * 0.25 + margin, yPos, {
        align: "center"
