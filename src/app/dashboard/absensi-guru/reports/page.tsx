@@ -543,18 +543,18 @@ export default function TeacherAttendanceReports() {
        yPos = margin + 20;
      }
      // Teachers with most "Hadir"
-     yPos = addTeacherCategorySection("Guru/Tendik dengan Hadir", topTeachersByCategory.hadir, yPos) + 5;
+     yPos = addTeacherCategorySection("Guru/Tendik dengan Hadir", topTeachersByCategory.hadir, yPos) + 8;
      // Teachers with most "Terlambat"
-     yPos = addTeacherCategorySection("Guru/Tendik dengan Terlambat", topTeachersByCategory.terlambat, yPos) + 10;
+     yPos = addTeacherCategorySection("Guru/Tendik dengan Terlambat", topTeachersByCategory.terlambat, yPos) + 8;
      // Check if we need a new page for the remaining sections
      if (yPos + 80 > pageHeight) {
        pdfDoc.addPage();
        yPos = margin + 20;
      }
      // Teachers with most "Izin"
-     yPos = addTeacherCategorySection("Guru/Tendik dengan Izin", topTeachersByCategory.izin, yPos) + 5;
+     yPos = addTeacherCategorySection("Guru/Tendik dengan Izin", topTeachersByCategory.izin, yPos) + 8;
      // Teachers with most "Alpha"
-     yPos = addTeacherCategorySection("Guru/Tendik dengan Alpha", topTeachersByCategory.alpha, yPos) + 15;
+     yPos = addTeacherCategorySection("Guru/Tendik dengan Alpha", topTeachersByCategory.alpha, yPos) + 12;
      // Add signature section
      yPos += 5;
      // Signature layout
