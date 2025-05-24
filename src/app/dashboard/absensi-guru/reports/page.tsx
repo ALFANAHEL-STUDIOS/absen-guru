@@ -466,7 +466,7 @@ export default function TeacherAttendanceReports() {
        pdfDoc.setFont("helvetica", "normal");
        pdfDoc.text(title + " Terbanyak :", margin, startY);
        const tableHeaders = ["No.", "Nama", "NIK", "Jabatan", "Jumlah"];
-       const colWidths = [10, 54, 38, 20, 27];
+       const colWidths = [10, 55, 38, 23, 27];
        let yPosition = startY + 5;
        // Draw header row
        pdfDoc.setFillColor(173, 216, 230);
