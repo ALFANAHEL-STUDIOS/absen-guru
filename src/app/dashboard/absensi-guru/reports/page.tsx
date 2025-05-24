@@ -252,17 +252,17 @@ export default function TeacherAttendanceReports() {
      // Add title
      pdfDoc.setFontSize(12);
      pdfDoc.setFont("helvetica", "normal");
-     pdfDoc.text("REKAPITULASI LAPORAN ABSENSI GURU DAN TENAGA KEPENDIDIKAN", pageWidth / 2, margin + 20, {
+     pdfDoc.text("REKAPITULASI LAPORAN ABSENSI GURU DAN TENAGA KEPENDIDIKAN", pageWidth / 2, margin + 32, {
        align: "center"
      });
      pdfDoc.text(`BULAN ${formattedMonth.toUpperCase()}`, pageWidth / 2, margin + 38, {
        align: "center"
      });
      // Main attendance table
-     let yPos = margin + 48;
+     let yPos = margin + 45;
      // Table headers
-     const headers = ["NO.", "NAMA GURU", "", "JABATAN", "HADIR", "TERLAMBAT", "IZIN", "ALPHA", "TOAL"];
-     const colWidths = [10, 50, 0, 25, 15, 28, 15, 15, 15];
+     const headers = ["NO.", "NAMA GURU", "", "JABATAN", "HADIR", "TERLAMBAT", "IZIN", "ALPHA", "TOTAL ABSENSI"];
+     const colWidths = [10, 50, 0, 25, 15, 25, 15, 15, 15];
      // Draw table header - Light blue background
      pdfDoc.setFillColor(173, 216, 230);
      pdfDoc.rect(margin, yPos, pageWidth - margin * 2, 8, "F");
