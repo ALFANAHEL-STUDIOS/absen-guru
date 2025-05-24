@@ -440,7 +440,7 @@ export default function TeacherAttendanceReports() {
      xPos += colWidths[7];
      // Draw vertical line
      pdfDoc.line(xPos, yPos, xPos, yPos + 8);
-     pdfDoc.text(totalAll.toString(), xPos + colWidths[8] / 2, yPos + 15, {
+     pdfDoc.text(totalAll.toString(), xPos + colWidths[8] / 2, yPos + 5, {
        align: "center"
      });
      yPos += 15;
@@ -463,7 +463,7 @@ export default function TeacherAttendanceReports() {
      // Add sections for teachers with most attendance in each category
      const addTeacherCategorySection = (title, teachers, startY) => {
        pdfDoc.setFontSize(10);
-       pdfDoc.setFont("helvetica", "bold");
+       pdfDoc.setFont("helvetica", "normal");
        pdfDoc.text(title + " Terbanyak :", margin, startY);
        const tableHeaders = ["No.", "Nama", "NIK", "Jabatan", "Jumlah"];
        const colWidths = [10, 50, 30, 20, 30];
@@ -485,7 +485,7 @@ export default function TeacherAttendanceReports() {
        });
        yPosition += 8;
        // Draw rows
-       pdfDoc.setFont("helvetica", "bold");
+       pdfDoc.setFont("helvetica", "normal");
        teachers.forEach((teacher, index) => {
          // Draw row border
          pdfDoc.rect(margin, yPosition, colWidths.reduce((a, b) => a + b, 0), 8, "S");
