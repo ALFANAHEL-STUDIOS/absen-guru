@@ -129,7 +129,7 @@ export default function TeacherAttendanceScan() {
           if (distance <= settings.radius) {
             setLocationMessage("Lokasi terdeteksi di Area Sekolah");
           } else {
-            setLocationMessage(`Lokasi diluar area sekolah (${Math.round(distance)} meter)`);
+            setLocationMessage(`Lokasi diluar Area Sekolah, jarak sekitar (${Math.round(distance)} meter)`);
           }
         } else {
           setLocationMessage("Posisi terdeteksi, tapi lokasi sekolah belum diatur");
@@ -427,7 +427,8 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
           <Link href="/dashboard/absensi-guru" className="p-2 mr-2 hover:bg-gray-100 rounded-full" data-unique-id="0cdfe06b-05ba-437c-aba6-688c31ce9fa7" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
             <ArrowLeft size={20} />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-800" data-unique-id="d36fb74b-8b02-4652-87fd-30af2c5de32d" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="7366c998-b51b-4af5-ad40-fa979a4d9f54" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Scan Absensi GTK</span></h1>
+          <h1 className="text-2xl font-bold text-gray-800" data-unique-id="d36fb74b-8b02-4652-87fd-30af2c5de32d" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <span className="editable-text" data-unique-id="7366c998-b51b-4af5-ad40-fa979a4d9f54" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">SCAN ABSENSI GTK</span></h1>
         </div>
       </div>
       
@@ -449,14 +450,14 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
           <h2 className="text-2xl font-bold text-gray-800 mb-2" data-unique-id="5dd794d1-4816-42b6-85ae-fb73b3244e41" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
             <span className="editable-text" data-unique-id="25c960ba-f7d3-48a2-a3ef-62fe5acd0234" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Absensi Berhasil!</span></h2>
           <p className="text-gray-600 mb-6" data-unique-id="7d960c80-b028-4bad-9f3d-6bebe47e690b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
-           {recognizedTeacher?.name} <span className="editable-text" data-unique-id="747dde10-4f66-4bef-aee0-b40328684309" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"> 
+           Guru dengan nama {recognizedTeacher?.name} <span className="editable-text" data-unique-id="747dde10-4f66-4bef-aee0-b40328684309" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"> 
              telah melakukan Absensi</span> "{attendanceType === 'in' ? 'MASUK' : 'PULANG'}" pada hari ini  {formattedDate} pukul {formattedTime} WIB.
             <span className="editable-text" data-unique-id="26f29e7d-558a-4cb8-8fc0-874fcdf7a59f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
           </span></p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4" data-unique-id="3a31698a-0e73-4cfe-b5cd-5461c54a24af" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
-            {/*<button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="ab94985c-1582-4532-9d2a-8a7c196c8aa1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="97399fef-c22f-4132-b97c-b9d89ad26fd9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-unique-id="ab94985c-1582-4532-9d2a-8a7c196c8aa1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="97399fef-c22f-4132-b97c-b9d89ad26fd9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               Absen Lagi
-            </span></button>*/}
+            </span></button>
             <Link href="https://t.me/AbsenModernBot" target="_blank" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center" data-unique-id="e44ce7c5-e2b2-4cda-bb93-d75bb8ae21ba" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <span className="editable-text" data-unique-id="271dcb13-3785-4c2e-abe2-d0df598e858d" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Lihat Hasil Absensi</span>
             </Link>
@@ -467,16 +468,16 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
         </motion.div> : <div className="bg-white rounded-xl shadow-md overflow-hidden" data-unique-id="f6796bc6-edfa-4594-9e8e-171434a2007e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
           <div className="p-6 border-b border-gray-200" data-unique-id="5126f0f3-e6a1-4da6-9129-954e72682513" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
             <center><h2 className="text-lg font-semibold mb-4" data-unique-id="f4311397-5296-4eaa-9f18-425b8b968cfa" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
-              <span className="editable-text" data-unique-id="3b0f0f36-126f-4734-8dd3-1fa872c95fa2" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Pilih Jenis Absensi :</span></h2></center>
+              <span className="editable-text" data-unique-id="3b0f0f36-126f-4734-8dd3-1fa872c95fa2" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Pilih Jenis Absensi</span></h2></center>
             
             {/* Attendance type selector */}
             <div className="flex items-center justify-center p-3 bg-gray-50 rounded-lg mb-4" data-unique-id="ef23db88-c069-479a-bc49-482fd9b6fa09" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <div className="flex space-x-2 bg-white p-1 rounded-lg shadow-sm" data-unique-id="b59d1dec-66e8-4e27-b633-69ff33924907" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
-                <button onClick={() => setAttendanceType("in")} className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-blue-600 text-white" : "bg-white text-gray-700"}`} data-unique-id="fba4c4a4-1161-4f7f-8316-9c8c303810ac" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <button onClick={() => setAttendanceType("in")} className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`} data-unique-id="fba4c4a4-1161-4f7f-8316-9c8c303810ac" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
                   <LogIn size={16} />
                   <span data-unique-id="01cedca7-345c-4da7-bf16-2b12bde81fda" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="9d9d5a00-2df7-444c-b3e3-5369595e290f" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Masuk</span></span>
                 </button>
-                <button onClick={() => setAttendanceType("out")} className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-blue-600 text-white" : "bg-white text-gray-700"}`} data-unique-id="29393762-afac-4a79-81be-f96f30cf6cca" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+                <button onClick={() => setAttendanceType("out")} className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`} data-unique-id="29393762-afac-4a79-81be-f96f30cf6cca" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
                   <LogOut size={16} />
                   <span data-unique-id="80de53e9-bb70-4695-9df4-ceaab5833755" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"><span className="editable-text" data-unique-id="c04e4b3e-5332-4d0f-8758-ca4f472de5cc" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Pulang</span></span>
                 </button>
@@ -507,14 +508,14 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
             </div>
             
             {/* Location information */}
-            <div className={`p-3 mb-4 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`} data-unique-id="1416de25-05ed-4339-828c-4cfa1e865508" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <div className={`p-3 mb-0 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`} data-unique-id="1416de25-05ed-4339-828c-4cfa1e865508" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <MapPin className="h-5 w-5 mr-2" />
               <p className="text-sm" data-unique-id="932a8874-8da9-4d91-ad71-9cc164890cc6" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">{locationMessage || "Mendeteksi lokasi..."}</p>
             </div>
             
             {/* Recognized teacher */}
             {recognizedTeacher && 
-              <center><div className="p-4 bg-purple-600 rounded-lg mb-4 border border-purple-200" data-unique-id="079b614b-8eea-4002-8e0c-117536b80737" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+              <center><div className="p-4 bg-blue-600 rounded-lg mb-4 border border-purple-200" data-unique-id="079b614b-8eea-4002-8e0c-117536b80737" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
                 <h3 className="text-lg font-semibold text-white" data-unique-id="3685f6bc-8cbe-49d8-8954-1e7df183a1a1" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">{recognizedTeacher.name}</h3>
                 <p className="text-sm text-white" data-unique-id="2011a9ff-236b-44ea-831d-c27ef674a9d9" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">
                   <span className="editable-text" data-unique-id="d63d5544-1a6b-41ba-9257-e9457b13f38b" data-file-name="app/dashboard/absensi-guru/scan/page.tsx"></span>{recognizedTeacher.nik}</p>
