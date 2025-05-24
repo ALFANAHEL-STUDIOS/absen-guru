@@ -129,7 +129,7 @@ export default function TeacherAttendanceScan() {
           if (distance <= settings.radius) {
             setLocationMessage("Lokasi terdeteksi di Area Sekolah");
           } else {
-            setLocationMessage(`Lokasi diluar Area Sekolah, jarak sekitar (${Math.round(distance)} meter)`);
+            setLocationMessage(`Lokasi di luar Area Sekolah, jarak sekitar (${Math.round(distance)} meter)`);
           }
         } else {
           setLocationMessage("Posisi terdeteksi, tapi lokasi sekolah belum diatur");
@@ -279,7 +279,7 @@ export default function TeacherAttendanceScan() {
       }
       const distance = calculateDistance(location.lat, location.lng, settings.schoolLocation.lat, settings.schoolLocation.lng);
       if (distance > settings.radius) {
-        toast.error(`Anda berada di luar area Absensi Sekolah, dengan jarak (${Math.round(distance)} meter)`);
+        toast.error(`Anda berada di luar area Absensi Sekolah, dengan jarak sekitar (${Math.round(distance)} meter)`);
         setProcessingCapture(false);
         return;
       }
@@ -300,7 +300,7 @@ export default function TeacherAttendanceScan() {
       const existingAttendanceQuery = query(attendanceRef, where("teacherId", "==", recognizedTeacher.id), where("date", "==", dateStr), where("type", "==", attendanceType));
       const existingSnapshot = await getDocs(existingAttendanceQuery);
       if (!existingSnapshot.empty) {
-        toast.error(`Anda sudah melakukan absensi ${attendanceType === 'in' ? 'masuk' : 'pulang'} hari ini`);
+        toast.error(`Anda sudah melakukan absensi ${attendanceType === 'in' ? 'Masuk' : 'Pulang'} hari ini`);
         setProcessingCapture(false);
         return;
       }
@@ -508,7 +508,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
             </div>
             
             {/* Location information */}
-            <div className={`p-3 mb-2 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`} data-unique-id="1416de25-05ed-4339-828c-4cfa1e865508" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <div className={`p-3 mb-2 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar Area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`} data-unique-id="1416de25-05ed-4339-828c-4cfa1e865508" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <MapPin className="h-5 w-5 mr-2" />
               <p className="text-sm" data-unique-id="932a8874-8da9-4d91-ad71-9cc164890cc6" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">{locationMessage || "Mendeteksi lokasi..."}</p>
             </div>
