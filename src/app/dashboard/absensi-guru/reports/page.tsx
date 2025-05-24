@@ -574,7 +574,7 @@ export default function TeacherAttendanceReports() {
      pdfDoc.text("Absensi Digital,", signatureWidth * 1.75 + margin, yPos, {
        align: "center"
      });
-     yPos += 25;
+     yPos += 20;
      pdfDoc.text(schoolInfo.principalName || "Kepala Sekolah", signatureWidth * 0.25 + margin, yPos, {
        align: "center"
      });
@@ -582,10 +582,10 @@ export default function TeacherAttendanceReports() {
        align: "center"
      });
      yPos += 5;
-     pdfDoc.text(`NIP. ${schoolInfo.principalNip || "..........................."}`, signatureWidth * 0.25 + margin, yPos, {
+     pdfDoc.text(`NIP. ${schoolInfo.principalNip || "................................"}`, signatureWidth * 0.25 + margin, yPos, {
        align: "center"
      });
-     pdfDoc.text("NIP. ...............................", signatureWidth * 1.75 + margin, yPos, {
+     pdfDoc.text("NIP. ....................................", signatureWidth * 1.75 + margin, yPos, {
        align: "center"
      });
      // Save the PDF
