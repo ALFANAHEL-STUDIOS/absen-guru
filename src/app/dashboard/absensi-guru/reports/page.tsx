@@ -225,7 +225,7 @@ export default function TeacherAttendanceReports() {
    setIsDownloading(true);
    try {
      const pdfDoc = new jsPDF({
-       orientation: "landscape",
+       orientation: "portrait",
        unit: "mm",
        format: "a4"
      });
@@ -462,7 +462,7 @@ export default function TeacherAttendanceReports() {
      const topTeachersByCategory = getTopTeachersByCategory();
      // Add sections for teachers with most attendance in each category
      const addTeacherCategorySection = (title, teachers, startY) => {
-       pdfDoc.setFontSize(10);
+       pdfDoc.setFontSize(8);
        pdfDoc.setFont("helvetica", "normal");
        pdfDoc.text(title + " Terbanyak :", margin, startY);
        const tableHeaders = ["No.", "Nama", "NIK", "Jabatan", "Jumlah"];
@@ -559,7 +559,7 @@ export default function TeacherAttendanceReports() {
      yPos += 5;
      // Signature layout
      const signatureWidth = (pageWidth - margin * 2) / 2;
-     pdfDoc.setFontSize(10);
+     pdfDoc.setFontSize(9);
      pdfDoc.setFont("helvetica", "normal");
      pdfDoc.text("Mengetahui", signatureWidth * 0.25 + margin, yPos, {
        align: "center"
