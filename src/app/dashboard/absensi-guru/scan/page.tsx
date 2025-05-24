@@ -508,7 +508,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
             </div>
             
             {/* Location information */}
-            <div className={`p-3 mb-0 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`} data-unique-id="1416de25-05ed-4339-828c-4cfa1e865508" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            <div className={`p-3 mb-2 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`} data-unique-id="1416de25-05ed-4339-828c-4cfa1e865508" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
               <MapPin className="h-5 w-5 mr-2" />
               <p className="text-sm" data-unique-id="932a8874-8da9-4d91-ad71-9cc164890cc6" data-file-name="app/dashboard/absensi-guru/scan/page.tsx" data-dynamic-text="true">{locationMessage || "Mendeteksi lokasi..."}</p>
             </div>
@@ -530,7 +530,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
                 <span className="editable-text" data-unique-id="5507e3aa-849a-4ac2-8b2d-fed711743630" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Aktifkan Kamera</span>
               </button>}
             
-            {scanning && !capturing && <button onClick={captureImage} className="col-span-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2" disabled={capturing} data-unique-id="0db42956-26a5-48c2-a491-c679ec689a5e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
+            {scanning && !capturing && <button onClick={captureImage} className="col-span-full py-3 bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-orange-500 active:bg-orange-600 transition-colors flex items-center justify-center gap-2" disabled={capturing} data-unique-id="0db42956-26a5-48c2-a491-c679ec689a5e" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">
                 <Camera size={20} />
                 <span className="editable-text" data-unique-id="f65003cd-47ac-4b16-8bd7-dd91dd217d1a" data-file-name="app/dashboard/absensi-guru/scan/page.tsx">Ambil Gambar</span>
               </button>}
