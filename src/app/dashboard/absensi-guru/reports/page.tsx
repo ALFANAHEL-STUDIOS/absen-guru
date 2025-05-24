@@ -483,9 +483,9 @@ export default function TeacherAttendanceReports() {
          });
          xPosition += colWidths[i];
        });
-       yPosition += 8;
+       yPosition += 5;
        // Draw rows
-       pdfDoc.setFont("helvetica", "normal");
+       pdfDoc.setFont("helvetica", "bold");
        teachers.forEach((teacher, index) => {
          // Draw row border
          pdfDoc.rect(margin, yPosition, colWidths.reduce((a, b) => a + b, 0), 8, "S");
