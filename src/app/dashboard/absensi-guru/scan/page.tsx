@@ -259,7 +259,7 @@ export default function TeacherAttendanceScan() {
      } else if (error.name === "NotReadableError" || error.name === "TrackStartError") {
        errorMessage = "Kamera sedang digunakan oleh aplikasi lain";
      } else if (error.name === "OverconstrainedError" || error.name === "ConstraintNotSatisfiedError") {
-       errorMessage = "Tidak dapat menemukan kamera yang sesuai dengan persyaratan spesifikasi";
+       errorMessage = "Tidak dapat menemukan kamera yang sesuai dengan persyaratan";
      } else {
        errorMessage = `Gagal mengakses kamera: ${error.message || error}`;
      }
