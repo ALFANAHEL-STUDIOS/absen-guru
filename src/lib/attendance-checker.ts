@@ -81,9 +81,9 @@ export async function checkAndMarkAlpha(schoolId: string) {
 // Send notification for Alpha status
 async function sendAlphaNotification(schoolId: string, attendanceData: any) {
  try {
-   const message = `PERINGATAN: Guru ${attendanceData.teacherName} tidak melakukan absensi ${
-     attendanceData.attendanceType === "entry" ? "masuk" : "pulang"
-   } pada ${format(new Date(), "d MMMM yyyy", { locale: id })}.`;
+   const message = `PERINGATAN : Guru dengan nama ${attendanceData.teacherName} tidak melakukan absensi ${
+     attendanceData.attendanceType === "entry" ? "Masuk" : "Pulang"
+   } pada hari ini ${format(new Date(), "d MMMM yyyy", { locale: id })} WIB.`;
 
    // Send notification
    const BOT_TOKEN = "7662377324:AAEFhwY-y1q3IrX4OEJAUG8VLa8DqNndH6E";
