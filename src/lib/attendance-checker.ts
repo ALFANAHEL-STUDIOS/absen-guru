@@ -82,7 +82,7 @@ export async function checkAndMarkAlpha(schoolId: string) {
 async function sendAlphaNotification(schoolId: string, attendanceData: any) {
  try {
    const message = `PERINGATAN : Guru dengan nama ${attendanceData.teacherName} tidak melakukan absensi ${
-     attendanceData.attendanceType === "entry" ? "Masuk" : "Pulang"
+     attendanceData.attendanceType === "entry" ? "MASUK" : "PULANG"
    } pada hari ini ${format(new Date(), "d MMMM yyyy", { locale: id })} WIB.`;
 
    // Send notification
