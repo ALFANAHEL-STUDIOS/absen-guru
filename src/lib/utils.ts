@@ -143,7 +143,7 @@ async function sendAbsenceNotification(teacherName: string, date: string, type: 
    if (!telegramSettingsDoc.exists()) return;
 
    const telegramSettings = telegramSettingsDoc.data();
-   const token = telegramSettings.token || "7702797779:•••••••••••••••••••••••••••••••••••";
+   const token = telegramSettings.token || "7702797779:AAELhARB3HkvB9hh5e5D64DCC4faDfcW9IM";
    const chatId = telegramSettings.chatId || "";
 
    if (!chatId) return;
