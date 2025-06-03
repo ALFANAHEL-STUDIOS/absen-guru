@@ -460,9 +460,9 @@ export default function TeacherAttendanceScan() {
 
      setSuccess(true);
      toast.success(`Absensi ${
-       attendanceType === 'in' ? 'Masuk' :
-       attendanceType === 'out' ? 'Pulang' :
-       'Izin'
+       attendanceType === 'in' ? 'masuk' :
+       attendanceType === 'out' ? 'pulang' :
+       'izin'
      } berhasil tercatat!`);
    } catch (error) {
      console.error("Error submitting attendance:", error);
@@ -524,12 +524,12 @@ export default function TeacherAttendanceScan() {
      let messageType = "";
      if (attendanceType === 'in') messageType = 'MASUK';
      else if (attendanceType === 'out') messageType = 'PULANG';
-     else if (attendanceType === 'Izin') messageType = 'IZIN';
+     else if (attendanceType === 'izin') messageType = 'IZIN';
 
      let message = `GTK dengan nama ${teacherName} telah melakukan Absensi "${messageType}" di Sekolah pada hari ini, Tanggal ${date} Pukul ${time} WIB.`;
 
      // Add reason if it's an izin type
-     if (attendanceType === 'Izin' && reason) {
+     if (attendanceType === 'izin' && reason) {
        message += `\nAlasan Izin : "${reason}"`;
      }
      // Send notification
@@ -578,7 +578,7 @@ export default function TeacherAttendanceScan() {
              attendanceType === 'out' ? 'Pulang' :
              'Izin'
            }
-           {attendanceType === 'Izin' && IzinReason ? ` dengan alasan "${IzinReason}"` : ''}".
+           {attendanceType === 'izin' && IzinReason ? ` dengan alasan "${IzinReason}"` : ''}".
          </p>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
            <button onClick={resetProcess} className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span className="editable-text">
