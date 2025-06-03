@@ -605,7 +605,7 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
              attendanceType === 'out' ? 'PULANG' :
              'izin'
            }
-           {attendanceType === 'izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''} pada hari ini  {formattedDate} pukul {formattedTime} WIB.
+           {attendanceType === 'izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''}.
          </p>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
            <button onClick={resetProcess} className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span className="editable-text">
