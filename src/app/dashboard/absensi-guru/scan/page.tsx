@@ -526,7 +526,7 @@ export default function TeacherAttendanceScan() {
      else if (attendanceType === 'out') messageType = 'PULANG';
      else if (attendanceType === 'izin') messageType = 'IZIN';
 
-     let message = `GTK dengan nama ${teacherName} telah melakukan Absensi "${messageType}" di Sekolah pada hari ini, tanggal ${date} pukul ${time} WIB.`;
+     let message = `GTK dengan nama ${teacherName} telah melakukan Absensi "${messageType}" di Sekolah pada hari ini, Tanggal ${date} Pukul ${time} WIB.`;
 
      // Add reason if it's an izin type
      if (attendanceType === 'Izin' && reason) {
@@ -739,7 +739,7 @@ export default function TeacherAttendanceScan() {
          </div>
        </div>}
 <hr className="border-t border-none mb-5" />
-  <hr className="border-t border-none mb-5" />
+ 
      {/* Instructions card */}
      {/*<div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg">
        <div className="flex">
