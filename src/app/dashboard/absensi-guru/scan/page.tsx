@@ -576,7 +576,7 @@ export default function TeacherAttendanceScan() {
            GTK dengan nama {recognizedTeacher?.name}<span className="editable-text"> telah berhasil melakukan "Absensi </span>{
              attendanceType === 'in' ? 'Masuk' :
              attendanceType === 'out' ? 'Pulang' :
-             'izin'
+             'Izin'
            }
            {attendanceType === 'Izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''}".
          </p>
@@ -741,7 +741,7 @@ export default function TeacherAttendanceScan() {
 <hr className="border-t border-none mb-5" />
   <hr className="border-t border-none mb-5" />
      {/* Instructions card */}
-     <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg">
+     {/*<div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg">
        <div className="flex">
          <div className="flex-shrink-0">
            <AlertCircle className="h-5 w-5 text-yellow-500" />
@@ -759,6 +759,6 @@ export default function TeacherAttendanceScan() {
            </div>
          </div>
        </div>
-     </div>
+     </div>*/}
    </div>;
 }
