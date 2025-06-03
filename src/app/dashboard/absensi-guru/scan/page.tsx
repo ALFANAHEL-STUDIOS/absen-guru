@@ -573,18 +573,18 @@ export default function TeacherAttendanceScan() {
          </div>
          <h2 className="text-2xl font-bold text-gray-800 mb-2"><span className="editable-text">Absensi Berhasil!</span></h2>
          <p className="text-gray-600 mb-6">
-           GTK dengan nama {recognizedTeacher?.name}<span className="editable-text"> telah berhasil melakukan absensi </span>{
+           GTK dengan nama {recognizedTeacher?.name}<span className="editable-text"> telah berhasil melakukan "Absensi </span>{
              attendanceType === 'in' ? 'Masuk' :
              attendanceType === 'out' ? 'Pulang' :
              'izin'
            }
-           {attendanceType === 'Izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''}.
+           {attendanceType === 'Izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''}".
          </p>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
            <button onClick={resetProcess} className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span className="editable-text">
              Absen Lagi
            </span></button>
-           <Link href="https://t.me/AbsenModernBot" target="_blank" className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+           <Link href="https://t.me/AbsenModernBot" target="_blank" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
              <span className="editable-text">Lihat Hasil Absensi</span>
            </Link>
            <Link href="/dashboard/absensi-guru/scan" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center justify-center"><span className="editable-text">
@@ -700,7 +700,7 @@ export default function TeacherAttendanceScan() {
             <center><div className="p-4 bg-blue-600 rounded-lg mb-1 border border-purple-200">
                <h3 className="text-lg font-semibold text-white">{recognizedTeacher.name}</h3>
                <p className="text-sm text-white"><span className="editable-text"></span>{recognizedTeacher.nik}</p>
-               <p className="text-sm text-white"><span className="editable-text">Jabatan : </span>{recognizedTeacher.role}</p>
+               <p className="text-sm text-white"><span className="editable-text">Status : </span>{recognizedTeacher.role}</p>
              </div></center>
            }
          </div>
@@ -732,7 +732,7 @@ export default function TeacherAttendanceScan() {
                <span className="editable-text">Batal</span>
              </button>}
 
-           {processingCapture && <div className="col-span-full flex items-center justify-center py-3 bg-gray-300 text-gray-700 rounded-lg font-medium">
+           {processingCapture && <div className="col-span-full flex items-center justify-center py-3 bg-orange-300 text-white rounded-lg font-medium">
                <Loader2 size={20} className="animate-spin mr-2" />
                <span className="editable-text">Memproses...</span>
              </div>}
