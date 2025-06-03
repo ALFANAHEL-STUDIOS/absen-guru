@@ -553,7 +553,7 @@ export default function TeacherAttendanceScan() {
          <Link href="/dashboard/absensi-guru" className="p-2 mr-2 hover:bg-gray-100 rounded-full">
            <ArrowLeft size={20} />
          </Link>
-         <h1 className="text-2xl font-bold text-gray-800"><span className="editable-text">Absensi Guru dan Tendik</span></h1>
+         <h1 className="text-2xl font-bold text-gray-800"><span className="editable-text">Absensi Guru & Tendik</span></h1>
        </div>
      </div>
 
@@ -596,7 +596,7 @@ export default function TeacherAttendanceScan() {
            <center><h2 className="text-lg font-semibold mb-4"><span className="editable-text">PILIH JENIS ABSENSI</span></h2></center>
 
            {/* Attendance type selector */}
-           <div className="flex items-center justify-center p-3 bg-gray-50 rounded-lg mb-4">
+           <div className="flex items-center justify-center p-3 bg-gray-100 rounded-lg mb-4">
              <div className="flex space-x-1 bg-white p-1 rounded-lg shadow-sm">
                <button
                  onClick={() => setAttendanceType("in")}
@@ -611,7 +611,7 @@ export default function TeacherAttendanceScan() {
                  onClick={() => setAttendanceType("izin")}
                  className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
-               {/*<Calendar size={16} />*/}
+               <Calendar size={16} />
                  <span><span className="editable-text">Izin</span></span>
                </button>
 
@@ -632,14 +632,14 @@ export default function TeacherAttendanceScan() {
            {attendanceType === "izin" && (
              <div className="mb-4">
                <label htmlFor="izinReason" className="block text-sm font-medium text-gray-700 mb-1">
-                 <span className="editable-text">Alasan Izin</span>
+                 <span className="editable-text"> Alasan Izin :</span>
                </label>
                <textarea
                  id="izinReason"
                  value={izinReason}
                  onChange={(e) => setIzinReason(e.target.value)}
                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"
-                 placeholder="Masukkan alasan izin (contoh: Rapat, Dinas Luar, dll)"
+                 placeholder="Masukkan alasan izin,  contoh : rapat, dinas luar, dll."
                  rows={3}
                  required={attendanceType === 'izin'}
                />
@@ -681,7 +681,7 @@ export default function TeacherAttendanceScan() {
 
            {/* Location information */}
            {attendanceType !== 'izin' && (
-             <div className={`p-3 mb-4 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar Area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+             <div className={`p-3 mb-2 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar Area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
                <MapPin className="h-5 w-5 mr-2" />
                <p className="text-sm">{locationMessage || "Mendeteksi lokasi..."}</p>
              </div>
@@ -704,7 +704,7 @@ export default function TeacherAttendanceScan() {
          </div>
 
          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-           {!scanning && !capturedImage && <button onClick={startCamera} className="col-span-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2">
+           {!scanning && !capturedImage && <button onClick={startCamera} className="col-span-full py-3 bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-orange-500 active:bg-orange-700 transition-colors flex items-center justify-center gap-2">
                <Camera size={20} />
                <span className="editable-text">Aktifkan Kamera</span>
              </button>}
