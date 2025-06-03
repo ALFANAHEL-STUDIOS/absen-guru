@@ -547,7 +547,7 @@ export default function TeacherAttendanceScan() {
      console.error("Error sending Telegram notification:", error);
    }
  };
- return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-3 sm:px-4 md:px-6">
+ return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-1 sm:px-4 md:px-6">
      <div className="flex items-center justify-between mb-6">
        <div className="flex items-center">
          <Link href="/dashboard/absensi-guru" className="p-2 mr-2 hover:bg-gray-100 rounded-full">
@@ -592,7 +592,7 @@ export default function TeacherAttendanceScan() {
            </span></Link>
          </div>
        </motion.div> : <div className="bg-white rounded-xl shadow-md overflow-hidden">
-         <div className="p-6 border-b border-gray-200">
+         <div className="p-4 border-b border-gray-200">
            <center><h2 className="text-lg font-semibold mb-4"><span className="editable-text">PILIH JENIS ABSENSI</span></h2></center>
 
            {/* Attendance type selector */}
@@ -600,7 +600,7 @@ export default function TeacherAttendanceScan() {
              <div className="flex space-x-1 bg-white p-1 rounded-lg shadow-sm">
                <button
                  onClick={() => setAttendanceType("in")}
-                 className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+                 className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
                  <LogIn size={16} />
                  <span><span className="editable-text">Masuk</span></span>
@@ -609,7 +609,7 @@ export default function TeacherAttendanceScan() {
 
                 <button
                  onClick={() => setAttendanceType("izin")}
-                 className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+                 className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
                {/*<Calendar size={16} />*/}
                  <span><span className="editable-text">Izin</span></span>
@@ -619,7 +619,7 @@ export default function TeacherAttendanceScan() {
               
                <button
                  onClick={() => setAttendanceType("out")}
-                 className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+                 className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
                 <LogOut size={16} />
                  <span><span className="editable-text">Pulang</span></span>
@@ -664,8 +664,8 @@ export default function TeacherAttendanceScan() {
 
                  {/* Photo capture guide overlay */}
                  {!cameraError && <div className="absolute inset-0 flex items-center justify-center">
-                     <div className="absolute bottom-8 left-0 right-0 text-center">
-                       <p className="text-white text-sm bg-black bg-opacity-50 inline-block px-3 py-1 rounded-full"><span className="editable-text">
+                     <div className="absolute bottom-1 left-0 right-0 text-center">
+                       <p className="text-gray-400 text-sm bg-black bg-opacity-50 inline-block px-3 py-1 rounded-full"><span className="editable-text">
                          Posisikan diri Anda dengan jelas
                        </span></p>
                      </div>
