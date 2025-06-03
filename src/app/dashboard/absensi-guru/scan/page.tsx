@@ -225,9 +225,9 @@ export default function TeacherAttendanceScan() {
      if (settings.schoolLocation.lat && settings.schoolLocation.lng) {
        const distance = calculateDistance(userLocation.lat, userLocation.lng, settings.schoolLocation.lat, settings.schoolLocation.lng);
        if (distance <= settings.radius) {
-         setLocationMessage("Lokasi terdeteksi di area sekolah");
+         setLocationMessage("Lokasi terdeteksi di Area Sekolah");
        } else {
-         setLocationMessage(`Lokasi diluar area sekolah (${Math.round(distance)} meter)`);
+         setLocationMessage(`Lokasi Absensi di luar Area Sekolah, jarak sekitar (${Math.round(distance)} meter)`);
        }
      } else {
        setLocationMessage("Posisi terdeteksi, tapi lokasi sekolah belum diatur");
@@ -399,7 +399,7 @@ export default function TeacherAttendanceScan() {
        }
        const distance = calculateDistance(location.lat, location.lng, settings.schoolLocation.lat, settings.schoolLocation.lng);
        if (distance > settings.radius) {
-         toast.error(`Anda berada di luar area sekolah (${Math.round(distance)} meter)`);
+         toast.error(`Anda berada di luar area Absensi Sekolah, dengan jarak sekitar (${Math.round(distance)} meter)`);
          setProcessingCapture(false);
          return;
        }
@@ -420,7 +420,7 @@ export default function TeacherAttendanceScan() {
      const existingAttendanceQuery = query(attendanceRef, where("teacherId", "==", recognizedTeacher.id), where("date", "==", dateStr), where("type", "==", attendanceType));
      const existingSnapshot = await getDocs(existingAttendanceQuery);
      if (!existingSnapshot.empty) {
-       toast.error(`Anda sudah melakukan absensi ${attendanceType === 'in' ? 'masuk' : attendanceType === 'out' ? 'pulang' : 'izin'} hari ini`);
+       toast.error(`Anda sudah melakukan absensi ${attendanceType === 'in' ? 'Masuk' : attendanceType === 'out' ? 'Pulang' : 'izin'} hari ini`);
        setProcessingCapture(false);
        return;
      }
@@ -460,8 +460,8 @@ export default function TeacherAttendanceScan() {
 
      setSuccess(true);
      toast.success(`Absensi ${
-       attendanceType === 'in' ? 'masuk' :
-       attendanceType === 'out' ? 'pulang' :
+       attendanceType === 'in' ? 'Masuk' :
+       attendanceType === 'out' ? 'Pulang' :
        'izin'
      } berhasil tercatat!`);
    } catch (error) {
@@ -514,23 +514,36 @@ export default function TeacherAttendanceScan() {
        return;
      }
      const telegramSettings = telegramSettingsDoc.data();
-     const token = telegramSettings.token || "7702797779:•••••••••••••••••••••••••••••••••••";
+     const token = telegramSettings.token || "7702797779:AAELhARB3HkvB9hh5e5D64DCC4faDfcW9IM";
      const chatId = telegramSettings.chatId || ""; // Should be the school principal's chat ID
      if (!chatId) {
        console.error("No chat ID found for notification");
        return;
      }
+
+
+
+const currentDateTime = new Date(); 
+const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
+const formattedTime = format(currentDateTime, "HH:mm:ss"); 
+
+
+
+
+
+
+    
      // Format message based on attendance type
      let messageType = "";
      if (attendanceType === 'in') messageType = 'MASUK';
      else if (attendanceType === 'out') messageType = 'PULANG';
      else if (attendanceType === 'izin') messageType = 'IZIN';
 
-     let message = `GTK dengan nama ${teacherName} telah melakukan "Absen ${messageType}" di Sekolah pada tanggal ${date} pukul ${time} WIB.`;
+     let message = `GTK dengan nama ${teacherName} telah melakukan Absensi "${messageType}" pada hari ini ${formattedDate} pukul ${formattedTime} WIB.`;
 
      // Add reason if it's an izin type
      if (attendanceType === 'izin' && reason) {
-       message += `\nAlasan Izin: "${reason}"`;
+       message += `\nAlasan Izin : "${reason}"`;
      }
      // Send notification
      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -547,13 +560,27 @@ export default function TeacherAttendanceScan() {
      console.error("Error sending Telegram notification:", error);
    }
  };
+
+
+
+
+ 
+const currentDateTime = new Date(); 
+const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
+const formattedTime = format(currentDateTime, "HH:mm:ss"); 
+
+
+
+
+ 
+ 
  return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-3 sm:px-4 md:px-6">
      <div className="flex items-center justify-between mb-6">
        <div className="flex items-center">
          <Link href="/dashboard/absensi-guru" className="p-2 mr-2 hover:bg-gray-100 rounded-full">
            <ArrowLeft size={20} />
          </Link>
-         <h1 className="text-2xl font-bold text-gray-800"><span className="editable-text">Absensi Selfie + Lokasi</span></h1>
+         <h1 className="text-2xl font-bold text-gray-800"><span className="editable-text">Absensi Guru dan Tendik</span></h1>
        </div>
      </div>
 
@@ -573,52 +600,55 @@ export default function TeacherAttendanceScan() {
          </div>
          <h2 className="text-2xl font-bold text-gray-800 mb-2"><span className="editable-text">Absensi Berhasil!</span></h2>
          <p className="text-gray-600 mb-6">
-           {recognizedTeacher?.name}<span className="editable-text"> berhasil melakukan absensi </span>{
-             attendanceType === 'in' ? 'masuk' :
-             attendanceType === 'out' ? 'pulang' :
+           GTK dengan nama {recognizedTeacher?.name}<span className="editable-text"> berhasil melakukan absensi </span>{
+             attendanceType === 'in' ? 'MASUK' :
+             attendanceType === 'out' ? 'PULANG' :
              'izin'
            }
-           {attendanceType === 'izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''}.
+           {attendanceType === 'izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''} pada hari ini  {formattedDate} pukul {formattedTime} WIB.
          </p>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-           <button onClick={resetProcess} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span className="editable-text">
+           <button onClick={resetProcess} className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span className="editable-text">
              Absen Lagi
            </span></button>
-           <Link href="/dashboard/absensi-guru/attendance-table" className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+           <Link href="https://t.me/AbsenModernBot" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
              <span className="editable-text">Lihat Hasil Absensi</span>
            </Link>
-           <Link href="/dashboard/absensi-guru" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center justify-center"><span className="editable-text">
+           <Link href="dashboard/absensi-guru/scan/" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center justify-center"><span className="editable-text">
              Kembali
            </span></Link>
          </div>
        </motion.div> : <div className="bg-white rounded-xl shadow-md overflow-hidden">
          <div className="p-6 border-b border-gray-200">
-           <h2 className="text-lg font-semibold mb-4"><span className="editable-text">Scan Absensi dengan Wajah</span></h2>
+           <center><h2 className="text-lg font-semibold mb-4"><span className="editable-text">PILIH JENIS ABSENSI</span></h2></center>
 
            {/* Attendance type selector */}
            <div className="flex items-center justify-center p-3 bg-gray-50 rounded-lg mb-4">
              <div className="flex space-x-2 bg-white p-1 rounded-lg shadow-sm">
                <button
                  onClick={() => setAttendanceType("in")}
-                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-blue-600 text-white" : "bg-white text-gray-700"}`}
+                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
-                 <LogIn size={16} />
-                 <span><span className="editable-text">Absen Masuk</span></span>
+                 <span><span className="editable-text">Masuk</span></span>
                </button>
+
+              
+                 <button
+                 onClick={() => setAttendanceType("izin")}
+                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+               >
+               <span><span className="editable-text">Izin</span></span>
+               </button>
+
+
+              
                <button
                  onClick={() => setAttendanceType("out")}
-                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-blue-600 text-white" : "bg-white text-gray-700"}`}
+                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
-                 <LogOut size={16} />
-                 <span><span className="editable-text">Absen Pulang</span></span>
+                 <span><span className="editable-text">Pulang</span></span>
                </button>
-               <button
-                 onClick={() => setAttendanceType("izin")}
-                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-blue-600 text-white" : "bg-white text-gray-700"}`}
-               >
-                 <Calendar size={16} />
-                 <span><span className="editable-text">Izin</span></span>
-               </button>
+              
              </div>
            </div>
 
@@ -690,11 +720,13 @@ export default function TeacherAttendanceScan() {
            )}
 
            {/* Recognized teacher */}
-           {recognizedTeacher && <div className="p-4 bg-blue-50 rounded-lg mb-4 border border-blue-200">
-               <h3 className="text-lg font-semibold text-blue-800">{recognizedTeacher.name}</h3>
-               <p className="text-sm text-blue-600"><span className="editable-text">NIK: </span>{recognizedTeacher.nik}</p>
-               <p className="text-sm text-blue-600"><span className="editable-text">Jabatan: </span>{recognizedTeacher.role}</p>
-             </div>}
+           {recognizedTeacher && 
+            <center>
+             <div className="p-4 bg-blue-600 rounded-lg mb-4 border border-purple-200">
+               <h3 className="text-lg font-semibold text-white">{recognizedTeacher.name}</h3>
+               <p className="text-sm text-white"><span className="editable-text"></span>{recognizedTeacher.nik}</p>
+               <p className="text-sm text-white"><span className="editable-text">Jabatan : </span>{recognizedTeacher.role}</p>
+             </div>}</center>
          </div>
 
          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -741,11 +773,11 @@ export default function TeacherAttendanceScan() {
            <h3 className="text-sm font-medium text-yellow-800"><span className="editable-text">Petunjuk Absensi</span></h3>
            <div className="mt-2 text-sm text-yellow-700">
              <ul className="list-disc pl-5 space-y-1">
-               <li><span className="editable-text">Pastikan foto selfie Anda terlihat jelas</span></li>
-               <li><span className="editable-text">Pastikan pencahayaan cukup terang</span></li>
-               <li><span className="editable-text">Pastikan Anda berada di area sekolah untuk absensi masuk/pulang</span></li>
-               <li><span className="editable-text">Gunakan fitur Izin jika Anda tidak dapat mengajar karena tugas lain</span></li>
+               <li><span className="editable-text">Pastikan foto selfie Anda terlihat jelas dengan pencahayaan cukup terang</span></li>
                <li><span className="editable-text">Aktifkan GPS pada perangkat Anda</span></li>
+               <li><span className="editable-text">Pastikan Anda berada di Area Sekolah untuk absensi Masuk / pulang</span></li>
+               <li><span className="editable-text">Gunakan fitur Izin jika Anda tidak dapat mengajar karena tugas lain</span></li>
+               
              </ul>
            </div>
          </div>
