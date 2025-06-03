@@ -420,7 +420,7 @@ export default function TeacherAttendanceScan() {
      const existingAttendanceQuery = query(attendanceRef, where("teacherId", "==", recognizedTeacher.id), where("date", "==", dateStr), where("type", "==", attendanceType));
      const existingSnapshot = await getDocs(existingAttendanceQuery);
      if (!existingSnapshot.empty) {
-       toast.error(`Anda sudah melakukan absensi ${attendanceType === 'in' ? 'Masuk' : attendanceType === 'out' ? 'Pulang' : 'izin'} hari ini`);
+       toast.error(`Anda sudah melakukan absensi ${attendanceType === 'in' ? 'Masuk' : attendanceType === 'out' ? 'Pulang' : 'Izin'} hari ini`);
        setProcessingCapture(false);
        return;
      }
@@ -462,7 +462,7 @@ export default function TeacherAttendanceScan() {
      toast.success(`Absensi ${
        attendanceType === 'in' ? 'Masuk' :
        attendanceType === 'out' ? 'Pulang' :
-       'izin'
+       'Izin'
      } berhasil tercatat!`);
    } catch (error) {
      console.error("Error submitting attendance:", error);
@@ -520,29 +520,16 @@ export default function TeacherAttendanceScan() {
        console.error("No chat ID found for notification");
        return;
      }
-
-
-
-const currentDateTime = new Date(); 
-const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
-const formattedTime = format(currentDateTime, "HH:mm:ss"); 
-
-
-
-
-
-
-    
      // Format message based on attendance type
      let messageType = "";
      if (attendanceType === 'in') messageType = 'MASUK';
      else if (attendanceType === 'out') messageType = 'PULANG';
      else if (attendanceType === 'izin') messageType = 'IZIN';
 
-     let message = `GTK dengan nama ${teacherName} telah melakukan Absensi "${messageType}" pada hari ini ${formattedDate} pukul ${formattedTime} WIB.`;
+     let message = `GTK dengan nama ${teacherName} telah melakukan Absen "${messageType}" di Sekolah pada hari ini, tanggal ${date} pukul ${time} WIB.`;
 
      // Add reason if it's an izin type
-     if (attendanceType === 'izin' && reason) {
+     if (attendanceType === 'Izin' && reason) {
        message += `\nAlasan Izin : "${reason}"`;
      }
      // Send notification
@@ -560,20 +547,6 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
      console.error("Error sending Telegram notification:", error);
    }
  };
-
-
-
-
- 
-//const currentDateTime = new Date(); 
-//const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
-//const formattedTime = format(currentDateTime, "HH:mm:ss"); 
-
-
-
-
- 
- 
  return <div className="max-w-3xl mx-auto pb-20 md:pb-6 px-3 sm:px-4 md:px-6">
      <div className="flex items-center justify-between mb-6">
        <div className="flex items-center">
@@ -600,21 +573,21 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
          </div>
          <h2 className="text-2xl font-bold text-gray-800 mb-2"><span className="editable-text">Absensi Berhasil!</span></h2>
          <p className="text-gray-600 mb-6">
-           GTK dengan nama {recognizedTeacher?.name}<span className="editable-text"> berhasil melakukan absensi </span>{
-             attendanceType === 'in' ? 'MASUK' :
-             attendanceType === 'out' ? 'PULANG' :
+           GTK dengan nama {recognizedTeacher?.name}<span className="editable-text"> telah berhasil melakukan absensi </span>{
+             attendanceType === 'in' ? 'Masuk' :
+             attendanceType === 'out' ? 'Pulang' :
              'izin'
            }
-           {attendanceType === 'izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''}.
+           {attendanceType === 'Izin' && izinReason ? ` dengan alasan "${izinReason}"` : ''}.
          </p>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
            <button onClick={resetProcess} className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span className="editable-text">
              Absen Lagi
            </span></button>
-           <Link href="https://t.me/AbsenModernBot" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+           <Link href="https://t.me/AbsenModernBot" target="_blank" className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
              <span className="editable-text">Lihat Hasil Absensi</span>
            </Link>
-           <Link href="dashboard/absensi-guru/scan/" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center justify-center"><span className="editable-text">
+           <Link href="/dashboard/absensi-guru/scan" className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center justify-center"><span className="editable-text">
              Kembali
            </span></Link>
          </div>
@@ -629,26 +602,23 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
                  onClick={() => setAttendanceType("in")}
                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
+                 
                  <span><span className="editable-text">Masuk</span></span>
                </button>
-
-              
-                 <button
-                 onClick={() => setAttendanceType("izin")}
-                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
-               >
-               <span><span className="editable-text">Izin</span></span>
-               </button>
-
-
-              
                <button
                  onClick={() => setAttendanceType("out")}
                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
+                
                  <span><span className="editable-text">Pulang</span></span>
                </button>
-              
+               <button
+                 onClick={() => setAttendanceType("izin")}
+                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+               >
+               
+                 <span><span className="editable-text">Izin</span></span>
+               </button>
              </div>
            </div>
 
@@ -720,13 +690,11 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
            )}
 
            {/* Recognized teacher */}
-           {recognizedTeacher && 
-            <center>
-             <div className="p-4 bg-blue-600 rounded-lg mb-4 border border-purple-200">
-               <h3 className="text-lg font-semibold text-white">{recognizedTeacher.name}</h3>
-               <p className="text-sm text-white"><span className="editable-text"></span>{recognizedTeacher.nik}</p>
-               <p className="text-sm text-white"><span className="editable-text">Jabatan : </span>{recognizedTeacher.role}</p>
-             </div>}</center>
+           {recognizedTeacher && <div className="p-4 bg-blue-50 rounded-lg mb-4 border border-blue-200">
+               <h3 className="text-lg font-semibold text-blue-800">{recognizedTeacher.name}</h3>
+               <p className="text-sm text-blue-600"><span className="editable-text">NIK: </span>{recognizedTeacher.nik}</p>
+               <p className="text-sm text-blue-600"><span className="editable-text">Jabatan: </span>{recognizedTeacher.role}</p>
+             </div>}
          </div>
 
          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -773,11 +741,11 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
            <h3 className="text-sm font-medium text-yellow-800"><span className="editable-text">Petunjuk Absensi</span></h3>
            <div className="mt-2 text-sm text-yellow-700">
              <ul className="list-disc pl-5 space-y-1">
-               <li><span className="editable-text">Pastikan foto selfie Anda terlihat jelas dengan pencahayaan cukup terang</span></li>
-               <li><span className="editable-text">Aktifkan GPS pada perangkat Anda</span></li>
-               <li><span className="editable-text">Pastikan Anda berada di Area Sekolah untuk absensi Masuk / pulang</span></li>
+               <li><span className="editable-text">Pastikan foto selfie Anda terlihat jelas</span></li>
+               <li><span className="editable-text">Pastikan pencahayaan cukup terang</span></li>
+               <li><span className="editable-text">Pastikan Anda berada di area sekolah untuk absensi masuk/pulang</span></li>
                <li><span className="editable-text">Gunakan fitur Izin jika Anda tidak dapat mengajar karena tugas lain</span></li>
-               
+               <li><span className="editable-text">Aktifkan GPS pada perangkat Anda</span></li>
              </ul>
            </div>
          </div>
