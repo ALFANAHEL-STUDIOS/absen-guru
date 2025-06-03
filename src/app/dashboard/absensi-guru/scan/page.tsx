@@ -597,28 +597,34 @@ export default function TeacherAttendanceScan() {
 
            {/* Attendance type selector */}
            <div className="flex items-center justify-center p-3 bg-gray-50 rounded-lg mb-4">
-             <div className="flex space-x-2 bg-white p-1 rounded-lg shadow-sm">
+             <div className="flex space-x-1 bg-white p-1 rounded-lg shadow-sm">
                <button
                  onClick={() => setAttendanceType("in")}
-                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+                 className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
                  <LogIn size={16} />
                  <span><span className="editable-text">Masuk</span></span>
                </button>
+
+
+                <button
+                 onClick={() => setAttendanceType("izin")}
+                 className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+               >
+               {/*<Calendar size={16} />*/}
+                 <span><span className="editable-text">Izin</span></span>
+               </button>
+
+
+              
                <button
                  onClick={() => setAttendanceType("out")}
-                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+                 className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${attendanceType === "out" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
                 <LogOut size={16} />
                  <span><span className="editable-text">Pulang</span></span>
                </button>
-               <button
-                 onClick={() => setAttendanceType("izin")}
-                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
-               >
-               <Calendar size={16} />
-                 <span><span className="editable-text">Izin</span></span>
-               </button>
+              
              </div>
            </div>
 
