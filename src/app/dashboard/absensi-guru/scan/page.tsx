@@ -632,7 +632,7 @@ export default function TeacherAttendanceScan() {
            {attendanceType === "izin" && (
              <div className="mb-4">
                <label htmlFor="izinReason" className="block text-sm font-medium text-gray-700 mb-1">
-                 <span className="editable-text"> Alasan Izin :</span>
+                 <span className="editable-text"> ALASAN IZIN :</span>
                </label>
                <textarea
                  id="izinReason"
@@ -681,7 +681,7 @@ export default function TeacherAttendanceScan() {
 
            {/* Location information */}
            {attendanceType !== 'izin' && (
-             <div className={`p-3 mb-2 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar Area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+             <div className={`p-3 mb-3 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar Area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
                <MapPin className="h-5 w-5 mr-2" />
                <p className="text-sm">{locationMessage || "Mendeteksi lokasi..."}</p>
              </div>
@@ -689,18 +689,20 @@ export default function TeacherAttendanceScan() {
 
            {/* Special notice for Izin */}
            {attendanceType === 'izin' && (
-             <div className="p-3 mb-4 rounded-lg flex items-center bg-amber-100 text-amber-700">
+             <div className="p-3 mb-3 rounded-lg flex items-center bg-amber-100 text-amber-700">
                <FileText className="h-5 w-5 mr-2" />
                <p className="text-sm">Anda akan melakukan absensi dengan status izin. Harap isi alasan izin dengan lengkap.</p>
              </div>
            )}
 
            {/* Recognized teacher */}
-           {recognizedTeacher && <div className="p-4 bg-blue-50 rounded-lg mb-4 border border-blue-200">
-               <h3 className="text-lg font-semibold text-blue-800">{recognizedTeacher.name}</h3>
-               <p className="text-sm text-blue-600"><span className="editable-text">NIK: </span>{recognizedTeacher.nik}</p>
-               <p className="text-sm text-blue-600"><span className="editable-text">Jabatan: </span>{recognizedTeacher.role}</p>
-             </div>}
+           {recognizedTeacher && 
+            <center><div className="p-4 bg-blue-600 rounded-lg mb-1 border border-purple-200">
+               <h3 className="text-lg font-semibold text-white">{recognizedTeacher.name}</h3>
+               <p className="text-sm text-white"><span className="editable-text"></span>{recognizedTeacher.nik}</p>
+               <p className="text-sm text-white"><span className="editable-text">Jabatan : </span>{recognizedTeacher.role}</p>
+             </div></center>
+           }
          </div>
 
          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -709,7 +711,7 @@ export default function TeacherAttendanceScan() {
                <span className="editable-text">Aktifkan Kamera</span>
              </button>}
 
-           {scanning && !capturing && <button onClick={captureImage} className="col-span-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2" disabled={capturing || !!cameraError}>
+           {scanning && !capturing && <button onClick={captureImage} className="col-span-full py-3 bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-orange-500 active:bg-orange-700 transition-colors flex items-center justify-center gap-2" disabled={capturing || !!cameraError}>
                <Camera size={20} />
                <span className="editable-text">Ambil Gambar</span>
              </button>}
@@ -736,7 +738,8 @@ export default function TeacherAttendanceScan() {
              </div>}
          </div>
        </div>}
-
+<hr className="border-t border-none mb-5" />
+  <hr className="border-t border-none mb-5" />
      {/* Instructions card */}
      <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6 rounded-lg">
        <div className="flex">
