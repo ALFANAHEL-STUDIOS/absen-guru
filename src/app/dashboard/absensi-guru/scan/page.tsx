@@ -565,9 +565,9 @@ const formattedTime = format(currentDateTime, "HH:mm:ss");
 
 
  
-const currentDateTime = new Date(); 
-const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
-const formattedTime = format(currentDateTime, "HH:mm:ss"); 
+//const currentDateTime = new Date(); 
+//const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
+//const formattedTime = format(currentDateTime, "HH:mm:ss"); 
 
 
 
