@@ -675,7 +675,7 @@ export default function TeacherAttendanceScan() {
 
            {/* Location information */}
            {attendanceType !== 'izin' && (
-             <div className={`p-3 mb-4 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+             <div className={`p-3 mb-4 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar Area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
                <MapPin className="h-5 w-5 mr-2" />
                <p className="text-sm">{locationMessage || "Mendeteksi lokasi..."}</p>
              </div>
