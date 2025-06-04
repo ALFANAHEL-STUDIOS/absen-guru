@@ -603,13 +603,13 @@ export default function TeacherAttendanceScan() {
                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
                  <LogIn size={16} />
-                 <span><span className="editable-text">Masukk</span></span>
+                 <span><span className="editable-text">Masuk</span></span>
                </button>
 
 
                 <button
                  onClick={() => setAttendanceType("izin")}
-                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
+                 className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${attendanceType === "izin" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
                <Calendar size={16} />
                  <span><span className="editable-text">Izin</span></span>
