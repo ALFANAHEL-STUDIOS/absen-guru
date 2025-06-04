@@ -593,7 +593,7 @@ export default function TeacherAttendanceScan() {
          </div>
        </motion.div> : <div className="bg-white rounded-xl shadow-md overflow-hidden">
          <div className="p-4 border-b border-gray-200">
-           <center><h2 className="text-lg font-semibold mb-4"><span className="editable-text">PILIH JENIS ABSENSI :</span></h2></center>
+           <center><h2 className="text-lg text-gray-700 font-semibold mb-4"><span className="editable-text">PILIH JENIS ABSENSI :</span></h2></center>
 
            {/* Attendance type selector */}
            <div className="flex items-center justify-center p-3 bg-gray-100 rounded-lg mb-4">
@@ -681,9 +681,9 @@ export default function TeacherAttendanceScan() {
 
            {/* Location information */}
            {attendanceType !== 'izin' && (
-             <div className={`p-3 mb-3 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-700' : locationMessage.includes('luar Area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+             <div className={`p-3 mb-3 rounded-lg flex items-center ${!location ? 'bg-gray-100 text-gray-500' : locationMessage.includes('luar Area') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
                <MapPin className="h-5 w-5 mr-2" />
-               <p className="text-sm">{locationMessage || "Mendeteksi lokasi..."}</p>
+               <p className="text-sm text-gray-500">{locationMessage || "Mendeteksi lokasi..."}</p>
              </div>
            )}
 
