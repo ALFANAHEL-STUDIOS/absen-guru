@@ -603,7 +603,7 @@ export default function TeacherAttendanceScan() {
                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${attendanceType === "in" ? "bg-green-600 text-white" : "bg-white text-gray-700"}`}
                >
                  <LogIn size={16} />
-                 <span><span className="editable-text">Masuk</span></span>
+                 <span><span className="editable-text">Masukk</span></span>
                </button>
 
 
