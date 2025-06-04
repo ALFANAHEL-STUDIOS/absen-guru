@@ -520,13 +520,25 @@ export default function TeacherAttendanceScan() {
        console.error("No chat ID found for notification");
        return;
      }
+
+
+
+
+      
+const currentDateTime = new Date(); 
+const formattedDate = format(currentDateTime, "EEEE, d MMMM yyyy", { locale: id }); 
+const formattedTime = format(currentDateTime, "HH:mm:ss"); 
+
+      
+
+    
      // Format message based on attendance type
      let messageType = "";
      if (attendanceType === 'in') messageType = 'MASUK';
      else if (attendanceType === 'out') messageType = 'PULANG';
      else if (attendanceType === 'izin') messageType = 'IZIN';
 
-     let message = `GTK dengan nama ${teacherName} telah melakukan Absensi "${messageType}" di Sekolah pada hari ini, Tanggal ${date} Pukul ${time} WIB.`;
+     let message = `Guru dengan nama ${teacherName} telah melakukan Absensi "${messageType}" pada hari ini ${formattedDate} pukul ${formattedTime} WIB.`;
 
      // Add reason if it's an izin type
      if (attendanceType === 'izin' && reason) {
